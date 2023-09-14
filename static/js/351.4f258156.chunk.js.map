@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/351.4f258156.chunk.js","mappings":"gMAAe,SAASA,IACtB,OACE,0BACE,wBAAI,kBAGT,C","sources":["pages/Products/Products.jsx"],"sourcesContent":["export default function Products() {\n  return (\n    <div>\n      <h1>Products!!!!</h1>\n    </div>\n  );\n}\n"],"names":["Products"],"sourceRoot":""}

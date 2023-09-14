@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/543.ee7420cb.chunk.js","mappings":"gMAAe,SAASA,IACtB,OACE,0BACE,wBAAI,gBAGT,C","sources":["pages/SignUp/SignUp.jsx"],"sourcesContent":["export default function SingUp() {\n  return (\n    <div>\n      <h1>SingUp!!!!</h1>\n    </div>\n  );\n}\n"],"names":["SingUp"],"sourceRoot":""}
