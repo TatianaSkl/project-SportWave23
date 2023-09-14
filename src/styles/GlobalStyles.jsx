@@ -7,6 +7,32 @@ export const GlobalStyles = css`
     scroll-behavior: smooth;
   }
 
+  @font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), local('Roboto-Regular'),
+      url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), local('Roboto-Medium'),
+      url('../fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), local('Roboto-Bold'), url('../fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
