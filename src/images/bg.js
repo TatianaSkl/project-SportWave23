@@ -16,6 +16,10 @@ import bg3Mobile1x from '../images/foto3-m.jpg';
 import bg3Mobile2x from '../images/foto3-m-2x.jpg';
 import bg4Mobile1x from '../images/foto4-m.jpg';
 import bg4Mobile2x from '../images/foto4-m-2x.jpg';
+import logoDesktop1x from '../images/logo-d.png';
+import logoDesktop2x from '../images/logo-d-2x.png';
+import logoMobile1x from '../images/logo-m.png';
+import logoMobile2x from '../images/logo-m-2x.png';
 
 const bg = {
   bg1Desktop1x,
@@ -36,6 +40,10 @@ const bg = {
   bg3Mobile2x,
   bg4Mobile1x,
   bg4Mobile2x,
+  logoDesktop1x,
+  logoDesktop2x,
+  logoMobile1x,
+  logoMobile2x,
 };
 
 export default bg;
