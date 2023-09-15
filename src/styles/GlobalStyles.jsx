@@ -8,7 +8,7 @@ export const GlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'Roboto';
+    font-family: 'RobotoRegular';
     src: local('Roboto'), local('Roboto-Regular'),
       url('../fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: 400;
@@ -17,7 +17,7 @@ export const GlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'Roboto';
+    font-family: 'RobotoMedium';
     src: local('Roboto'), local('Roboto-Medium'),
       url('../fonts/Roboto-Medium.ttf') format('truetype');
     font-weight: 500;
@@ -26,7 +26,7 @@ export const GlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'Roboto';
+    font-family: 'RobotoBold';
     src: local('Roboto'), local('Roboto-Bold'), url('../fonts/Roboto-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
