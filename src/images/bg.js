@@ -20,6 +20,14 @@ import logoDesktop1x from '../images/logo-d.png';
 import logoDesktop2x from '../images/logo-d-2x.png';
 import logoMobile1x from '../images/logo-m.png';
 import logoMobile2x from '../images/logo-m-2x.png';
+import logoErrorD1x from '../images/logoError-d.png';
+import logoErrorD2x from '../images/logoError-d-2x.png';
+import logoErrorM1x from '../images/logoError-m.png';
+import logoErrorM2x from '../images/logoError-m-2x.png';
+import lineD1x from '../images/line-d.png';
+import lineD2x from '../images/line-d-2x.png';
+import lineM1x from '../images/line.png';
+import lineM2x from '../images/line-m-2x.png';
 
 const bg = {
   bg1Desktop1x,
@@ -44,6 +52,14 @@ const bg = {
   logoDesktop2x,
   logoMobile1x,
   logoMobile2x,
+  logoErrorD1x,
+  logoErrorD2x,
+  logoErrorM1x,
+  logoErrorM2x,
+  lineD1x,
+  lineD2x,
+  lineM1x,
+  lineM2x,
 };
 
 export default bg;
