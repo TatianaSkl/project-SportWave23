@@ -1,8 +1,5 @@
 import styled from '@emotion/styled';
 import { theme } from 'styles/theme';
-import bg from 'images/bg';
-
-const { bg1Desktop1x, bg1Desktop2x, bg1Mobile1x, bg1Mobile2x } = bg;
 
 export const Wrapper = styled.div`
   margin-top: 52px;
@@ -11,28 +8,22 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Bg = styled.div`
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center -80px;
-  background-image: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
-    url(${bg1Mobile1x});
-  @media screen and (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-    background-image: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
-      url(${bg1Mobile2x});
-  }
-
+export const PictureBg = styled.picture`
+  position: absolute;
+  width: 70%;
+  top: 80%;
+  left: 30%;
+  z-index: -1;
+  background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
   @media screen and (min-width: 768px) {
-    background-image: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
-      url(${bg1Desktop1x});
-    @media screen and (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
-        url(${bg1Desktop2x});
-    }
+    width: 100%;
+    top: 60%;
+    left: 40%;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 0;
+    left: 54%;
   }
 `;
 
@@ -50,6 +41,7 @@ export const Title = styled.h1`
   }
   @media screen and (min-width: 1440px) {
     padding-top: 152px;
+    width: 598px;
   }
 `;
 
@@ -83,7 +75,15 @@ export const SignIn = styled.a`
 
 export const Picture = styled.picture`
   position: absolute;
-  top: 19%;
+  top: 53%;
   left: 3%;
   z-index: -1;
+  @media screen and (min-width: 768px) {
+    top: 50%;
+    left: 2%;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 52%;
+    left: 5%;
+  }
 `;
