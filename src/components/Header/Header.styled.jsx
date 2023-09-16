@@ -7,8 +7,3 @@ export const HeaderStyled = styled.header`
     padding-top: 32px;
   }
 `;
-
-export const Link = styled.a`
-  display: flex;
-  align-items: center;
-`;

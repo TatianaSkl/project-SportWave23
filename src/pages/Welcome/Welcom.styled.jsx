@@ -1,29 +1,9 @@
 import styled from '@emotion/styled';
-import { theme } from 'styles/theme';
 
 export const Wrapper = styled.div`
   margin-top: 52px;
   @media screen and (min-width: 768px) {
     margin-top: 80px;
-  }
-`;
-
-export const PictureBg = styled.picture`
-  position: absolute;
-  width: 70%;
-  top: 80%;
-  left: 30%;
-  z-index: -1;
-  background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
-    linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
-  @media screen and (min-width: 768px) {
-    width: 100%;
-    top: 60%;
-    left: 40%;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 0;
-    left: 54%;
   }
 `;
 
@@ -49,7 +29,7 @@ export const SignUp = styled.a`
   margin-right: 14px;
   border-radius: 12px;
   padding: 12px 40px;
-  background: ${theme.colors.orange};
+  background: ${props => props.theme.colors.orange};
   font-weight: 500;
   line-height: 112.5%;
   @media screen and (min-width: 768px) {

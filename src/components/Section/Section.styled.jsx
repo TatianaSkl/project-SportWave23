@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
-  padding-top: ${props => props.theme.spacing(5)};
-  padding-bottom: ${props => props.theme.spacing(5)};
-  margin: 0 auto;
-  max-width: 480px;
+  padding-top: 90px;
+  @media screen and (min-width: 768px) {
+    padding-top: 140px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-top: 151px;
+  }
 `;
