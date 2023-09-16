@@ -34,3 +34,6 @@ export * from 'components/UserCard/UserCard.jsx';
 export * from 'components/UserForm/UserForm.jsx';
 export * from 'components/UserNav/UserNav.jsx';
 export * from 'components/SharedLayout/SharedLayout.jsx';
+export * from 'components/BackgroundImage/BackgroundImage.jsx';
+export * from 'components/Button/Button.jsx';
+export * from 'components/TextGrey/TextGrey.jsx';

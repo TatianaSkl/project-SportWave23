@@ -1,8 +1,7 @@
-import { Container, Header } from 'components';
-import { Picture, PictureBg, SignIn, SignUp, Title, Wrapper } from './Welcom.styled';
+import { BackgroundImage, Container, Header } from 'components';
+import { Picture, SignIn, SignUp, Title, Wrapper } from './Welcom.styled';
 import bg from 'images/bg';
-const { bg1Desktop1x, bg1Desktop2x, bg1Mobile1x, bg1Mobile2x, lineD1x, lineD2x, lineM1x, lineM2x } =
-  bg;
+const { lineD1x, lineD2x, lineM1x, lineM2x } = bg;
 
 export default function Welcome() {
   return (
@@ -20,7 +19,7 @@ export default function Welcome() {
           media="(min-width: 768px)"
           srcSet={`${lineD1x} 1x, ${lineD2x} 2x`}
         />
-        <img src={`${lineD1x}`} alt="logo" />
+        <img src={`${lineD1x}`} alt="Рicture for decoration" />
       </Picture>
       <Wrapper>
         <SignUp href="/register" rel="noreferrer noopener">
@@ -30,19 +29,7 @@ export default function Welcome() {
           Sign In
         </SignIn>
       </Wrapper>
-      <PictureBg>
-        <source
-          type="image/png"
-          media="(max-width: 767px)"
-          srcSet={`${bg1Mobile1x} 1x, ${bg1Mobile2x} 2x`}
-        />
-        <source
-          type="image/png"
-          media="(min-width: 768px)"
-          srcSet={`${bg1Desktop1x} 1x, ${bg1Desktop2x} 2x`}
-        />
-        <img src={`${bg1Desktop1x}`} alt="logo" />
-      </PictureBg>
+      <BackgroundImage />
     </Container>
   );
 }
