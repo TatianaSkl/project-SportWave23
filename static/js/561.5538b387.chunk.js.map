@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/561.5538b387.chunk.js","mappings":"gMAAe,SAASA,IACtB,OACE,0BACE,wBAAI,gBAGT,C","sources":["pages/SignIn/SignIn.jsx"],"sourcesContent":["export default function SingIn() {\n  return (\n    <div>\n      <h1>SingIn!!!!</h1>\n    </div>\n  );\n}\n"],"names":["SingIn"],"sourceRoot":""}
