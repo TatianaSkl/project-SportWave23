@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ export const Question = styled.p`
   line-height: 150%;
 `;
 
-export const Link = styled.a`
+export const LinkSignUp = styled(Link)`
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 12px;
   line-height: 150%;

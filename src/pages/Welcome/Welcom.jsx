@@ -1,12 +1,11 @@
-import { BackgroundImage, Container, Header } from 'components';
+import { BackgroundImage } from 'components';
 import { Picture, SignIn, SignUp, Title, Wrapper } from './Welcom.styled';
 import bg from 'images/bg';
 const { lineD1x, lineD2x, lineM1x, lineM2x } = bg;
 
 export default function Welcome() {
   return (
-    <Container>
-      <Header />
+    <>
       <Title>Transforming your body shape with Power Pulse</Title>
       <Picture>
         <source
@@ -22,14 +21,10 @@ export default function Welcome() {
         <img src={`${lineD1x}`} alt="Рicture for decoration" />
       </Picture>
       <Wrapper>
-        <SignUp href="/register" rel="noreferrer noopener">
-          Sign Up
-        </SignUp>
-        <SignIn href="/login" rel="noreferrer noopener">
-          Sign In
-        </SignIn>
+        <SignUp to="register">Sign Up</SignUp>
+        <SignIn to="login">Sign In</SignIn>
       </Wrapper>
       <BackgroundImage />
-    </Container>
+    </>
   );
 }

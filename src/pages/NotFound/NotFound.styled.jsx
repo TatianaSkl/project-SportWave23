@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const ContainerError = styled.div`
   position: relative;
@@ -86,7 +87,7 @@ export const Text = styled.p`
   }
 `;
 
-export const GoHome = styled.a`
+export const GoHome = styled(Link)`
   margin-right: 14px;
   border-radius: 12px;
   padding: 12px 40px;

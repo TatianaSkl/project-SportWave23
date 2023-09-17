@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
@@ -25,7 +26,7 @@ export const Title = styled.h1`
   }
 `;
 
-export const SignUp = styled.a`
+export const SignUp = styled(Link)`
   margin-right: 14px;
   border-radius: 12px;
   padding: 12px 40px;
@@ -40,7 +41,7 @@ export const SignUp = styled.a`
   }
 `;
 
-export const SignIn = styled.a`
+export const SignIn = styled(Link)`
   border: 1px solid rgba(239, 237, 232, 0.3);
   border-radius: 12px;
   padding: 12px 40px;

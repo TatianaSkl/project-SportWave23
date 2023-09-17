@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import bg from 'images/bg';
 import { HeaderStyled } from './Header.styled';
 const { logoDesktop1x, logoDesktop2x, logoMobile1x, logoMobile2x } = bg;
@@ -5,7 +6,7 @@ const { logoDesktop1x, logoDesktop2x, logoMobile1x, logoMobile2x } = bg;
 export const Header = () => {
   return (
     <HeaderStyled>
-      <a href="/" rel="noreferrer noopener">
+      <Link to="/">
         <picture>
           <source
             type="image/png"
@@ -19,7 +20,7 @@ export const Header = () => {
           />
           <img src={`${logoDesktop1x}`} alt="logo" />
         </picture>
-      </a>
+      </Link>
     </HeaderStyled>
   );
 };
