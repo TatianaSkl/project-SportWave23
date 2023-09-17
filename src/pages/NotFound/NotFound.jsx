@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   ContainerError,
   GoHome,
@@ -24,7 +25,7 @@ export default function NotFound() {
     <ContainerError>
       <Wrapper>
         <HeaderError>
-          <a href="/" rel="noreferrer noopener">
+          <Link to="/">
             <picture>
               <source
                 type="image/png"
@@ -38,7 +39,7 @@ export default function NotFound() {
               />
               <img src={`${logoErrorD1x}`} alt="logo" />
             </picture>
-          </a>
+          </Link>
         </HeaderError>
         <Title>404</Title>
         <Text>
@@ -46,9 +47,7 @@ export default function NotFound() {
           the numbers and letters of our virtual space. Perhaps this page went on vacation or
           decided to disappear into another dimension. We apologize for this inconvenience.
         </Text>
-        <GoHome href="/register" rel="noreferrer noopener">
-          Go Home
-        </GoHome>
+        <GoHome to="/">Go Home</GoHome>
       </Wrapper>
       <PictureBg>
         <source
