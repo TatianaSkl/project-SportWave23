@@ -33,6 +33,7 @@ export const SignUp = styled(Link)`
   background: ${props => props.theme.colors.orange};
   font-weight: 500;
   line-height: 112.5%;
+  box-shadow: ${props => props.theme.shadows.small};
   @media screen and (min-width: 768px) {
     margin-right: 20px;
     padding: 16px 60px;
@@ -47,6 +48,7 @@ export const SignIn = styled(Link)`
   padding: 12px 40px;
   font-weight: 500;
   line-height: 112.5%;
+  box-shadow: ${props => props.theme.shadows.small};
   @media screen and (min-width: 768px) {
     padding: 16px 60px;
     font-size: 20px;

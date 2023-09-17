@@ -95,6 +95,7 @@ export const GoHome = styled(Link)`
   background: ${props => props.theme.colors.orange};
   font-weight: 500;
   line-height: 112.5%;
+  box-shadow: ${props => props.theme.shadows.small};
   @media screen and (min-width: 768px) {
     margin-right: 20px;
     padding: 16px 60px;
