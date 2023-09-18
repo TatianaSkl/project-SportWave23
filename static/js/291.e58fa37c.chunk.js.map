@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/291.e58fa37c.chunk.js","mappings":"iMAAe,SAASA,IACtB,OACE,0BACE,wBAAI,gBAGT,C","sources":["pages/Params/Params.jsx"],"sourcesContent":["export default function Params() {\n  return (\n    <div>\n      <h1>Params!!!!</h1>\n    </div>\n  );\n}\n"],"names":["Params"],"sourceRoot":""}
