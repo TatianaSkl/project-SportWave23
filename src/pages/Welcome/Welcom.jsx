@@ -24,6 +24,7 @@ export default function Welcome() {
         <SignUp to="register">Sign Up</SignUp>
         <SignIn to="login">Sign In</SignIn>
       </Wrapper>
+
       <BackgroundImage />
     </>
   );

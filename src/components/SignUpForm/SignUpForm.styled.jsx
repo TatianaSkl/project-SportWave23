@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
-import { Field, Form } from 'formik';
+import { ErrorMessage, Field, Form } from 'formik';
+import { AiFillCheckCircle } from 'react-icons/ai';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 export const FormAuth = styled(Form)`
   width: 100%;
@@ -15,6 +17,39 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const MessageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 4px;
+  }
+`;
+
+export const FieldWrapper = styled.div`
+  position: relative;
+  &.error input {
+    border-color: ${props => props.theme.colors.error};
+  }
+  &.success input {
+    border-color: ${props => props.theme.colors.success};
+  }
+  &.success svg[data-status='success'] {
+    display: block;
+  }
+  &.error svg[data-status='error'] {
+    display: block;
+  }
+  &:not(:last-child):not(.error):not(.success) {
+    margin-bottom: 14px;
+  }
+  @media screen and (min-width: 768px) {
+    &:not(:last-child):not(.error):not(.success) {
+      margin-bottom: 16px;
+    }
+  }
+`;
+
 export const FormField = styled(Field)`
   width: 100%;
   padding: 14px;
@@ -24,6 +59,10 @@ export const FormField = styled(Field)`
   background-color: transparent;
   font-size: 14px;
   line-height: 128.571%;
+  margin-bottom: 2px;
+  &:hover {
+    border-color: ${props => props.theme.colors.orange};
+  }
   &::placeholder {
     font-size: 14px;
     line-height: 128.571%;
@@ -33,14 +72,59 @@ export const FormField = styled(Field)`
       line-height: 150%;
     }
   }
-  &:not(:last-child) {
-    margin-bottom: 18px;
-  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 150%;
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
+    margin-bottom: 4px;
   }
+`;
+
+export const ErrorText = styled(ErrorMessage)`
+  margin-left: 4px;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0.12px;
+  color: ${props => props.theme.colors.error};
+  line-height: 1.16;
+`;
+
+export const SuccessText = styled.div`
+  margin-left: 4px;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0.12px;
+  color: ${props => props.theme.colors.success};
+  line-height: 1.16;
+`;
+
+export const ErrorIcon = styled(AiFillCheckCircle)`
+  display: none;
+  width: 16px;
+  height: 16px;
+  fill: ${props => props.theme.colors.error};
+`;
+
+export const SuccessIcon = styled(AiFillCheckCircle)`
+  display: none;
+  width: 16px;
+  height: 16px;
+  fill: ${props => props.theme.colors.success};
+`;
+
+export const IconBsEye = styled(BsEye)`
+  width: 20px;
+  height: 20px;
+`;
+
+export const IconBsEyeSlash = styled(BsEyeSlash)`
+  width: 20px;
+  height: 20px;
+`;
+
+export const BottonEye = styled.button`
+  position: absolute;
+  top: 14px;
+  left: 90%;
 `;
