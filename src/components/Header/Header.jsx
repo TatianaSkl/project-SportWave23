@@ -1,26 +1,39 @@
-import { Link } from 'react-router-dom';
-import bg from 'images/bg';
-import { HeaderStyled } from './Header.styled';
-const { logoDesktop1x, logoDesktop2x, logoMobile1x, logoMobile2x } = bg;
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { LogOutBtn, Logo, ModalMenu, UserBar, UserNav } from 'components';
+import { ButtonMenu, HeaderStyled, IconMenu, Wrapper, WrapperDes } from './Header.styled';
 
 export const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const onOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const onCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <HeaderStyled>
-      <Link to="/">
-        <picture>
-          <source
-            type="image/png"
-            media="(max-width: 767px)"
-            srcSet={`${logoMobile1x} 1x, ${logoMobile2x} 2x`}
-          />
-          <source
-            type="image/png"
-            media="(min-width: 768px)"
-            srcSet={`${logoDesktop1x} 1x, ${logoDesktop2x} 2x`}
-          />
-          <img src={`${logoDesktop1x}`} alt="logo" />
-        </picture>
-      </Link>
+      <Logo />
+      {isLoggedIn ? (
+        <Wrapper>
+          <WrapperDes>
+            <UserNav />
+          </WrapperDes>
+          <UserBar />
+          <ButtonMenu onClick={onOpenModal}>
+            <IconMenu />
+          </ButtonMenu>
+          <WrapperDes>
+            <LogOutBtn color="#E6533C" />
+          </WrapperDes>
+          {showModal && <ModalMenu onClose={onCloseModal} />}
+        </Wrapper>
+      ) : null}
     </HeaderStyled>
   );
 };
