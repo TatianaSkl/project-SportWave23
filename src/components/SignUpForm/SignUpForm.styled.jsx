@@ -125,6 +125,6 @@ export const IconBsEyeSlash = styled(BsEyeSlash)`
 
 export const BottonEye = styled.button`
   position: absolute;
-  top: 14px;
+  top: 15px;
   left: 90%;
 `;
