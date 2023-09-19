@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+import {
+  FormContainer,
+  FormSection,
+  FormGroup,
+  FormButton,
+  BloodContainer,
+  RadioLabel,
+  SexContainer,
+  ActiveContainer,
+} from './ParamsForm.styled';
+import { TextGrey, TitlePage } from 'components';
+
 const ParamsForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const formik = useFormik({
@@ -19,7 +31,7 @@ const ParamsForm = () => {
       currentWeight: Yup.number().min(35).required(),
       desiredWeight: Yup.number().min(35).required(),
       birthday: Yup.date()
-        .min(new Date(new Date().getFullYear() - 18, 0, 1))
+        .max(new Date(new Date().getFullYear() - 18, 0, 1))
         .required(),
       blood: Yup.number().oneOf([1, 2, 3, 4]).required(),
       sex: Yup.string().oneOf(['male', 'female']).required(),
@@ -43,10 +55,12 @@ const ParamsForm = () => {
   };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <FormContainer onSubmit={formik.handleSubmit}>
       {currentStep === 0 && (
-        <div>
-          <div>
+        <FormSection>
+          <TitlePage text="Get closer to your goals!" />
+          <TextGrey text="To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:" />
+          <FormGroup>
             <label htmlFor="height">Height:</label>
             <input
               type="number"
@@ -59,8 +73,8 @@ const ParamsForm = () => {
             {formik.touched.height && formik.errors.height ? (
               <div>{formik.errors.height}</div>
             ) : null}
-          </div>
-          <div>
+          </FormGroup>
+          <FormGroup>
             <label htmlFor="currentWeight">Current Weight:</label>
             <input
               type="number"
@@ -73,8 +87,8 @@ const ParamsForm = () => {
             {formik.touched.currentWeight && formik.errors.currentWeight ? (
               <div>{formik.errors.currentWeight}</div>
             ) : null}
-          </div>
-          <div>
+          </FormGroup>
+          <FormGroup>
             <label htmlFor="desiredWeight">Desired Weight:</label>
             <input
               type="number"
@@ -87,8 +101,8 @@ const ParamsForm = () => {
             {formik.touched.desiredWeight && formik.errors.desiredWeight ? (
               <div>{formik.errors.desiredWeight}</div>
             ) : null}
-          </div>
-          <div>
+          </FormGroup>
+          <FormGroup>
             <label htmlFor="birthday">Birthday:</label>
             <input
               type="date"
@@ -101,15 +115,16 @@ const ParamsForm = () => {
             {formik.touched.birthday && formik.errors.birthday ? (
               <div>{formik.errors.birthday}</div>
             ) : null}
-          </div>
-        </div>
+          </FormGroup>
+        </FormSection>
       )}
 
       {currentStep === 1 && (
         <div>
-          <div>
+          <BloodContainer>
+            <TitlePage text="Get closer to your goals!" />
             <label>Blood:</label>
-            <div>
+            <RadioLabel>
               <label>
                 <input
                   type="radio"
@@ -120,12 +135,48 @@ const ParamsForm = () => {
                 />
                 1
               </label>
-            </div>
-          </div>
+            </RadioLabel>
+            <RadioLabel>
+              <label>
+                <input
+                  type="radio"
+                  name="blood"
+                  value="1"
+                  checked={formik.values.blood === '1'}
+                  onChange={formik.handleChange}
+                />
+                2
+              </label>
+            </RadioLabel>
+            <RadioLabel>
+              <label>
+                <input
+                  type="radio"
+                  name="blood"
+                  value="1"
+                  checked={formik.values.blood === '1'}
+                  onChange={formik.handleChange}
+                />
+                3
+              </label>
+            </RadioLabel>
+            <RadioLabel>
+              <label>
+                <input
+                  type="radio"
+                  name="blood"
+                  value="1"
+                  checked={formik.values.blood === '1'}
+                  onChange={formik.handleChange}
+                />
+                4
+              </label>
+            </RadioLabel>
+          </BloodContainer>
 
-          <div>
+          <SexContainer>
             <label>Sex</label>
-            <div>
+            <RadioLabel>
               <label>
                 <input
                   type="radio"
@@ -136,12 +187,25 @@ const ParamsForm = () => {
                 />
                 Male
               </label>
-            </div>
-          </div>
+            </RadioLabel>
+            <RadioLabel>
+              <label>
+                <input
+                  type="radio"
+                  name="sex"
+                  value="male"
+                  checked={formik.values.sex === 'male'}
+                  onChange={formik.handleChange}
+                />
+                Female
+              </label>
+            </RadioLabel>
+          </SexContainer>
 
-          <div>
+          <ActiveContainer>
             <label>Level Activity:</label>
-            <div>
+
+            <RadioLabel>
               <label>
                 <input
                   type="radio"
@@ -152,6 +216,8 @@ const ParamsForm = () => {
                 />
                 Sedentary lifestyle (little or no physical activity)
               </label>
+            </RadioLabel>
+            <RadioLabel>
               <label>
                 <input
                   type="radio"
@@ -162,6 +228,8 @@ const ParamsForm = () => {
                 />
                 Light activity (light exercises/sports 1-3 days per week)
               </label>
+            </RadioLabel>
+            <RadioLabel>
               <label>
                 <input
                   type="radio"
@@ -172,6 +240,8 @@ const ParamsForm = () => {
                 />
                 Moderately active (moderate exercises/sports 3-5 days per week)
               </label>
+            </RadioLabel>
+            <RadioLabel>
               <label>
                 <input
                   type="radio"
@@ -182,6 +252,8 @@ const ParamsForm = () => {
                 />
                 Very active (intense exercises/sports 6-7 days per week)
               </label>
+            </RadioLabel>
+            <RadioLabel>
               <label>
                 <input
                   type="radio"
@@ -193,29 +265,35 @@ const ParamsForm = () => {
                 Extremely active (very strenuous exercises/sports and physical
                 work)
               </label>
-            </div>
-          </div>
+            </RadioLabel>
+          </ActiveContainer>
         </div>
+      )}
+
+      {currentStep < 2 && (
+        <FormButton
+          type="button"
+          onClick={() => setCurrentStep(currentStep + 1)}
+        >
+          Next
+        </FormButton>
       )}
 
       {currentStep === 2 && (
         <div>
-          <button type="button" onClick={handlePrevClick}>
-            Back
-          </button>
-          {currentStep < 2 ? (
-            <button
-              type="button"
-              onClick={() => setCurrentStep(currentStep + 1)}
-            >
-              Next
-            </button>
-          ) : (
-            <button type="submit">Go</button>
-          )}
+          <TitlePage text="Dear user" />
+          <TextGrey text="Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach." />
+
+          <button type="submit">Go</button>
         </div>
       )}
-    </form>
+
+      {currentStep > 0 && (
+        <FormButton type="button" onClick={handlePrevClick}>
+          Back
+        </FormButton>
+      )}
+    </FormContainer>
   );
 };
 
