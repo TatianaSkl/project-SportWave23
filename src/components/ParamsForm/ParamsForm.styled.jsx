@@ -63,6 +63,9 @@ export const FormButton = styled.button`
 //   justify-content: space-between;
 //   margin-bottom: 20px; // Додайте відступ для розділення груп
 // `;
+export const BloodSexContainer = styled.div`
+  display: flex;
+`;
 
 export const BloodContainer = styled.div`
   display: flex;

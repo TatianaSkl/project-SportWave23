@@ -8,6 +8,7 @@ import {
   FormGroupContent,
   FormGroup,
   FormButton,
+  BloodSexContainer,
   BloodContainer,
   RadioLabel,
   SexContainer,
@@ -125,86 +126,89 @@ const ParamsForm = () => {
 
       {currentStep === 1 && (
         <div>
-          <BloodContainer>
-            <TitlePage text="Get closer to your goals!" />
-            <label>Blood:</label>
-            <RadioLabel>
-              <label>
-                <input
-                  type="radio"
-                  name="blood"
-                  value="1"
-                  checked={formik.values.blood === '1'}
-                  onChange={formik.handleChange}
-                />
-                1
-              </label>
-            </RadioLabel>
-            <RadioLabel>
-              <label>
-                <input
-                  type="radio"
-                  name="blood"
-                  value="1"
-                  checked={formik.values.blood === '1'}
-                  onChange={formik.handleChange}
-                />
-                2
-              </label>
-            </RadioLabel>
-            <RadioLabel>
-              <label>
-                <input
-                  type="radio"
-                  name="blood"
-                  value="1"
-                  checked={formik.values.blood === '1'}
-                  onChange={formik.handleChange}
-                />
-                3
-              </label>
-            </RadioLabel>
-            <RadioLabel>
-              <label>
-                <input
-                  type="radio"
-                  name="blood"
-                  value="1"
-                  checked={formik.values.blood === '1'}
-                  onChange={formik.handleChange}
-                />
-                4
-              </label>
-            </RadioLabel>
-          </BloodContainer>
+          <TitlePage text="Get closer to your goals!" />
+          <BloodSexContainer>
+            <BloodContainer>
+              <label>Blood:</label>
+              <div></div>
+              <RadioLabel>
+                <label>
+                  <input
+                    type="radio"
+                    name="blood"
+                    value="1"
+                    checked={formik.values.blood === '1'}
+                    onChange={formik.handleChange}
+                  />
+                  1
+                </label>
+              </RadioLabel>
+              <RadioLabel>
+                <label>
+                  <input
+                    type="radio"
+                    name="blood"
+                    value="1"
+                    checked={formik.values.blood === '1'}
+                    onChange={formik.handleChange}
+                  />
+                  2
+                </label>
+              </RadioLabel>
+              <RadioLabel>
+                <label>
+                  <input
+                    type="radio"
+                    name="blood"
+                    value="1"
+                    checked={formik.values.blood === '1'}
+                    onChange={formik.handleChange}
+                  />
+                  3
+                </label>
+              </RadioLabel>
+              <RadioLabel>
+                <label>
+                  <input
+                    type="radio"
+                    name="blood"
+                    value="1"
+                    checked={formik.values.blood === '1'}
+                    onChange={formik.handleChange}
+                  />
+                  4
+                </label>
+              </RadioLabel>
+            </BloodContainer>
 
-          <SexContainer>
-            <label>Sex</label>
-            <RadioLabel>
-              <label>
-                <input
-                  type="radio"
-                  name="sex"
-                  value="male"
-                  checked={formik.values.sex === 'male'}
-                  onChange={formik.handleChange}
-                />
-                Male
-              </label>
-            </RadioLabel>
-            <RadioLabel>
-              <label>
-                <input
-                  type="radio"
-                  name="sex"
-                  value="male"
-                  checked={formik.values.sex === 'male'}
-                  onChange={formik.handleChange}
-                />
-                Female
-              </label>
-            </RadioLabel>
-          </SexContainer>
+            <SexContainer>
+              <label>Sex</label>
+              <RadioLabel>
+                <label>
+                  <input
+                    type="radio"
+                    name="sex"
+                    value="male"
+                    checked={formik.values.sex === 'male'}
+                    onChange={formik.handleChange}
+                  />
+                  Male
+                </label>
+              </RadioLabel>
+              <RadioLabel>
+                <label>
+                  <input
+                    type="radio"
+                    name="sex"
+                    value="male"
+                    checked={formik.values.sex === 'male'}
+                    onChange={formik.handleChange}
+                  />
+                  Female
+                </label>
+              </RadioLabel>
+            </SexContainer>
+          </BloodSexContainer>
 
           <ActiveContainer>
             <label>Level Activity:</label>
