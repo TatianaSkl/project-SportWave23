@@ -27,10 +27,8 @@ export const App = () => {
         <Route path="products" element={<ProductsPage />} />
         <Route path="exercises" element={<ExercisesPage />} />
         <Route path="TestModal" element={<TestModal />} />
-
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
-
