@@ -11,10 +11,19 @@ export const FormSection = styled.div`
   width: 300px; */
 `;
 
-export const FormGroup = styled.div`
+export const FormGroupContent = styled.div`
   display: flex;
+
   flex-wrap: wrap;
+  width: 523px;
+`;
+
+export const FormGroup = styled.div`
+  display: block;
+  /* flex-wrap: wrap; */
   margin-bottom: 10px;
+  margin-right: 20px;
+  width: 153px;
 
   label {
     font-weight: bold;
