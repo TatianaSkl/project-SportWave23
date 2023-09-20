@@ -1,9 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
-import { SharedLayout } from 'components';
+import { lazy, useEffect } from 'react';
+import { Loader, SharedLayout } from 'components';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from 'redux/auth/selectors';
+import { refreshUser } from 'redux/auth/operations';
 import Welcome from 'pages/Welcome/Welcom';
 import NotFound from 'pages/NotFound/NotFound';
 import TestModal from 'pages/TestModal/TestModal';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { RestrictedRoute } from 'components/RestrictedRoute';
 
 const SingUpPage = lazy(() => import('pages/SignUp/SignUp'));
 const SingInPage = lazy(() => import('pages/SignIn/SignIn'));
@@ -15,18 +20,30 @@ const ProductsPage = lazy(() => import('pages/Products/Products'));
 const UserPage = lazy(() => import('pages/User/User'));
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Welcome />} />
-        <Route path="register" element={<SingUpPage />} />
-        <Route path="login" element={<SingInPage />} />
-        <Route path="params" element={<ParamsPage />} />
-        <Route path="user" element={<UserPage />} />
-        <Route path="diary" element={<DiaryPage />} />
-        <Route path="products" element={<ProductsPage />} />
-        <Route path="exercises" element={<ExercisesPage />} />
-        <Route path="TestModal" element={<TestModal />} />
+        <Route element={<PrivateRoute redirectTo="/login" />}>
+          <Route path="params" element={<ParamsPage />} />
+          <Route path="user" element={<UserPage />} />
+          <Route path="diary" element={<DiaryPage />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="exercises" element={<ExercisesPage />} />
+          <Route path="TestModal" element={<TestModal />} />
+        </Route>
+        <Route element={<RestrictedRoute redirectTo="params" restricted />}>
+          <Route path="/login" element={<SingInPage />} />
+          <Route path="/register" element={<SingUpPage />} />
+        </Route>
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
