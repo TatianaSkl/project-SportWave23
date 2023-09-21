@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 // import * as yup from 'yup';
@@ -59,7 +59,7 @@ import { selectUser } from 'redux/auth/selectors';
 
 export const UserForm = () => {
   const user = useSelector(selectUser);
-  const [isFormDirty, setIsFormDirty] = useState(false);
+  // const [isFormDirty, setIsFormDirty] = useState(false);
 
   // const formik = useFormik({
   //   initialValues: {
@@ -197,7 +197,7 @@ export const UserForm = () => {
               Extremely active (very strenuous exercises/ sports and physical work)
             </LabelRadio>
           </WrapperRadioLevelActivity>
-          <Button label="Save" disabled={!isFormDirty} />
+          <Button label="Save" disabled={true} />
         </FormAuth>
       </Formik>
     </>
