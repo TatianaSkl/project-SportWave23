@@ -38,7 +38,7 @@ export const UserCard = () => {
           <use href={icon + '#check'}></use>
         </SvgPlus>
       </ButtonPlus>
-      <Name>{user.user.name}</Name>
+      <Name>{user.name}</Name>
       <Text>User</Text>
       <WrapperBox>
         <WrapperCalor>
