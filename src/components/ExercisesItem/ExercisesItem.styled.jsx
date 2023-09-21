@@ -14,7 +14,7 @@ const MainTitle = styled.strong`
   background-color: rgba(239, 237, 232, 0.05);
   padding: 5px 7.5px 5px 7.5px;
   font-family: 'Roboto';
-  fontsize: 12px;
+  font-size: 12px;
   font-weight: 700;
   display: inline-flex;
   margin-bottom: 33px;
@@ -64,13 +64,4 @@ const Span = styled.span`
   margin-left: 3px;
 `;
 
-export {
-  ExerciseItem,
-  MainTitle,
-  Title,
-  TitleBlock,
-  StatItem,
-  Statistics,
-  Button,
-  Span,
-};
+export { ExerciseItem, MainTitle, Title, TitleBlock, StatItem, Statistics, Button, Span };
