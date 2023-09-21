@@ -20,7 +20,7 @@ export const FormAuth = styled(Form)`
   width: 100%;
   @media screen and (min-width: 1440px) {
     width: 760px;
-    padding-right: 64px;
+    padding-right: 63px;
   }
 `;
 export const Wrapper = styled.div`

@@ -24,6 +24,10 @@ import { LogOutBtn } from 'components';
 export const UserCard = () => {
   const user = useSelector(selectUser);
 
+  const handleSubmit = () => {
+    console.log(user);
+    console.log(user.userParams);
+  };
   return (
     <WrapperUserCard>
       <WrapperFoto>
@@ -33,7 +37,7 @@ export const UserCard = () => {
           loading="lazy"
         />
       </WrapperFoto>
-      <ButtonPlus>
+      <ButtonPlus onClick={handleSubmit}>
         <SvgPlus>
           <use href={icon + '#check'}></use>
         </SvgPlus>

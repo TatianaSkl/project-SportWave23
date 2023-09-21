@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 // import * as yup from 'yup';
 
@@ -18,6 +20,7 @@ import {
   WrapperRadioFlex,
   WrapperRadioLevelActivity,
 } from './UserForm.styled';
+import { selectUser } from 'redux/auth/selectors';
 
 // export const schemaUs = yup.object().shape({
 //   name: yup
@@ -56,35 +59,82 @@ import {
 // });
 
 export const UserForm = () => {
-  //   const [showPassword, setShowPassword] = useState(false);
-  //   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const [isFormDirty, setIsFormDirty] = useState(false);
 
-  //   const handleSubmit = ({ name, email, password }, { resetForm }) => {
-  //     dispatch(
-  //       register({
-  //         name,
-  //         email,
-  //         password,
-  //       })
-  //     );
-  //     resetForm();
-  //     console.log(name);
-  //     console.log(email);
-  //     console.log(password);
-  //   };
+  // const formik = useFormik({
+  //   initialValues: {
+  //     name: user.name,
+  //     email: user.email,
+  //     height: user.userParams.height,
+  //     currentWeight: user.userParams.currentWeight,
+  //     desiredWeight: user.userParams.desiredWeight,
+  //     birthday: user.userParams.birthday,
+  //     blood: user.userParams.blood.toString(),
+  //     sex: user.userParams.sex,
+  //     levelActivity: user.userParams.levelActivity.toString(),
+  //   },
+  //   onSubmit: async values => {
+  //     // Создайте объект данных для отправки на сервер
+  //     const userData = {
+  //       name: values.name,
+  //       email: values.email,
+  //       userParams: {
+  //         height: values.height,
+  //         currentWeight: values.currentWeight,
+  //         desiredWeight: values.desiredWeight,
+  //         birthday: values.birthday,
+  //         blood: parseInt(values.blood), // Преобразуйте обратно в число, если нужно
+  //         sex: values.sex,
+  //         levelActivity: parseInt(values.levelActivity), // Преобразуйте обратно в число, если нужно
+  //       },
+  //     };
+
+  //     // Выполните запрос на сервер с обновленными данными пользователя
+  //     try {
+  //       const response = await fetch('/your-api-endpoint', {
+  //         method: 'PUT', // Или другой метод, соответствующий вашему API
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(userData),
+  //       });
+
+  //       if (response.ok) {
+  //         // Обработайте успешный ответ
+  //         setIsFormDirty(false); // Сбросьте флаг изменений после успешной отправки
+  //         alert('Данные успешно обновлены');
+  //       } else {
+  //         // Обработайте ошибку
+  //         alert('Ошибка при обновлении данных');
+  //       }
+  //     } catch (error) {
+  //       console.error('Ошибка при отправке данных на сервер:', error);
+  //     }
+  //   },
+  // });
 
   return (
     <>
       <Formik
-      //   initialValues={{ name: '', email: '', password: '' }}
-      //   validationSchema={schemaReg}
-      //   onSubmit={handleSubmit}
+        initialValues={{
+          name: user.name,
+          email: user.email,
+          height: user.userParams.height,
+          currentWeight: user.userParams.currentWeight,
+          desiredWeight: user.userParams.desiredWeight,
+          birthday: user.userParams.birthday,
+          blood: user.userParams.blood.toString(),
+          sex: user.userParams.sex,
+          levelActivity: user.userParams.levelActivity.toString(),
+        }}
+        // onSubmit={formik.handleSubmit}
       >
         <FormAuth autoComplete="off">
           <FormTitle>Basic info</FormTitle>
           <Wrapper>
-            <FieldName type="text" name="name" />
-            <FieldEmail type="email" name="email" disabled />
+            <FieldName type="text" name="name" onChange={setIsFormDirty(true)} />
+            <FieldEmail type="email" name="email" />
             <FieldWrapper>
               <FormLabel htmlFor="height">Height</FormLabel>
               <InputField type="text" name="height" />
@@ -103,95 +153,52 @@ export const UserForm = () => {
           <WrapperRadioFlex>
             <div role="group" aria-labelledby="radio-blood">
               <LabelRadio>
-                <FielRadio type="radio" name="blood" value="1" checked="1" />1
+                <FielRadio type="radio" name="blood" value="1" />1
               </LabelRadio>
               <LabelRadio>
-                <FielRadio
-                  type="radio"
-                  name="blood"
-                  value="2"
-                  // checked={valueFromServer === '2'}
-                />
-                2
+                <FielRadio type="radio" name="blood" value="2" />2
               </LabelRadio>
               <LabelRadio>
-                <FielRadio
-                  type="radio"
-                  name="blood"
-                  value="3"
-                  // checked={valueFromServer === '3'}
-                />
-                3
+                <FielRadio type="radio" name="blood" value="3" />3
               </LabelRadio>
               <LabelRadio>
-                <FielRadio
-                  type="radio"
-                  name="blood"
-                  value="4"
-                  // checked={valueFromServer === '4'}
-                />
-                4
+                <FielRadio type="radio" name="blood" value="4" />4
               </LabelRadio>
             </div>
             <div role="group" aria-labelledby="radio-sex">
               <LabelRadio>
-                <FielRadio type="radio" name="sex" value="Male" checked="Male" />
+                <FielRadio type="radio" name="sex" value="male" />
                 Male
               </LabelRadio>
               <LabelRadio>
-                <FielRadio
-                  type="radio"
-                  name="sex"
-                  value="Female"
-                  // checked={valueFromServer === 'Female'}
-                />
+                <FielRadio type="radio" name="sex" value="female" />
                 Female
               </LabelRadio>
             </div>
           </WrapperRadioFlex>
           <WrapperRadioLevelActivity role="group" aria-labelledby="radio-levelActivity">
             <LabelRadio>
-              <FielRadio type="radio" name="levelActivity" value="1" checked="1" />
+              <FielRadio type="radio" name="levelActivity" value="1" />
               Sedentary lifestyle (little or no physical activity)
             </LabelRadio>
             <LabelRadio>
-              <FielRadio
-                type="radio"
-                name="levelActivity"
-                value="2"
-                // checked={valueFromServer === '2'}
-              />
+              <FielRadio type="radio" name="levelActivity" value="2" />
               Light activity (light exercises/sports 1-3 days per week)
             </LabelRadio>
             <LabelRadio>
-              <FielRadio
-                type="radio"
-                name="levelActivity"
-                value="3"
-                // checked={valueFromServer === '3'}
-              />
+              <FielRadio type="radio" name="levelActivity" value="3" />
               Moderately active (moderate exercises/sports 3-5 days per week)
             </LabelRadio>
             <LabelRadio>
-              <FielRadio
-                type="radio"
-                name="levelActivity"
-                value="4"
-                // checked={valueFromServer === '4'}
-              />
+              <FielRadio type="radio" name="levelActivity" value="4" />
               Very active (intense exercises/sports 6-7 days per week)
             </LabelRadio>
             <LabelRadio>
-              <FielRadio
-                type="radio"
-                name="levelActivity"
-                value="5"
-                // checked={valueFromServer === '5'}
-              />
+              <FielRadio type="radio" name="levelActivity" value="5" />
               Extremely active (very strenuous exercises/ sports and physical work)
             </LabelRadio>
           </WrapperRadioLevelActivity>
-          <Button label="Save" disabled={true} />
+          <Button label="Save" disabled={!isFormDirty} />
         </FormAuth>
       </Formik>
     </>
