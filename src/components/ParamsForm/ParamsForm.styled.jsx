@@ -1,34 +1,30 @@
 import styled from '@emotion/styled';
 
+// @media screen and (min-width: 768px)
+// @media screen and (min-width: 1440px)
+
 export const FormContainer = styled.div`
   display: block;
 `;
 
 export const FormSection = styled.div`
-  /* padding: 20px;
-  margin: 10px;
-  border-radius: 5px;
-  width: 300px; */
+  /* padding: 20px; */
 `;
 
 export const FormGroupContent = styled.div`
   display: flex;
-
   flex-wrap: wrap;
-  width: 523px;
 `;
 
 export const FormGroup = styled.div`
   display: block;
-  /* flex-wrap: wrap; */
-  margin-bottom: 10px;
-  margin-right: 20px;
-  width: 153px;
+  margin-bottom: 14px;
+  margin-right: 14px;
 
-  label {
+  /* label {
     font-weight: bold;
     margin-bottom: 5px;
-  }
+  } */
 
   input[type='number'],
   input[type='date'],
@@ -36,11 +32,11 @@ export const FormGroup = styled.div`
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    max-width: 150px;
   }
 
   div {
-    color: red;
-    font-size: 14px;
+    display: none;
   }
 `;
 
@@ -50,10 +46,6 @@ export const FormButton = styled.button`
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-
-  /* &:hover {
-    background-color: #0056b3;
-  } */
 `;
 
 ////////////////////////////////
@@ -70,22 +62,22 @@ export const BloodSexContainer = styled.div`
 export const BloodContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; // Вирівнювання елементів по центру */
+  /* align-items: center;  */
 `;
 
 export const SexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; // Вирівнювання елементів по центру */
+  align-items: center;
 `;
 
 export const ActiveContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; // Вирівнювання елементів по центру */
-  margin-top: 20px; // Відступ між "Blood/Sex" і "Active"
+  /* align-items: center; */
+  margin-top: 20px;
 `;
 
 export const RadioLabel = styled.label`
-  margin-bottom: 10px; // Відступ між радіо-кнопками
+  margin-bottom: 10px;
 `;
