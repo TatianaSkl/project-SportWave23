@@ -11,7 +11,10 @@ const ExercisesCategories = () => {
       <ul style={{ display: 'flex' }}>
         {sections.map((section, index) => (
           <li key={index} style={{ marginRight: 28 }}>
-            <Category to={page.toLowerCase()} onClick={() => dispatch()}>
+            <Category
+              // to={page.toLowerCase()}
+              onClick={() => dispatch()}
+            >
               {section}
             </Category>
           </li>
