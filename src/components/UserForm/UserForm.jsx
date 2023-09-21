@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 // import * as yup from 'yup';
-
 import { Button } from 'components';
 import {
   FielRadio,
@@ -133,7 +132,7 @@ export const UserForm = () => {
         <FormAuth autoComplete="off">
           <FormTitle>Basic info</FormTitle>
           <Wrapper>
-            <FieldName type="text" name="name" onChange={setIsFormDirty(true)} />
+            <FieldName type="text" name="name" />
             <FieldEmail type="email" name="email" />
             <FieldWrapper>
               <FormLabel htmlFor="height">Height</FormLabel>
