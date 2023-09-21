@@ -5,8 +5,8 @@ import StepBar from 'components/StepBar/StepBar';
 export default function Params() {
   return (
     <Section>
-      <StepBar />
       <ParamsForm />
+      <StepBar />
     </Section>
   );
 }

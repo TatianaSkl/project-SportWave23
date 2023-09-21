@@ -27,7 +27,6 @@ color: ${theme.colors.white};
 export const BtnContainer = styled.div`
   display: flex;
   background: transparent;
-  /* border: none; */
   position: absolute;
   z-index: 1;
   right: 14px;
@@ -36,7 +35,7 @@ export const BtnContainer = styled.div`
 `;
 
 export const BtnClose = styled.button`
-  
+  margin-right: 8px;
 `;
 
 export const BtnOpen = styled.button`
@@ -53,7 +52,6 @@ width: 43%;
 margin-right: 6%;
 color: ${theme.colors.white};
 background: ${theme.colors.main};
-
 `;
 
 export const SelectType = styled.div`
@@ -65,3 +63,40 @@ background: ${theme.colors.main};
 export const Option = styled.option`
 
 `;
+
+export const customStyles = {
+    control: (base) => ({
+      ...base,
+      backgroundColor: 'black',
+      color: 'white',
+      border: '1px solid white',
+      borderRadius: '12px',
+      padding: '5px',
+    }),
+    menu: (base) => ({
+      ...base,
+      right: 0,
+      zIndex: 9999,
+    }),
+    option: (base) => ({
+      ...base,
+      backgroundColor: 'black',
+      color: 'white',
+      border:'none',
+  }),
+    singleValue: (provided) => ({
+    ...provided,
+    color: 'white',
+  }),
+    indicatorSeparator: (base) => ({
+      ...base,
+      display: 'none',
+    }),
+};
+  
+// export const Wrapper = styled.div`
+//   margin-top: 52px;
+//   @media screen and (min-width: 768px) {
+//     margin-top: 80px;
+//   }
+// `;
