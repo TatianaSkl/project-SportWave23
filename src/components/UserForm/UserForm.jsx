@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { selectUser } from 'redux/auth/selectors';
+import { updateParams } from 'redux/auth/operations';
+import icon from 'images/sprite.svg';
 import { Button } from 'components';
 import {
+  ButtonIcon,
   FielRadio,
   FieldEmail,
   FieldName,
@@ -19,7 +23,6 @@ import {
   WrapperRadioFlex,
   WrapperRadioLevelActivity,
 } from './UserForm.styled';
-import { selectUser } from 'redux/auth/selectors';
 
 export const schemaUs = yup.object().shape({
   name: yup
@@ -37,8 +40,20 @@ export const schemaUs = yup.object().shape({
     .required('This field is required!'),
   birthday: yup
     .date()
-    .strict()
-    .max(new Date(new Date().getFullYear() - 18, 0, 1))
+    .max(
+      new Date(new Date().getFullYear() - 18, 0, 1),
+      'You must be at least 18 years old to use this app'
+    )
+    .transform((currentValue, originalValue) => {
+      if (originalValue) {
+        const parts = originalValue.split('-');
+        const year = parseInt(parts[0]);
+        const month = parseInt(parts[1]) - 1;
+        const day = parseInt(parts[2]);
+        return new Date(year, month, day);
+      }
+      return null;
+    })
     .required('This field is required!'),
   blood: yup.number().oneOf([1, 2, 3, 4]).required('This field is required!'),
   sex: yup.string().oneOf(['male', 'female']).required('This field is required!'),
@@ -47,59 +62,39 @@ export const schemaUs = yup.object().shape({
 
 export const UserForm = () => {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
   const [isFormDirty, setIsFormDirty] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       name: user.name,
       email: user.email,
-      height: user.userParams.height,
-      currentWeight: user.userParams.currentWeight,
-      desiredWeight: user.userParams.desiredWeight,
-      birthday: '',
-      blood: user.userParams.blood.toString(),
-      sex: user.userParams.sex,
-      levelActivity: user.userParams.levelActivity.toString(),
+      height: user.userParams.height || '',
+      currentWeight: user.userParams.currentWeight || '',
+      desiredWeight: user.userParams.desiredWeight || '',
+      birthday: user.userParams.birthday || '',
+      blood: (user.userParams.blood || '').toString(),
+      sex: user.userParams.sex || '',
+      levelActivity: (user.userParams.levelActivity || '').toString(),
     },
     validationSchema: schemaUs,
-    // onSubmit: async values => {
-    //   // Создайте объект данных для отправки на сервер
-    //   const userData = {
-    //     name: values.name,
-    //     email: values.email,
-    //     userParams: {
-    //       height: values.height,
-    //       currentWeight: values.currentWeight,
-    //       desiredWeight: values.desiredWeight,
-    //       birthday: values.birthday,
-    //       blood: parseInt(values.blood), // Преобразуйте обратно в число, если нужно
-    //       sex: values.sex,
-    //       levelActivity: parseInt(values.levelActivity), // Преобразуйте обратно в число, если нужно
-    //     },
-    //   };
-
-    //   // Выполните запрос на сервер с обновленными данными пользователя
-    //   try {
-    //     const response = await fetch('/your-api-endpoint', {
-    //       method: 'PUT', // Или другой метод, соответствующий вашему API
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify(userData),
-    //     });
-
-    //     if (response.ok) {
-    //       // Обработайте успешный ответ
-    //       setIsFormDirty(false); // Сбросьте флаг изменений после успешной отправки
-    //       // alert('Данные успешно обновлены');
-    //     } else {
-    //       // Обработайте ошибку
-    //       // alert('Ошибка при обновлении данных');
-    //     }
-    //   } catch (error) {
-    //     console.error('Ошибка при отправке данных на сервер:', error);
-    //   }
-    // },
+    onSubmit: values => {
+      const userData = {
+        height: parseInt(values.height),
+        currentWeight: parseInt(values.currentWeight),
+        desiredWeight: parseInt(values.desiredWeight),
+        birthday: values.birthday,
+        blood: parseInt(values.blood),
+        sex: values.sex,
+        levelActivity: parseInt(values.levelActivity),
+      };
+      dispatch(updateParams(userData));
+      // const userName = {
+      //   name: values.name,
+      // };
+      // dispatch(updateName(userName));
+      console.log(userData);
+    },
   });
 
   const handleFieldChange = e => {
@@ -151,80 +146,87 @@ export const UserForm = () => {
             value={formik.values.desiredWeight}
           />
         </FieldWrapper>
-        <Input
-          type="date"
-          name="birthday"
-          onChange={handleFieldChange}
-          value={formik.values.birthday}
-        />
+        <div style={{ position: 'relative' }}>
+          <Input
+            type="date"
+            name="birthday"
+            onChange={handleFieldChange}
+            value={formik.values.birthday}
+          />
+          <ButtonIcon>
+            <svg width={'18'} height={'18'}>
+              <use href={icon + '#icon-calendar'}></use>
+            </svg>
+          </ButtonIcon>
+        </div>
       </Wrapper>
       <TitleRadio>Blood</TitleRadio>
-      <WrapperRadioFlex>
-        <div role="group" aria-labelledby="radio-blood">
-          <LabelRadio>
-            <FielRadio
-              type="radio"
-              name="blood"
-              value="1"
-              checked={formik.values.blood === '1'}
-              onChange={handleFieldChange}
-            />
-            1
-          </LabelRadio>
-          <LabelRadio>
-            <FielRadio
-              type="radio"
-              name="blood"
-              value="2"
-              checked={formik.values.blood === '2'}
-              onChange={handleFieldChange}
-            />
-            2
-          </LabelRadio>
-          <LabelRadio>
-            <FielRadio
-              type="radio"
-              name="blood"
-              value="3"
-              checked={formik.values.blood === '3'}
-              onChange={handleFieldChange}
-            />
-            3
-          </LabelRadio>
-          <LabelRadio>
-            <FielRadio
-              type="radio"
-              name="blood"
-              value="4"
-              checked={formik.values.blood === '4'}
-              onChange={handleFieldChange}
-            />
-            4
-          </LabelRadio>
-        </div>
-        <div role="group" aria-labelledby="radio-sex">
-          <LabelRadio>
-            <FielRadio
-              type="radio"
-              name="sex"
-              value="male"
-              checked={formik.values.sex === 'male'}
-              onChange={handleFieldChange}
-            />
-            Male
-          </LabelRadio>
-          <LabelRadio>
-            <FielRadio
-              type="radio"
-              name="sex"
-              value="female"
-              checked={formik.values.sex === 'female'}
-              onChange={handleFieldChange}
-            />
-            Female
-          </LabelRadio>
-        </div>
-      </WrapperRadioFlex>
+      {/* <WrapperRadioFlex> */}
+      <div role="group" aria-labelledby="radio-blood">
+        <LabelRadio>
+          <FielRadio
+            type="radio"
+            name="blood"
+            value="1"
+            checked={formik.values.blood === '1'}
+            onChange={handleFieldChange}
+          />
+          1
+        </LabelRadio>
+        <LabelRadio>
+          <FielRadio
+            type="radio"
+            name="blood"
+            value="2"
+            checked={formik.values.blood === '2'}
+            onChange={handleFieldChange}
+          />
+          2
+        </LabelRadio>
+        <LabelRadio>
+          <FielRadio
+            type="radio"
+            name="blood"
+            value="3"
+            checked={formik.values.blood === '3'}
+            onChange={handleFieldChange}
+          />
+          3
+        </LabelRadio>
+        <LabelRadio>
+          <FielRadio
+            type="radio"
+            name="blood"
+            value="4"
+            checked={formik.values.blood === '4'}
+            onChange={handleFieldChange}
+          />
+          4
+        </LabelRadio>
+      </div>
+      <div role="group" aria-labelledby="radio-sex">
+        <LabelRadio>
+          <FielRadio
+            type="radio"
+            name="sex"
+            value="male"
+            checked={formik.values.sex === 'male'}
+            onChange={handleFieldChange}
+          />
+          Male
+        </LabelRadio>
+        <LabelRadio>
+          <FielRadio
+            type="radio"
+            name="sex"
+            value="female"
+            checked={formik.values.sex === 'female'}
+            onChange={handleFieldChange}
+          />
+          Female
+        </LabelRadio>
+      </div>
+      {/* </WrapperRadioFlex> */}
       <WrapperRadioLevelActivity role="group" aria-labelledby="radio-levelActivity">
         <LabelRadio>
           <FielRadio
