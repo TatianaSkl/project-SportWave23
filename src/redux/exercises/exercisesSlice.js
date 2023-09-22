@@ -55,7 +55,7 @@ const exercisesSlice = createSlice({
       .addCase(addExercise.pending, handlePending)
       .addCase(addExercise.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = [...items, action.payload];
+        // state.items = [...items, action.payload];
       })
       .addCase(addExercise.rejected, handleRejected),
 });
