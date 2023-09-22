@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Field, Form } from 'formik';
 
 export const FormTitle = styled.h2`
   margin-top: 18px;
@@ -16,7 +15,7 @@ export const FormTitle = styled.h2`
   }
 `;
 
-export const FormAuth = styled(Form)`
+export const FormAuth = styled.form`
   width: 100%;
   @media screen and (min-width: 1440px) {
     width: 760px;
@@ -28,7 +27,7 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export const FieldName = styled(Field)`
+export const FieldName = styled.input`
   width: 100%;
   height: 46px;
   padding: 14px;
@@ -48,7 +47,7 @@ export const FieldName = styled(Field)`
   }
 `;
 
-export const FieldEmail = styled(Field)`
+export const FieldEmail = styled.input`
   width: 100%;
   height: 46px;
   padding: 14px;
@@ -86,7 +85,7 @@ export const FormLabel = styled.label`
   }
 `;
 
-export const InputField = styled(Field)`
+export const InputField = styled.input`
   width: 160px;
   height: 46px;
   padding: 14px;
@@ -115,7 +114,7 @@ export const InputField = styled(Field)`
   }
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   width: 160px;
   height: 52px;
   padding: 14px;
@@ -183,7 +182,7 @@ export const TitleRadio = styled.p`
   }
 `;
 
-export const FielRadio = styled(Field)`
+export const FielRadio = styled.input`
   margin-right: 9px;
   width: 18px;
   height: 18px;
