@@ -29,11 +29,11 @@ export const FormGroup = styled.div`
   input[type='number'],
   input[type='date'],
   select {
-    color: black;
     padding: 14px 52px 14px 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     max-width: 150px;
+    background-color: transparent;
   }
 
   div {
