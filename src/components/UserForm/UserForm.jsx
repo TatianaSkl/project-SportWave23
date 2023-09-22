@@ -20,6 +20,7 @@ import {
   LabelRadio,
   TitleRadio,
   Wrapper,
+  WrapperM,
   WrapperRadioFlex,
   WrapperRadioLevelActivity,
 } from './UserForm.styled';
@@ -161,74 +162,74 @@ export const UserForm = () => {
         </div>
       </Wrapper>
       <TitleRadio>Blood</TitleRadio>
-      {/* <WrapperRadioFlex> */}
-      <div role="group" aria-labelledby="radio-blood">
-        <LabelRadio>
-          <FielRadio
-            type="radio"
-            name="blood"
-            value="1"
-            checked={formik.values.blood === '1'}
-            onChange={handleFieldChange}
-          />
-          1
-        </LabelRadio>
-        <LabelRadio>
-          <FielRadio
-            type="radio"
-            name="blood"
-            value="2"
-            checked={formik.values.blood === '2'}
-            onChange={handleFieldChange}
-          />
-          2
-        </LabelRadio>
-        <LabelRadio>
-          <FielRadio
-            type="radio"
-            name="blood"
-            value="3"
-            checked={formik.values.blood === '3'}
-            onChange={handleFieldChange}
-          />
-          3
-        </LabelRadio>
-        <LabelRadio>
-          <FielRadio
-            type="radio"
-            name="blood"
-            value="4"
-            checked={formik.values.blood === '4'}
-            onChange={handleFieldChange}
-          />
-          4
-        </LabelRadio>
-      </div>
-      <div role="group" aria-labelledby="radio-sex">
-        <LabelRadio>
-          <FielRadio
-            type="radio"
-            name="sex"
-            value="male"
-            checked={formik.values.sex === 'male'}
-            onChange={handleFieldChange}
-          />
-          Male
-        </LabelRadio>
-        <LabelRadio>
-          <FielRadio
-            type="radio"
-            name="sex"
-            value="female"
-            checked={formik.values.sex === 'female'}
-            onChange={handleFieldChange}
-          />
-          Female
-        </LabelRadio>
-      </div>
-      {/* </WrapperRadioFlex> */}
+      <WrapperRadioFlex>
+        <WrapperM role="group" aria-labelledby="radio-blood">
+          <label>
+            <FielRadio
+              type="radio"
+              name="blood"
+              value="1"
+              checked={formik.values.blood === '1'}
+              onChange={handleFieldChange}
+            />
+            <LabelRadio>1</LabelRadio>
+          </label>
+          <label>
+            <FielRadio
+              type="radio"
+              name="blood"
+              value="2"
+              checked={formik.values.blood === '2'}
+              onChange={handleFieldChange}
+            />
+            <LabelRadio>2</LabelRadio>
+          </label>
+          <label>
+            <FielRadio
+              type="radio"
+              name="blood"
+              value="3"
+              checked={formik.values.blood === '3'}
+              onChange={handleFieldChange}
+            />
+            <LabelRadio>3</LabelRadio>
+          </label>
+          <label>
+            <FielRadio
+              type="radio"
+              name="blood"
+              value="4"
+              checked={formik.values.blood === '4'}
+              onChange={handleFieldChange}
+            />
+            <LabelRadio>4</LabelRadio>
+          </label>
+        </WrapperM>
+        <WrapperM role="group" aria-labelledby="radio-sex">
+          <label>
+            <FielRadio
+              type="radio"
+              name="sex"
+              value="male"
+              checked={formik.values.sex === 'male'}
+              onChange={handleFieldChange}
+            />
+            <LabelRadio>Male</LabelRadio>
+          </label>
+          <label>
+            <FielRadio
+              type="radio"
+              name="sex"
+              value="female"
+              checked={formik.values.sex === 'female'}
+              onChange={handleFieldChange}
+            />
+            <LabelRadio>Female</LabelRadio>
+          </label>
+        </WrapperM>
+      </WrapperRadioFlex>
       <WrapperRadioLevelActivity role="group" aria-labelledby="radio-levelActivity">
-        <LabelRadio>
+        <label>
           <FielRadio
             type="radio"
             name="levelActivity"
@@ -236,9 +237,9 @@ export const UserForm = () => {
             checked={formik.values.levelActivity === '1'}
             onChange={handleFieldChange}
           />
-          Sedentary lifestyle (little or no physical activity)
-        </LabelRadio>
-        <LabelRadio>
+          <LabelRadio>Sedentary lifestyle (little or no physical activity)</LabelRadio>
+        </label>
+        <label>
           <FielRadio
             type="radio"
             name="levelActivity"
@@ -246,9 +247,9 @@ export const UserForm = () => {
             checked={formik.values.levelActivity === '2'}
             onChange={handleFieldChange}
           />
-          Light activity (light exercises/sports 1-3 days per week)
-        </LabelRadio>
-        <LabelRadio>
+          <LabelRadio>Light activity (light exercises/sports 1-3 days per week)</LabelRadio>
+        </label>
+        <label>
           <FielRadio
             type="radio"
             name="levelActivity"
@@ -256,9 +257,9 @@ export const UserForm = () => {
             checked={formik.values.levelActivity === '3'}
             onChange={handleFieldChange}
           />
-          Moderately active (moderate exercises/sports 3-5 days per week)
-        </LabelRadio>
-        <LabelRadio>
+          <LabelRadio>Moderately active (moderate exercises/sports 3-5 days per week)</LabelRadio>
+        </label>
+        <label>
           <FielRadio
             type="radio"
             name="levelActivity"
@@ -266,9 +267,9 @@ export const UserForm = () => {
             checked={formik.values.levelActivity === '4'}
             onChange={handleFieldChange}
           />
-          Very active (intense exercises/sports 6-7 days per week)
-        </LabelRadio>
-        <LabelRadio>
+          <LabelRadio>Very active (intense exercises/sports 6-7 days per week)</LabelRadio>
+        </label>
+        <label>
           <FielRadio
             type="radio"
             name="levelActivity"
@@ -276,8 +277,10 @@ export const UserForm = () => {
             checked={formik.values.levelActivity === '5'}
             onChange={handleFieldChange}
           />
-          Extremely active (very strenuous exercises/ sports and physical work)
-        </LabelRadio>
+          <LabelRadio>
+            Extremely active (very strenuous exercises/ sports and physical work)
+          </LabelRadio>
+        </label>
       </WrapperRadioLevelActivity>
       <Button label="Save" disabled={!isFormDirty} />
     </FormAuth>

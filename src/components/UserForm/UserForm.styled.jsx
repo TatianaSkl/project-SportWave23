@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import bg from 'images/bg';
+const { chek, chekM } = bg;
 
 export const FormTitle = styled.h2`
   margin-top: 18px;
@@ -72,6 +74,16 @@ export const FieldWrapper = styled.div`
   gap: 4px;
   @media screen and (min-width: 768px) {
     gap: 8px;
+  }
+`;
+
+export const WrapperM = styled.div`
+  display: flex;
+  & > label:not(:last-of-type) {
+    margin-right: 9px;
+    @media screen and (min-width: 768px) {
+      margin-right: 8px;
+    }
   }
 `;
 
@@ -183,7 +195,21 @@ export const TitleRadio = styled.p`
 `;
 
 export const FielRadio = styled.input`
-  display: none;
+  opacity: 0;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+  &:checked + label::before {
+    background-image: url(${chekM});
+    border: none;
+    @media screen and (min-width: 768px) {
+      background-image: url(${chek});
+    }
+  }
 `;
 
 export const LabelRadio = styled.label`
@@ -191,11 +217,9 @@ export const LabelRadio = styled.label`
   align-items: center;
   font-size: 14px;
   line-height: 128.571%;
-  /* &:not(:last-child) {
-    margin-right: 9px;
-  } */
+  cursor: pointer;
   &::before {
-    content: '';
+    content: ' ';
     margin-right: 9px;
     width: 18px;
     height: 18px;
