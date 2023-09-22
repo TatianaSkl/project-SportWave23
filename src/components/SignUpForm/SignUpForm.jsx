@@ -52,9 +52,6 @@ export const SignUpForm = () => {
       })
     );
     resetForm();
-    console.log(name);
-    console.log(email);
-    console.log(password);
   };
 
   return (

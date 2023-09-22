@@ -10,6 +10,16 @@ export const PressButton = styled.button`
   transition-property: transform, box-shadow, background-color;
   transition-duration: 0.25s;
   transition-timing-function: ${props => props.theme.animation.cubicBezier};
+  &:disabled {
+    color: rgba(239, 237, 232, 0.6);
+    cursor: not-allowed;
+    box-shadow: none;
+    &:hover {
+      transform: none;
+      box-shadow: none;
+      background-color: ${props => props.theme.colors.orange};
+    }
+  }
   &:hover {
     transform: scale(1.02);
     box-shadow: ${props => props.theme.shadows.regular};

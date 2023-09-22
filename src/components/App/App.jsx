@@ -17,7 +17,7 @@ const DiaryPage = lazy(() => import('pages/Diary/Diary'));
 const ExercisesPage = lazy(() => import('pages/Exercises/Exercises'));
 const ParamsPage = lazy(() => import('pages/Params/Params'));
 const ProductsPage = lazy(() => import('pages/Products/Products'));
-const UserPage = lazy(() => import('pages/User/User'));
+const ProfilePage = lazy(() => import('pages/Profile/Profile'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export const App = () => {
         <Route index element={<Welcome />} />
         <Route element={<PrivateRoute redirectTo="/login" />}>
           <Route path="params" element={<ParamsPage />} />
-          <Route path="user" element={<UserPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="diary" element={<DiaryPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="exercises" element={<ExercisesPage />} />

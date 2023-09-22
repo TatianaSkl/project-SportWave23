@@ -1,60 +1,43 @@
 import React from 'react';
 import Select from 'react-select';
-// import 'react-select/dist/react-select.css';
-import { Form, Input, InputContainer, SelectType, SelectProduct,SelectContainer, BtnClose, BtnOpen, BtnContainer } from './ProductsFilters.styled.jsx';
+import { customStyles, Form, Input, InputContainer, SelectType, SelectProduct,SelectContainer, BtnClose, BtnOpen, BtnContainer } from './ProductsFilters.styled.jsx';
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 import { theme } from 'styles/theme';
+import categorys from '../../bd/productsCategories.json';
 
-export default function ProductsFilters() {
-  const customStyles = {
-    control: (base) => ({
-      ...base,
-      backgroundColor: 'black',
-      color: 'white',
-      border: '1px solid white',
-      borderRadius: '12px',
-      padding: '5px',
-    }),
-    menu: (base) => ({
-      ...base,
-      right: 0,
-      zIndex: 9999,
-    }),
-    option: (base) => ({
-      ...base,
-      backgroundColor: 'black',
-      color: 'white',
-      border:'none',
-    }),
-    indicatorSeparator: (base) => ({
-      ...base,
-      display: 'none',
-    }),
-  };
+export default function ProductsFilters({setArrayProducts, setValue, setCategory, setType}) {
 
-  const productOptions = [
-    { value: 'category1', label: 'Category 1' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-    { value: 'category2', label: 'Category 2' },
-  ];
+  const productOptions = categorys.map(item => ({
+    value: item,
+    label: item.charAt(0).toUpperCase() + item.slice(1),
+}));
 
   const typeOptions = [
-    { value: 'type1', label: 'Type 1' },
-    { value: 'type2', label: 'Type 2' },
-    // Добавьте другие опции типов по мере необходимости
+    { value: 'all', label: 'All' },
+    { value: 'true', label: 'Recommended' },
+    { value: 'false', label: 'Not recommended' },
   ];
+
+  const handlChange = (e) => {
+    const search = e.target.value;
+    setValue(search);
+    setArrayProducts([]);
+  };
+
+  const handleCategoryChange = (selectedOption) => {
+    setArrayProducts([]);
+    setCategory(selectedOption.value)
+  };
+
+  const handleTypeChange = (selectedType) => {
+    setArrayProducts([]);
+    setType(selectedType.value)
+  };
 
   return (
     <Form>
       <InputContainer>
-        <Input type="text" placeholder='Search' />
+        <Input onChange={handlChange} type="text" placeholder='Search' />
         <BtnContainer>
           <BtnClose>
             <AiOutlineClose style={{ fontSize: '24px', color: theme.colors.orange, fontWeight: 'bold' }}/>
@@ -68,6 +51,7 @@ export default function ProductsFilters() {
       <SelectContainer>
         <SelectProduct>
           <Select
+            onChange={handleCategoryChange}
           options={productOptions}
           styles={customStyles}
           isSearchable={false}
@@ -77,14 +61,16 @@ export default function ProductsFilters() {
         
         <SelectType>
           <Select
+          onChange={handleTypeChange}
           options={typeOptions}
           styles={customStyles}
           isSearchable={false}
-          placeholder='All'
+          placeholder='Type'
         />
         </SelectType>
         
       </SelectContainer>
     </Form>
+   
   );
 }
