@@ -14,7 +14,7 @@ export default function ProductsList({ productsArray }) {
 
   const blood = '1';
 
-  return (
+  return (    
     <ProductList>
       {data && data.map((item) => (
         <ProductsItem
@@ -28,7 +28,7 @@ export default function ProductsList({ productsArray }) {
         title = { item.title}
       />
       ))}
-    </ProductList>
+      </ProductList>      
   );
 }
 
