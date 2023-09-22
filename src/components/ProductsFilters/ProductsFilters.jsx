@@ -5,7 +5,7 @@ import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 import { theme } from 'styles/theme';
 import categorys from '../../bd/productsCategories.json';
 
-export default function ProductsFilters({setValue, setCategory, setType}) {
+export default function ProductsFilters({setArrayProducts, setValue, setCategory, setType}) {
 
   const productOptions = categorys.map(item => ({
     value: item,
@@ -20,14 +20,17 @@ export default function ProductsFilters({setValue, setCategory, setType}) {
 
   const handlChange = (e) => {
     const search = e.target.value;
-    setValue(search)
+    setValue(search);
+    setArrayProducts([]);
   };
 
   const handleCategoryChange = (selectedOption) => {
+    setArrayProducts([]);
     setCategory(selectedOption.value)
   };
 
   const handleTypeChange = (selectedType) => {
+    setArrayProducts([]);
     setType(selectedType.value)
   };
 
