@@ -5,7 +5,15 @@ const initialState = {
   user: {
     name: null,
     email: null,
-    userParams: {},
+    userParams: {
+      height: null,
+      currentWeight: null,
+      desiredWeight: null,
+      birthday: null,
+      blood: null,
+      sex: null,
+      levelActivity: null,
+    },
     avatarURL: null,
   },
   token: null,
