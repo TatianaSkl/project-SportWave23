@@ -6,7 +6,7 @@ export default function Params() {
   return (
     <Section>
       <ParamsForm />
-      <StepBar />
+      {/* <StepBar /> */}
     </Section>
   );
 }
