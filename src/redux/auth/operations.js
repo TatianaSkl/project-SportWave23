@@ -43,7 +43,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+export const refreshUser = createAsyncThunk('users/refresh', async (_, thunkAPI) => {
   const state = thunkAPI.getState();
   const persistedToken = state.auth.token;
   if (!persistedToken) {
@@ -51,19 +51,19 @@ export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
   }
   try {
     setAuthHeader(persistedToken);
-    const res = await axios.get('/auth/current');
+    const res = await axios.get('/users/current');
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-export const updateAvatar = createAsyncThunk('auth/avatar', async (file, thunkAPI) => {
+export const updateAvatar = createAsyncThunk('users/avatar', async (file, thunkAPI) => {
   try {
     const formData = new FormData();
     formData.append('avatar', formData);
 
-    const res = await axios.patch('/auth/avatars', formData, {
+    const res = await axios.patch('/users/avatars', formData, {
       headers: { 'content-type': 'multipart/form-data' },
     });
 
