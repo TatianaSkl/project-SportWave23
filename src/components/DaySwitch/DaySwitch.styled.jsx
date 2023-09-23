@@ -33,6 +33,10 @@ export const DataButton = styled.button`
   font-weight: 700;
   line-height: 111.111%;
   margin-right: 8px;
+  @media (min-width: 768px) {
+    font-size: 24px;
+    line-height: 133.333%;
+  }
 `;
 
 export const ChevronButton = styled.button`

@@ -4,14 +4,25 @@ export const WrapperBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  & > :first-child {
+  & > :first-of-type {
     margin-right: 13px;
+    @media (min-width: 768px) {
+      margin-right: 16px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1439px) {
+    display: block;
+  }
+`;
+
+export const WrapperTablet = styled.div`
+  @media (min-width: 768px) and (max-width: 1439px) {
+    display: flex;
   }
 `;
 
 export const WrapperDaily = styled.div`
   width: 100%;
-  /* margin-right: 13px; */
   margin-bottom: 20px;
   height: 96px;
   padding: 14px;
@@ -19,9 +30,10 @@ export const WrapperDaily = styled.div`
   border: 1px solid rgba(239, 237, 232, 0.2);
   background-color: ${props => props.theme.colors.orange};
   @media (min-width: 768px) {
-    width: 214px;
-    height: 108px;
-    padding: 14px 18px;
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -58,9 +70,13 @@ export const WrapperTime = styled.div`
   border: 1px solid rgba(239, 237, 232, 0.2);
   background-color: ${props => props.theme.colors.orange};
   @media (min-width: 768px) {
-    width: 209px;
-    height: 108px;
-    padding: 14px 18px;
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 16px;
   }
 `;
 
@@ -72,9 +88,10 @@ export const WrapperCalories = styled.div`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   @media (min-width: 768px) {
-    width: 214px;
-    height: 108px;
-    padding: 14px 18px;
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -85,9 +102,10 @@ export const WrapperRest = styled.div`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   @media (min-width: 768px) {
-    width: 214px;
-    height: 108px;
-    padding: 14px 18px;
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -109,13 +127,14 @@ export const WrapperWarning = styled.div`
   align-items: flex-start;
   margin-top: 20px;
   margin-bottom: 40px;
-  height: 73px;
   @media (min-width: 768px) {
+    width: 593px;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1440px) {
+    width: 390px;
     margin-top: 32px;
-    margin-bottom: 32px;
-    width: 439px;
-    margin-left: auto;
-    margin-right: auto;
   }
 `;
 

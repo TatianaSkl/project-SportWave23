@@ -25,3 +25,11 @@ export const WrapperMobil = styled.div`
     display: none;
   }
 `;
+export const WrapperTablet = styled.div`
+  @media (max-width: 767px) {
+    display: none;
+  }
+  @media (min-width: 1440px) {
+    display: flex;
+  }
+`;

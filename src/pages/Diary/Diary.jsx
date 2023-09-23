@@ -1,5 +1,5 @@
 import { DayDashboard, DayExercises, DayProducts, DaySwitch, TitlePage } from 'components';
-import { SectionDiary, Wrapper, WrapperMobil } from './Diary.styled';
+import { SectionDiary, Wrapper, WrapperMobil, WrapperTablet } from './Diary.styled';
 
 export default function Diary() {
   return (
@@ -13,11 +13,13 @@ export default function Diary() {
         <DayProducts />
         <DayExercises />
       </WrapperMobil>
-      <div>
-        <DayProducts />
-        <DayExercises />
+      <WrapperTablet>
+        <div>
+          <DayProducts />
+          <DayExercises />
+        </div>
         <DayDashboard />
-      </div>
+      </WrapperTablet>
     </SectionDiary>
   );
 }
