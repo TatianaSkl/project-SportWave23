@@ -1,13 +1,14 @@
 import style from './Products.module.css';
-import axios from 'axios';
+// import axios from 'axios';
 import ProductsFilters from '../../components/ProductsFilters/ProductsFilters';
 import ProductsList from '../../components/ProductsList/ProductsList';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
-import InfiniteScroll from "react-infinite-scroll-component";
+// import { useEffect, useState } from 'react';
+// import { useSelector } from 'react-redux';
+// import { selectUser } from 'redux/auth/selectors';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Products() {
+
   const [searchValue, setSearchValue] = useState('');
   const [categoryProduct, setCategoryProduct] = useState('');
   const [typeProduct, setTypeProduct] = useState('all');
@@ -59,16 +60,22 @@ export default function Products() {
   return (
     <>
       <h1 className={style.title}>Products</h1>
-      <ProductsFilters setArrayProducts={setProducts} setValue={setSearchValue} setCategory={setCategoryProduct} setType={setTypeProduct} />
+      <ProductsFilters
+      // setArrayProducts={setProducts}
+      // setValue={setSearchValue}
+      // setCategory={setCategoryProduct}
+      // setType={setTypeProduct}
+      />
       <InfiniteScroll
-          dataLength={products.length}
-          next={fetchMoreData}
-          hasMore={hasMore}
-          loader={""}>
-      <ProductsList productsArray={products} />
+      // dataLength={products.length}
+      // next={fetchMoreData}
+      // hasMore={hasMore}
+      // loader={''}
+      >
+        <ProductsList
+        // productsArray={products}
+        />
       </InfiniteScroll>
     </>
   );
 }
-
-

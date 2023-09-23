@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Field, Form } from 'formik';
+import bg from 'images/bg';
+const { chek, chekM } = bg;
 
 export const FormTitle = styled.h2`
   margin-top: 18px;
@@ -16,7 +17,7 @@ export const FormTitle = styled.h2`
   }
 `;
 
-export const FormAuth = styled(Form)`
+export const FormAuth = styled.form`
   width: 100%;
   @media screen and (min-width: 1440px) {
     width: 760px;
@@ -28,7 +29,7 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export const FieldName = styled(Field)`
+export const FieldName = styled.input`
   width: 100%;
   height: 46px;
   padding: 14px;
@@ -48,7 +49,7 @@ export const FieldName = styled(Field)`
   }
 `;
 
-export const FieldEmail = styled(Field)`
+export const FieldEmail = styled.input`
   width: 100%;
   height: 46px;
   padding: 14px;
@@ -76,6 +77,16 @@ export const FieldWrapper = styled.div`
   }
 `;
 
+export const WrapperM = styled.div`
+  display: flex;
+  & > label:not(:last-of-type) {
+    margin-right: 9px;
+    @media screen and (min-width: 768px) {
+      margin-right: 8px;
+    }
+  }
+`;
+
 export const FormLabel = styled.label`
   color: rgba(239, 237, 232, 0.5);
   font-size: 12px;
@@ -86,7 +97,7 @@ export const FormLabel = styled.label`
   }
 `;
 
-export const InputField = styled(Field)`
+export const InputField = styled.input`
   width: 160px;
   height: 46px;
   padding: 14px;
@@ -115,7 +126,7 @@ export const InputField = styled(Field)`
   }
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   width: 160px;
   height: 52px;
   padding: 14px;
@@ -183,22 +194,42 @@ export const TitleRadio = styled.p`
   }
 `;
 
-export const FielRadio = styled(Field)`
-  margin-right: 9px;
+export const FielRadio = styled.input`
+  opacity: 0;
+  position: absolute;
   width: 18px;
   height: 18px;
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
-    margin-right: 8px;
+  }
+  &:checked + label::before {
+    background-image: url(${chekM});
+    border: none;
+    @media screen and (min-width: 768px) {
+      background-image: url(${chek});
+    }
   }
 `;
 
 export const LabelRadio = styled.label`
+  display: flex;
+  align-items: center;
   font-size: 14px;
   line-height: 128.571%;
-  &:not(:last-child) {
+  cursor: pointer;
+  &::before {
+    content: ' ';
     margin-right: 9px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #636366;
+    border-radius: 10px;
+    @media screen and (min-width: 768px) {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
   }
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -207,4 +238,12 @@ export const LabelRadio = styled.label`
       margin-right: 8px;
     }
   }
+`;
+
+export const ButtonIcon = styled.button`
+  position: absolute;
+  bottom: 25%;
+  left: 80%;
+  width: 18px;
+  height: 18px;
 `;

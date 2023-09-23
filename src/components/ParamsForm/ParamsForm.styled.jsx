@@ -14,6 +14,13 @@ export const FormSection = styled.div`
 export const FormGroupContent = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media screen and (min-width: 768px) {
+    max-width: 554px;
+    margin-top: 54px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 527px;
+  }
 `;
 
 export const FormGroup = styled.div`
@@ -26,14 +33,39 @@ export const FormGroup = styled.div`
     margin-bottom: 5px;
   } */
 
+  input[type='number']:focus,
+  input[type='date']:focus,
+  select:focus {
+    border-radius: 12px;
+    border: 1px solid #e6533c;
+  }
+
+  input[type='number']:active,
+  input[type='date']:active,
+  select:active {
+    border-radius: 12px;
+    border: 1px solid #e6533c;
+  }
+
   input[type='number'],
   input[type='date'],
   select {
-    color: black;
+    color: rgba(239, 237, 232, 0.6);
+    font-size: 14px;
+    line-height: 18px;
     padding: 14px 52px 14px 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     max-width: 150px;
+    background-color: transparent;
+    outline: none;
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    @media screen and (min-width: 1440px) {
+      padding: 14px 112px 14px 14px;
+    }
   }
 
   div {
@@ -41,44 +73,81 @@ export const FormGroup = styled.div`
   }
 `;
 
-export const FormButton = styled.button`
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-`;
-
 ////////////////////////////////
 
-// export const BloodSexContainer = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   margin-bottom: 20px; // Додайте відступ для розділення груп
-// `;
 export const BloodSexContainer = styled.div`
   display: flex;
+  margin-top: 25px;
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+  }
+`;
+
+export const BloodSex = styled.label`
+  color: #efede8;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 15px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export const BloodContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center;  */
+  margin-right: 65px;
 `;
 
 export const SexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const ActiveContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  margin-top: 20px;
+  margin-top: 28px;
+`;
+
+export const LevelActivityText = styled.label`
+  color: #efede8;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 10px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export const RadioLabel = styled.label`
   margin-bottom: 10px;
+`;
+
+////////
+
+export const BackButton = styled.button`
+  color: rgba(239, 237, 232, 0.6);
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 15px;
+`;
+
+export const NextButton = styled.button`
+  color: #efede8;
+  font-size: 16px;
+  line-height: 18px;
+  margin-top: 30px;
+  @media screen and (min-width: 768px) {
+    line-height: 24px;
+  }
+`;
+
+export const GoBackContainer = styled.div`
+  margin-top: 30px;
+  @media screen and (min-width: 768px) {
+    margin-top: 65px;
+  }
 `;

@@ -7,14 +7,19 @@ import {
   FormSection,
   FormGroupContent,
   FormGroup,
-  FormButton,
+  NextButton,
+  BackButton,
+  GoBackContainer,
   BloodSexContainer,
   BloodContainer,
   RadioLabel,
   SexContainer,
   ActiveContainer,
+  LevelActivityText,
+  BloodSex,
 } from './ParamsForm.styled';
 import { TextGrey, TitlePage } from 'components';
+import { PressButton } from 'components/Button/Button.styled';
 
 const ParamsForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -136,7 +141,7 @@ const ParamsForm = () => {
           <TitlePage text="Get closer to your goals!" />
           <BloodSexContainer>
             <BloodContainer>
-              <label>Blood:</label>
+              <BloodSex>Blood:</BloodSex>
               <div></div>
               <RadioLabel>
                 <label>
@@ -189,9 +194,9 @@ const ParamsForm = () => {
             </BloodContainer>
 
             <SexContainer>
-              <label>Sex</label>
+              <BloodSex>Sex:</BloodSex>
               <RadioLabel>
-                <label>
+                <BloodSex>
                   <input
                     type="radio"
                     name="sex"
@@ -200,10 +205,10 @@ const ParamsForm = () => {
                     onChange={formik.handleChange}
                   />
                   Male
-                </label>
+                </BloodSex>
               </RadioLabel>
               <RadioLabel>
-                <label>
+                <BloodSex>
                   <input
                     type="radio"
                     name="sex"
@@ -212,16 +217,16 @@ const ParamsForm = () => {
                     onChange={formik.handleChange}
                   />
                   Female
-                </label>
+                </BloodSex>
               </RadioLabel>
             </SexContainer>
           </BloodSexContainer>
 
           <ActiveContainer>
-            <label>Level Activity:</label>
+            <BloodSex>Level Activity:</BloodSex>
 
             <RadioLabel>
-              <label>
+              <LevelActivityText>
                 <input
                   type="radio"
                   name="levelActivity"
@@ -230,10 +235,10 @@ const ParamsForm = () => {
                   onChange={formik.handleChange}
                 />
                 Sedentary lifestyle (little or no physical activity)
-              </label>
+              </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
-              <label>
+              <LevelActivityText>
                 <input
                   type="radio"
                   name="levelActivity"
@@ -242,10 +247,10 @@ const ParamsForm = () => {
                   onChange={formik.handleChange}
                 />
                 Light activity (light exercises/sports 1-3 days per week)
-              </label>
+              </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
-              <label>
+              <LevelActivityText>
                 <input
                   type="radio"
                   name="levelActivity"
@@ -254,10 +259,10 @@ const ParamsForm = () => {
                   onChange={formik.handleChange}
                 />
                 Moderately active (moderate exercises/sports 3-5 days per week)
-              </label>
+              </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
-              <label>
+              <LevelActivityText>
                 <input
                   type="radio"
                   name="levelActivity"
@@ -266,10 +271,10 @@ const ParamsForm = () => {
                   onChange={formik.handleChange}
                 />
                 Very active (intense exercises/sports 6-7 days per week)
-              </label>
+              </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
-              <label>
+              <LevelActivityText>
                 <input
                   type="radio"
                   name="levelActivity"
@@ -279,19 +284,10 @@ const ParamsForm = () => {
                 />
                 Extremely active (very strenuous exercises/sports and physical
                 work)
-              </label>
+              </LevelActivityText>
             </RadioLabel>
           </ActiveContainer>
         </div>
-      )}
-
-      {currentStep < 2 && (
-        <FormButton
-          type="button"
-          onClick={() => setCurrentStep(currentStep + 1)}
-        >
-          Next
-        </FormButton>
       )}
 
       {currentStep === 2 && (
@@ -299,14 +295,30 @@ const ParamsForm = () => {
           <TitlePage text="Dear user" />
           <TextGrey text="Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach." />
 
-          <button type="submit">Go</button>
+          <GoBackContainer>
+            <PressButton type="submit" style={{ marginRight: '15px' }}>
+              Go
+            </PressButton>
+            <BackButton type="button" onClick={handlePrevClick}>
+              Back
+            </BackButton>
+          </GoBackContainer>
         </div>
       )}
 
-      {currentStep > 0 && (
-        <FormButton type="button" onClick={handlePrevClick}>
+      {currentStep === 1 && (
+        <BackButton type="button" onClick={handlePrevClick}>
           Back
-        </FormButton>
+        </BackButton>
+      )}
+
+      {currentStep < 2 && (
+        <NextButton
+          type="button"
+          onClick={() => setCurrentStep(currentStep + 1)}
+        >
+          Next
+        </NextButton>
       )}
     </FormContainer>
   );
