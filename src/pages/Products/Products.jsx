@@ -17,6 +17,7 @@ export default function Products() {
 
   const user = useSelector(selectUser);
   const TOKEN = user.token;
+  console.log(TOKEN)
 
   axios.defaults.baseURL = 'https://power-pulse-project-backend.onrender.com';
 

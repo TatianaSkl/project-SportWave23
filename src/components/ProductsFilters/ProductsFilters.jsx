@@ -4,8 +4,10 @@ import { customStyles, Form, Input, InputContainer, SelectType, SelectProduct,Se
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
 import { theme } from 'styles/theme';
 import categorys from '../../bd/productsCategories.json';
+import { useState } from 'react';
 
 export default function ProductsFilters({setArrayProducts, setValue, setCategory, setType}) {
+  const [search, setSearch] = useState('');
 
   const productOptions = categorys.map(item => ({
     value: item,
@@ -19,8 +21,9 @@ export default function ProductsFilters({setArrayProducts, setValue, setCategory
   ];
 
   const handlChange = (e) => {
-    const search = e.target.value;
-    setValue(search);
+    const evt = e.target.value;
+    setValue(evt);
+    setSearch(evt);
     setArrayProducts([]);
   };
 
@@ -41,9 +44,9 @@ export default function ProductsFilters({setArrayProducts, setValue, setCategory
       <InputContainer>
         <Input onChange={handlChange} type="text" placeholder='Search' />
         <BtnContainer>
-          <BtnClose>
+          {search !== '' && <BtnClose>
             <AiOutlineClose style={{ fontSize: '24px', color: theme.colors.orange, fontWeight: 'bold' }}/>
-          </BtnClose>
+          </BtnClose>}
           <BtnOpen>
             <AiOutlineSearch style={{ fontSize: '24px', color: theme.colors.white }} />
           </BtnOpen>
