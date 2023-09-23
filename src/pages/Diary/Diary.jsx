@@ -1,16 +1,25 @@
 import { DayDashboard, DayExercises, DayProducts, DaySwitch, TitlePage } from 'components';
-import { SectionDiary } from './Diary.styled';
+import { SectionDiary, Wrapper, WrapperMobil, WrapperTablet } from './Diary.styled';
 
 export default function Diary() {
   return (
     <SectionDiary>
-      <div style={{ display: 'flex' }}>
+      <Wrapper>
         <TitlePage text="Diary" />
         <DaySwitch />
-      </div>
-      <DayProducts />
-      <DayExercises />
-      <DayDashboard />
+      </Wrapper>
+      <WrapperMobil>
+        <DayDashboard />
+        <DayProducts />
+        <DayExercises />
+      </WrapperMobil>
+      <WrapperTablet>
+        <div>
+          <DayProducts />
+          <DayExercises />
+        </div>
+        <DayDashboard />
+      </WrapperTablet>
     </SectionDiary>
   );
 }

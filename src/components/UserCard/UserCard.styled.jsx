@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// import { AiFillExclamationCircle } from 'react-icons/ai';
 
 export const WrapperUserCard = styled.div`
   @media (min-width: 1440px) {

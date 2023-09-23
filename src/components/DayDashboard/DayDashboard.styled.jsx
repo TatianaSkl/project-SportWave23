@@ -4,19 +4,36 @@ export const WrapperBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  & > :first-of-type {
+    margin-right: 13px;
+    @media (min-width: 768px) {
+      margin-right: 16px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1439px) {
+    display: block;
+  }
 `;
 
-export const WrapperCalor = styled.div`
-  margin-right: 14px;
+export const WrapperTablet = styled.div`
+  @media (min-width: 768px) and (max-width: 1439px) {
+    display: flex;
+  }
+`;
+
+export const WrapperDaily = styled.div`
+  width: 100%;
+  margin-bottom: 20px;
   height: 96px;
   padding: 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background-color: ${props => props.theme.colors.orange};
   @media (min-width: 768px) {
-    width: 214px;
-    height: 108px;
-    padding: 14px 18px;
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -32,16 +49,63 @@ export const TextBox = styled.p`
   }
 `;
 
+export const TextBoxGrey = styled.p`
+  margin-left: 8px;
+  color: rgba(239, 237, 232, 0.4);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 12px;
+  line-height: 133.333%;
+  @media (min-width: 768px) {
+    margin-left: 8px;
+    line-height: 150%;
+  }
+`;
+
 export const WrapperTime = styled.div`
+  width: 100%;
   height: 96px;
   padding: 14px;
+  margin-bottom: 20px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background-color: ${props => props.theme.colors.orange};
   @media (min-width: 768px) {
-    width: 209px;
-    height: 108px;
-    padding: 14px 18px;
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1440px) {
+    margin-bottom: 16px;
+  }
+`;
+
+export const WrapperCalories = styled.div`
+  width: 100%;
+  margin-bottom: 20px;
+  height: 96px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  @media (min-width: 768px) {
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+`;
+
+export const WrapperRest = styled.div`
+  width: 100%;
+  height: 108px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  @media (min-width: 768px) {
+    width: 187px;
+    height: 116px;
+    padding: 18px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -57,27 +121,29 @@ export const Number = styled.p`
   }
 `;
 
-// export const IconWarning = styled(AiFillExclamationCircle)`
-//   margin-right: 8px;
-//   width: 24px;
-//   height: 24px;
-//   color: ${props => props.theme.colors.beige};
-// `;
-
 export const WrapperWarning = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 40px;
-  height: 73px;
   @media (min-width: 768px) {
-    margin-top: 32px;
-    margin-bottom: 32px;
-    width: 439px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 593px;
+    margin-top: 16px;
+    margin-bottom: 0;
   }
+  @media (min-width: 1440px) {
+    width: 390px;
+    margin-top: 32px;
+  }
+`;
+
+export const IconWarning = styled.svg`
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  background-color: ${props => props.theme.colors.beige};
+  border-radius: 50%;
 `;
 
 export const TextWarning = styled.p`
