@@ -25,13 +25,15 @@ export default function ProductsFilters({setArrayProducts, setValue, setCategory
   };
 
   const handleCategoryChange = (selectedOption) => {
-    setArrayProducts([]);
+    
     setCategory(selectedOption.value)
+    setArrayProducts([]);
   };
 
   const handleTypeChange = (selectedType) => {
-    setArrayProducts([]);
+    
     setType(selectedType.value)
+    setArrayProducts([]);
   };
 
   return (
