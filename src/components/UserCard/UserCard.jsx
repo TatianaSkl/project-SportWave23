@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+import { useDropzone } from 'react-dropzone';
+import React, { useState, useEffect } from 'react';
 import {
   ButtonPlus,
   IconWarning,
@@ -16,24 +18,58 @@ import {
   WrapperFoto,
   WrapperTime,
   WrapperUserCard,
-  WrapperWarning,
+  WrapperWarning
 } from './UserCard.styled';
 import icon from 'images/sprite.svg';
 import { LogOutBtn } from 'components';
 
 export const UserCard = () => {
   const user = useSelector(selectUser);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [avatar, setAvatar] = useState(user.avatarURL.toString());
 
-  const handleSubmit = () => {
-    console.log(user);
-    console.log(user.userParams);
+  useEffect(() => {
+    const savedImage = localStorage.getItem('userAvatar');
+    if (savedImage) {
+      setSelectedImage(savedImage);
+    }
+  }, []);
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    const imageUrl = URL.createObjectURL(file);
+    setSelectedImage(imageUrl);
+    localStorage.setItem('userAvatar', imageUrl);
   };
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: 'image/*', maxFiles: 1 });
+
+  const handleChange = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const imageUrl = URL.createObjectURL(file);
+        setSelectedImage(imageUrl);
+        localStorage.setItem('userAvatar', imageUrl);
+      }
+    };
+    input.click();
+  };
+
   return (
     <WrapperUserCard>
-      <WrapperFoto>
-        <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
+      <WrapperFoto {...getRootProps()}>
+        <input {...getInputProps()} />
+        {selectedImage && typeof selectedImage === 'string' ? (
+          <ImageUser src={selectedImage} alt="user" loading="lazy" />
+        ) : (
+          <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
+        )}
       </WrapperFoto>
-      <ButtonPlus onClick={handleSubmit}>
+      <ButtonPlus onClick={handleChange}>
         <SvgPlus>
           <use href={icon + '#check'}></use>
         </SvgPlus>
