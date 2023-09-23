@@ -31,11 +31,7 @@ export const UserCard = () => {
   return (
     <WrapperUserCard>
       <WrapperFoto>
-        <ImageUser
-          src={`https://res.cloudinary.com/dn4iogcf4/image/upload/v1694469572/categories/lower_arms_hvwarx.jpg`}
-          alt="user"
-          loading="lazy"
-        />
+        <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
       </WrapperFoto>
       <ButtonPlus onClick={handleSubmit}>
         <SvgPlus>
@@ -66,7 +62,9 @@ export const UserCard = () => {
       </WrapperBox>
       <WrapperWarning>
         <div>
-          <IconWarning />
+          <IconWarning width="24" height="24">
+            <use href={icon + '#icon-exclamation'}></use>
+          </IconWarning>
         </div>
         <TextWarning>
           We understand that each individual is unique, so the entire approach to diet is relative

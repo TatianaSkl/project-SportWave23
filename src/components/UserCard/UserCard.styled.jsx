@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { AiFillExclamationCircle } from 'react-icons/ai';
+// import { AiFillExclamationCircle } from 'react-icons/ai';
 
 export const WrapperUserCard = styled.div`
   @media (min-width: 1440px) {
@@ -151,11 +151,12 @@ export const Number = styled.p`
   }
 `;
 
-export const IconWarning = styled(AiFillExclamationCircle)`
+export const IconWarning = styled.svg`
   margin-right: 8px;
   width: 24px;
   height: 24px;
-  color: ${props => props.theme.colors.beige};
+  background-color: ${props => props.theme.colors.beige};
+  border-radius: 50%;
 `;
 
 export const WrapperWarning = styled.div`
