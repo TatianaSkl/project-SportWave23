@@ -98,7 +98,7 @@ export const UserCard = () => {
             </svg>
             <TextBox>Daily calorie intake</TextBox>
           </div>
-          <Number>2200</Number>
+          <Number>{user.bmr}</Number>
         </WrapperCalor>
         <WrapperTime>
           <div style={{ display: 'flex', alignItems: 'center' }}>

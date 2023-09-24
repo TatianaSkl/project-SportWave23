@@ -14,6 +14,7 @@ const initialState = {
       sex: null,
       levelActivity: null,
     },
+    bmr: 0,
     avatarURL: null,
   },
   token: null,
@@ -55,7 +56,7 @@ const authSlice = createSlice({
       state.user = action.payload.user;
     },
     [updateName.fulfilled](state, action) {
-      state.user = action.payload.user.name;
+      state.user.name = action.payload.user.name;
     },
     [updateAvatarUrl.fulfilled](state, action) {
       state.user.avatarURL = action.payload.avatarURL;
