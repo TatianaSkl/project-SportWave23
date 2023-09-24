@@ -102,3 +102,13 @@ export const updateName = createAsyncThunk('users/username', async (userName, th
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const updateAvatarUrl = createAsyncThunk(
+  'auth/updateAvatarUrl',
+  async (avatarUrl) => {
+    
+    localStorage.setItem('userAvatarUrl', avatarUrl);
+    
+    return { avatarURL: avatarUrl };
+  }
+);
