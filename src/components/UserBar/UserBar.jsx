@@ -5,6 +5,8 @@ import { IconSettings, ImageUser, WrapperFoto, WrapperUserBar } from './UserBar.
 
 export const UserBar = () => {
   const user = useSelector(selectUser);
+  const savedAvatarUrl = localStorage.getItem(`userAvatar_${user.name}`);
+  const avatarUrl = savedAvatarUrl || user.avatarURL;
 
   return (
     <WrapperUserBar>
@@ -12,8 +14,9 @@ export const UserBar = () => {
         <IconSettings />
       </Link>
       <WrapperFoto>
-        <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
+        <ImageUser src={avatarUrl} alt="user" loading="lazy" />
       </WrapperFoto>
     </WrapperUserBar>
   );
 };
+
