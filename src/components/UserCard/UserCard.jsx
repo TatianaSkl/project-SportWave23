@@ -29,11 +29,11 @@ export const UserCard = () => {
   
 
   useEffect(() => {
-    const savedImageUrl = localStorage.getItem('userAvatar');
+    const savedImageUrl = localStorage.getItem(`userAvatar_${user.name}`);
     if (savedImageUrl) {
       setSelectedImageUrl(savedImageUrl);
     }
-  }, []);
+  }, [user.name]);
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -42,7 +42,7 @@ export const UserCard = () => {
     reader.onload = () => {
       const imageUrl = reader.result;
       setSelectedImageUrl(imageUrl);
-      localStorage.setItem('userAvatar', imageUrl);
+      localStorage.setItem(`userAvatar_${user.name}`, imageUrl);
     };
   
     reader.readAsDataURL(file);
@@ -61,7 +61,7 @@ export const UserCard = () => {
         reader.onload = () => {
           const imageUrl = reader.result;
           setSelectedImageUrl(imageUrl);
-          localStorage.setItem('userAvatar', imageUrl);
+          localStorage.setItem(`userAvatar_${user.name}`, imageUrl);
         };
         reader.readAsDataURL(file);
       }
