@@ -40,6 +40,7 @@ export const WrapperFoto = styled.div`
 export const ImageUser = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 export const SvgPlus = styled.svg`
@@ -183,3 +184,4 @@ export const TextWarning = styled.p`
     line-height: 150%;
   }
 `;
+
