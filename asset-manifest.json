@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/project-SportWave23/static/css/main.7ebb6ceb.css",
-    "main.js": "/project-SportWave23/static/js/main.4b274c2c.js",
+    "main.js": "/project-SportWave23/static/js/main.d4f506c3.js",
     "static/js/975.584ffd8c.chunk.js": "/project-SportWave23/static/js/975.584ffd8c.chunk.js",
     "static/js/131.cdba9a69.chunk.js": "/project-SportWave23/static/js/131.cdba9a69.chunk.js",
-    "static/js/608.8fce6668.chunk.js": "/project-SportWave23/static/js/608.8fce6668.chunk.js",
+    "static/js/608.df358417.chunk.js": "/project-SportWave23/static/js/608.df358417.chunk.js",
     "static/js/328.0660363f.chunk.js": "/project-SportWave23/static/js/328.0660363f.chunk.js",
     "static/js/291.c5f14ac6.chunk.js": "/project-SportWave23/static/js/291.c5f14ac6.chunk.js",
     "static/css/921.48b630d1.chunk.css": "/project-SportWave23/static/css/921.48b630d1.chunk.css",
@@ -30,10 +30,10 @@
     "static/media/sprite.svg": "/project-SportWave23/static/media/sprite.1d77e599b5b3dd3cc80a5bd2b4c01eec.svg",
     "index.html": "/project-SportWave23/index.html",
     "main.7ebb6ceb.css.map": "/project-SportWave23/static/css/main.7ebb6ceb.css.map",
-    "main.4b274c2c.js.map": "/project-SportWave23/static/js/main.4b274c2c.js.map",
+    "main.d4f506c3.js.map": "/project-SportWave23/static/js/main.d4f506c3.js.map",
     "975.584ffd8c.chunk.js.map": "/project-SportWave23/static/js/975.584ffd8c.chunk.js.map",
     "131.cdba9a69.chunk.js.map": "/project-SportWave23/static/js/131.cdba9a69.chunk.js.map",
-    "608.8fce6668.chunk.js.map": "/project-SportWave23/static/js/608.8fce6668.chunk.js.map",
+    "608.df358417.chunk.js.map": "/project-SportWave23/static/js/608.df358417.chunk.js.map",
     "328.0660363f.chunk.js.map": "/project-SportWave23/static/js/328.0660363f.chunk.js.map",
     "291.c5f14ac6.chunk.js.map": "/project-SportWave23/static/js/291.c5f14ac6.chunk.js.map",
     "921.48b630d1.chunk.css.map": "/project-SportWave23/static/css/921.48b630d1.chunk.css.map",
@@ -42,6 +42,6 @@
   },
   "entrypoints": [
     "static/css/main.7ebb6ceb.css",
-    "static/js/main.4b274c2c.js"
+    "static/js/main.d4f506c3.js"
   ]
 }
