@@ -25,21 +25,27 @@ import { LogOutBtn } from 'components';
 
 export const UserCard = () => {
   const user = useSelector(selectUser);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [avatar, setAvatar] = useState(user.avatarURL.toString());
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+  
 
   useEffect(() => {
-    const savedImage = localStorage.getItem('userAvatar');
-    if (savedImage) {
-      setSelectedImage(savedImage);
+    const savedImageUrl = localStorage.getItem('userAvatar');
+    if (savedImageUrl) {
+      setSelectedImageUrl(savedImageUrl);
     }
   }, []);
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
-    const imageUrl = URL.createObjectURL(file);
-    setSelectedImage(imageUrl);
-    localStorage.setItem('userAvatar', imageUrl);
+    const reader = new FileReader();
+  
+    reader.onload = () => {
+      const imageUrl = reader.result;
+      setSelectedImageUrl(imageUrl);
+      localStorage.setItem('userAvatar', imageUrl);
+    };
+  
+    reader.readAsDataURL(file);
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: 'image/*', maxFiles: 1 });
@@ -51,9 +57,13 @@ export const UserCard = () => {
     input.onchange = (e) => {
       const file = e.target.files[0];
       if (file) {
-        const imageUrl = URL.createObjectURL(file);
-        setSelectedImage(imageUrl);
-        localStorage.setItem('userAvatar', imageUrl);
+        const reader = new FileReader();
+        reader.onload = () => {
+          const imageUrl = reader.result;
+          setSelectedImageUrl(imageUrl);
+          localStorage.setItem('userAvatar', imageUrl);
+        };
+        reader.readAsDataURL(file);
       }
     };
     input.click();
@@ -63,8 +73,8 @@ export const UserCard = () => {
     <WrapperUserCard>
       <WrapperFoto {...getRootProps()}>
         <input {...getInputProps()} />
-        {selectedImage && typeof selectedImage === 'string' ? (
-          <ImageUser src={selectedImage} alt="user" loading="lazy" />
+        {selectedImageUrl ? (
+          <ImageUser src={selectedImageUrl} alt="user" loading="lazy" />
         ) : (
           <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
         )}
