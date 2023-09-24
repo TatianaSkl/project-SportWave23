@@ -94,7 +94,7 @@ export const UserForm = () => {
       //   name: values.name,
       // };
       // dispatch(updateName(userName));
-      console.log(userData);
+      setIsFormDirty(false);
     },
   });
 
