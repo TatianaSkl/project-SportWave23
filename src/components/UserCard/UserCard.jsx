@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+import { useDropzone } from 'react-dropzone';
+import React, { useState, useEffect } from 'react';
 import {
   ButtonPlus,
   IconWarning,
@@ -16,24 +18,68 @@ import {
   WrapperFoto,
   WrapperTime,
   WrapperUserCard,
-  WrapperWarning,
+  WrapperWarning
 } from './UserCard.styled';
 import icon from 'images/sprite.svg';
 import { LogOutBtn } from 'components';
 
 export const UserCard = () => {
   const user = useSelector(selectUser);
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+  
 
-  const handleSubmit = () => {
-    console.log(user);
-    console.log(user.userParams);
+  useEffect(() => {
+    const savedImageUrl = localStorage.getItem('userAvatar');
+    if (savedImageUrl) {
+      setSelectedImageUrl(savedImageUrl);
+    }
+  }, []);
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    const reader = new FileReader();
+  
+    reader.onload = () => {
+      const imageUrl = reader.result;
+      setSelectedImageUrl(imageUrl);
+      localStorage.setItem('userAvatar', imageUrl);
+    };
+  
+    reader.readAsDataURL(file);
   };
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: 'image/*', maxFiles: 1 });
+
+  const handleChange = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const imageUrl = reader.result;
+          setSelectedImageUrl(imageUrl);
+          localStorage.setItem('userAvatar', imageUrl);
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    input.click();
+  };
+
   return (
     <WrapperUserCard>
-      <WrapperFoto>
-        <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
+      <WrapperFoto {...getRootProps()}>
+        <input {...getInputProps()} />
+        {selectedImageUrl ? (
+          <ImageUser src={selectedImageUrl} alt="user" loading="lazy" />
+        ) : (
+          <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
+        )}
       </WrapperFoto>
-      <ButtonPlus onClick={handleSubmit}>
+      <ButtonPlus onClick={handleChange}>
         <SvgPlus>
           <use href={icon + '#check'}></use>
         </SvgPlus>
