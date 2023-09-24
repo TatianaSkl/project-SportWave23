@@ -42,5 +42,8 @@
 <symbol id="icon-exclamation" viewBox="0 0 32 32">
 <path  stroke="#efede8" style="stroke: var(--color1, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M16 25.333v0.013M16 20v-13.333"></path>
 </symbol>
+<symbol id="icon-Polygon-1" viewBox="0 0 24 32">
+<path fill="#efede8" style="fill: var(--color1, #efede8)" d="M24 16l-24 13.857v-27.713l24 13.856z"></path>
+</symbol>
 </defs>
 </svg>
