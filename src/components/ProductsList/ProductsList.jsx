@@ -2,7 +2,7 @@ import { ProductList } from './ProductsList.styled';
 import ProductsItem from '../ProductsItem/ProductsItem';
 import { useEffect, useState } from 'react';
 
-export default function ProductsList({ productsArray }) {
+export default function ProductsList({ productsArray, groupBlood }) {
 
   const [data, setData] = useState([]);
 
@@ -12,8 +12,6 @@ export default function ProductsList({ productsArray }) {
     }
   }, [productsArray]);
 
-  const blood = '1';
-
   return (    
     <ProductList>
       {data && data.map((item) => (
@@ -21,7 +19,7 @@ export default function ProductsList({ productsArray }) {
         key={item._id}
         id={item._id}
         groupBloodNotAllowed={item.groupBloodNotAllowed}
-        blood={blood}
+        blood={groupBlood}
         calories={item.calories}
         category={item.category}
         weight={item.weight}
