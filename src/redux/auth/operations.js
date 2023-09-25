@@ -72,3 +72,43 @@ export const updateAvatar = createAsyncThunk('users/avatar', async (file, thunkA
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const updateParams = createAsyncThunk('users/params', async (userData, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const persistedToken = state.auth.token;
+  if (!persistedToken) {
+    return thunkAPI.rejectWithValue('Unable to fetch user');
+  }
+  try {
+    setAuthHeader(persistedToken);
+    const res = await axios.put('/users/params', userData);
+    return res.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const updateName = createAsyncThunk('users/username', async (userName, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const persistedToken = state.auth.token;
+  if (!persistedToken) {
+    return thunkAPI.rejectWithValue('Unable to fetch user');
+  }
+  try {
+    setAuthHeader(persistedToken);
+    const res = await axios.patch('/users/username', userName);
+    return res.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const updateAvatarUrl = createAsyncThunk(
+  'auth/updateAvatarUrl',
+  async (avatarUrl) => {
+    
+    localStorage.setItem('userAvatarUrl', avatarUrl);
+    
+    return { avatarURL: avatarUrl };
+  }
+);

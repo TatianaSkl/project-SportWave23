@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './operations';
+import { register, logIn, logOut, refreshUser, updateParams, updateName, updateAvatarUrl } from './operations';
 
 const initialState = {
   user: {
@@ -14,6 +14,7 @@ const initialState = {
       sex: null,
       levelActivity: null,
     },
+    bmr: 0,
     avatarURL: null,
   },
   token: null,
@@ -50,6 +51,15 @@ const authSlice = createSlice({
     },
     [refreshUser.rejected](state) {
       state.isRefreshing = false;
+    },
+    [updateParams.fulfilled](state, action) {
+      state.user = action.payload.user;
+    },
+    [updateName.fulfilled](state, action) {
+      state.user.name = action.payload.user.name;
+    },
+    [updateAvatarUrl.fulfilled](state, action) {
+      state.user.avatarURL = action.payload.avatarURL;
     },
   },
 });

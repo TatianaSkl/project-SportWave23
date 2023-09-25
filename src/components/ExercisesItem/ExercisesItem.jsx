@@ -10,14 +10,19 @@ import {
 } from './ExercisesItem.styled';
 import { useDispatch } from 'react-redux';
 
-const ExercisesListItem = ({ name, burnedCalories, bodyPart, target, index }) => {
+const ExercisesItem = ({ name, burnedCalories, bodyPart, target, index }) => {
   const dispatch = useDispatch();
 
   return (
     <ExerciseItem>
       <MainTitle>WORKOUT</MainTitle>
       <TitleBlock>
-        <svg width={24} height={24} style={{ marginRight: 16 }} viewBox="0 0 24 24">
+        <svg
+          width={24}
+          height={24}
+          style={{ marginRight: 16 }}
+          viewBox="0 0 24 24"
+        >
           <use href="" />
         </svg>
         <Title>{name}</Title>
@@ -45,4 +50,4 @@ const ExercisesListItem = ({ name, burnedCalories, bodyPart, target, index }) =>
   );
 };
 
-export default ExercisesListItem;
+export default ExercisesItem;
