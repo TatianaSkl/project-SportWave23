@@ -13,7 +13,7 @@ export const EquipmentList = () => {
 
   useEffect(() => {
     dispatch(fetchEquipment());
-  }, []);
+  }, [dispatch]);
 
   const equipment = useSelector(selectEquipment);
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +40,7 @@ export const EquipmentList = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  });
 
   const handlePageChange = newPage => {
     setCurrentPage(newPage);

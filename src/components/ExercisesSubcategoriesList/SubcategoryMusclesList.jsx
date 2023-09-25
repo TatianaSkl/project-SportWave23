@@ -13,7 +13,7 @@ export const MusclesList = () => {
 
   useEffect(() => {
     dispatch(fetchMuscles());
-  }, []);
+  }, [dispatch]);
 
   const muscles = useSelector(selectMuscles);
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +40,7 @@ export const MusclesList = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  });
 
   const handlePageChange = newPage => {
     setCurrentPage(newPage);

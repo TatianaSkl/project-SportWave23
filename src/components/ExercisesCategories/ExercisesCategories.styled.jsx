@@ -1,28 +1,45 @@
 import styled from '@emotion/styled';
 
-const Category = styled.button`
+const ExercisesNav = styled.ul`
+  display: flex;
+  gap: 28px;
+  margin-bottom: 48px;
+`;
+
+const ExercisesFilter = styled.li`
   color: rgba(239, 237, 232, 0.4);
-  position: relative;
-  cursor: pointer;
-  font-family: 'Roboto';
-  padding-bottom: 3px;
-  background-color: transparent;
-  border: none;
   font-size: 14px;
-  lineheight: 'calc(18px / 14px)';
-  &:active {
+  font-weight: 400;
+  line-height: 1.28;
+  position: relative;
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--orange-color);
+  }
+
+  &.active {
     color: #efede8;
-    &::after {
-      content: '';
-      width: 100%;
-      height: 4px;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      border-radius: 2px;
-      background-color: #ef8964;
-    }
   }
 `;
 
-export default Category;
+const FilterBtn = styled.button`
+  color: rgba(239, 237, 232, 0.4);
+  font-size: 14px;
+  font-weight: 400;
+
+  background-color: var(--black-color);
+
+  &.active {
+    color: #efede8;
+  }
+`;
+
+export { ExercisesNav, ExercisesFilter, FilterBtn };

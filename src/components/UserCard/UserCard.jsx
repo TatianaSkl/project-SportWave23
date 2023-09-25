@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useDropzone } from 'react-dropzone';
+import { useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import {
   ButtonPlus,
@@ -22,18 +23,20 @@ import {
 } from './UserCard.styled';
 import icon from 'images/sprite.svg';
 import { LogOutBtn } from 'components';
+import { updateAvatarUrl } from 'redux/auth/operations';
 
 export const UserCard = () => {
   const user = useSelector(selectUser);
   const [selectedImageUrl, setSelectedImageUrl] = useState(null);
   
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const savedImageUrl = localStorage.getItem('userAvatar');
+    const savedImageUrl = localStorage.getItem(`userAvatar_${user.name}`);
     if (savedImageUrl) {
       setSelectedImageUrl(savedImageUrl);
     }
-  }, []);
+  }, [user.name]);
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -42,7 +45,7 @@ export const UserCard = () => {
     reader.onload = () => {
       const imageUrl = reader.result;
       setSelectedImageUrl(imageUrl);
-      localStorage.setItem('userAvatar', imageUrl);
+      localStorage.setItem(`userAvatar_${user.name}`, imageUrl);
     };
   
     reader.readAsDataURL(file);
@@ -61,7 +64,8 @@ export const UserCard = () => {
         reader.onload = () => {
           const imageUrl = reader.result;
           setSelectedImageUrl(imageUrl);
-          localStorage.setItem('userAvatar', imageUrl);
+          localStorage.setItem(`userAvatar_${user.name}`, imageUrl);
+          dispatch(updateAvatarUrl(imageUrl));
         };
         reader.readAsDataURL(file);
       }

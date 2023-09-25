@@ -13,7 +13,7 @@ export const BodyPartList = () => {
 
   useEffect(() => {
     dispatch(fetchBodyParts());
-  }, []);
+  }, [dispatch]);
 
   const bodyParts = useSelector(selectBodyParts);
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +40,7 @@ export const BodyPartList = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  });
 
   const handlePageChange = newPage => {
     setCurrentPage(newPage);
