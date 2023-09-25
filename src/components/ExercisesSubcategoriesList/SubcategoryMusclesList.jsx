@@ -40,7 +40,7 @@ export const MusclesList = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  });
 
   const handlePageChange = newPage => {
     setCurrentPage(newPage);
