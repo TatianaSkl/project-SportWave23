@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 const SubCategoryItem = styled.li`
   position: relative;
+  cursor: pointer;
 `;
 
 const Image = styled.img`
