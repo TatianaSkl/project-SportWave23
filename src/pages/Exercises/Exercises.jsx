@@ -1,56 +1,33 @@
+import { useState } from 'react';
 import {
+  ExercisesWrapper,
+  ExercisesContainer,
   ExercisesTitle,
-  ExercisesItem,
-  Wrap,
-  ExercisesNavList,
-  ImageList,
-  Image,
-  ImageItem,
 } from './Exercises.styled';
+import { BodyPartList } from 'components/ExercisesSubcategoriesList/SubcategoryBodyPartList';
+import { MusclesList } from 'components/ExercisesSubcategoriesList/SubcategoryMusclesList';
+import { EquipmentList } from 'components/ExercisesSubcategoriesList/SubcategoryEquipmentList';
+import { ExercisesNavigation } from 'components';
 
 export default function Exercises() {
+  const [activeFilter, setActiveFilter] = useState('Body parts');
+
+  const handleFilterClick = filter => {
+    setActiveFilter(filter);
+  };
+
   return (
-    <>
-      <Wrap>
+    <ExercisesWrapper>
+      <ExercisesContainer>
         <ExercisesTitle>Exercises</ExercisesTitle>
-        <ExercisesNavList>
-          <ExercisesItem>Body parts</ExercisesItem>
-          <ExercisesItem>Muscules</ExercisesItem>
-          <ExercisesItem>Equipment</ExercisesItem>
-        </ExercisesNavList>
-      </Wrap>
-      <ImageList>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-        <ImageItem>
-          <Image />
-        </ImageItem>
-      </ImageList>
-    </>
+        <ExercisesNavigation
+          activeFilter={activeFilter}
+          handleFilterClick={handleFilterClick}
+        />
+      </ExercisesContainer>
+      {activeFilter === 'Body parts' && <BodyPartList />}
+      {activeFilter === 'Muscles' && <MusclesList />}
+      {activeFilter === 'Equipment' && <EquipmentList />}
+    </ExercisesWrapper>
   );
 }

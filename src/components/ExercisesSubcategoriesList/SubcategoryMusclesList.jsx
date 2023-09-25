@@ -13,7 +13,7 @@ export const MusclesList = () => {
 
   useEffect(() => {
     dispatch(fetchMuscles());
-  }, []);
+  }, [dispatch]);
 
   const muscles = useSelector(selectMuscles);
   const [currentPage, setCurrentPage] = useState(1);
