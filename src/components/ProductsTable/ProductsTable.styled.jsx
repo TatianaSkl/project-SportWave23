@@ -150,3 +150,15 @@ export const BoxColorText = styled.div`
   font-size: 14px;
   line-height: 128.571%;
 `;
+
+// const bgColorIsOnline = props => {
+//   const { status, theme } = props;
+//   switch (status) {
+//     case true:
+//       return theme.colors.green;
+//     case false:
+//       return theme.colors.red;
+//     default:
+//       return theme.colors.gray;
+//   }
+// };

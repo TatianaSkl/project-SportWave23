@@ -156,7 +156,10 @@ export const ProductsTable = ({ products }) => {
                   <BoxColorText>{prod.amount}</BoxColorText>
                 </BoxR>
               </div>
-              <button style={{ display: 'flex', marginLeft: '8px' }}>
+              <button
+                onClick={() => dispatch(deleteProduct({ id: prod.productId, date: prod.date }))}
+                style={{ display: 'flex', marginLeft: '8px' }}
+              >
                 <svg width={'20'} height={'20'}>
                   <use href={icon + '#icon-trash'} />
                 </svg>
