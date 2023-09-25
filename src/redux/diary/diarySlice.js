@@ -45,7 +45,7 @@ const diary = createSlice({
     builder.addCase(deleteProduct.pending, handlePending);
     builder.addCase(deleteProduct.fulfilled, (state, { payload }) => {
       handleFullfield(state);
-      const newProductsList = state.products.filter(product => product._id !== payload);
+      const newProductsList = state.products.filter(product => product.productId !== payload);
       state.products = newProductsList;
     });
     builder.addCase(deleteProduct.rejected, handleRejected);
@@ -53,7 +53,7 @@ const diary = createSlice({
     builder.addCase(deleteExercise.pending, handlePending);
     builder.addCase(deleteExercise.fulfilled, (state, { payload }) => {
       handleFullfield(state);
-      const newExercisesList = state.exercises.filter(exercise => exercise._id !== payload);
+      const newExercisesList = state.exercises.filter(exercise => exercise.exerciseId !== payload);
       state.exercises = newExercisesList;
     });
     builder.addCase(deleteExercise.rejected, handleRejected);

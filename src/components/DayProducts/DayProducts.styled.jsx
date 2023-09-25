@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const WrapperDayProduct = styled.div`
   width: 100%;
-  height: 335px;
+  max-height: 824px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
@@ -12,7 +12,6 @@ export const WrapperDayProduct = styled.div`
   margin-bottom: 40px;
   @media (min-width: 768px) {
     height: 234px;
-    padding: 19px 16px;
     margin-bottom: 32px;
   }
   @media (min-width: 1440px) {
@@ -25,6 +24,10 @@ export const WrapperFlex = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 22px;
+  @media (min-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const Title = styled.h3`
@@ -58,6 +61,7 @@ export const Text = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 142px;
   margin-top: 125px;
   color: rgba(239, 237, 232, 0.3);
   font-size: 14px;
@@ -66,5 +70,14 @@ export const Text = styled.p`
     font-size: 16px;
     line-height: 150%;
     margin-top: 65px;
+    margin-bottom: 65px;
+  }
+`;
+
+export const WrapperScrol = styled.div`
+  overflow-y: auto;
+  max-height: 824px;
+  @media (min-width: 768px) {
+    max-height: 160px;
   }
 `;
