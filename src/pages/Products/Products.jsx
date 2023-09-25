@@ -14,8 +14,10 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
+  // const [blood, setBlood] =useState('')
 
   const user = useSelector(selectUser);
+
   const TOKEN = user.token;
   console.log(TOKEN)
 
@@ -35,6 +37,7 @@ export default function Products() {
 
         const response = await axios.request(config);
         const data = response.data;
+        console.log(data)
 
         if (data.result.length >= 10) {
           setHasMore(true);
