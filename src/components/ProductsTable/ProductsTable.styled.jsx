@@ -1,33 +1,55 @@
 import styled from '@emotion/styled';
 
-export const PressButton = styled.button`
-  padding: 12px 40px;
-  border-radius: 12px;
-  background: ${props => props.theme.colors.orange};
-  font-weight: 500;
-  line-height: 112.5%;
-  box-shadow: ${props => props.theme.shadows.small};
-  transition-property: transform, box-shadow, background-color;
-  transition-duration: 0.25s;
-  transition-timing-function: ${props => props.theme.animation.cubicBezier};
-  &:disabled {
-    color: rgba(239, 237, 232, 0.6);
-    cursor: not-allowed;
-    box-shadow: none;
-    &:hover {
-      transform: none;
-      box-shadow: none;
-      background-color: ${props => props.theme.colors.orange};
+export const Title = styled.th`
+  color: ${props => props.theme.colors.accent};
+  font-size: 12px;
+  line-height: 150%;
+  text-align: left;
+  padding: 0 0 6px 0;
+`;
+
+export const Text = styled.td`
+  padding: 0;
+  /* &:not(:last-child) {
+    font-style: normal;
+    font-weight: 400;
+
+    font-size: 14px;
+    line-height: 128.571%;
+    padding: 6px 0 6px 14px;
+    @media (min-width: 768px) {
+      font-size: 16px;
+      line-height: 150%;
     }
+  } */
+`;
+
+export const ProductTable = styled.div`
+  padding-right: 6px;
+  @media (min-width: 768px) {
+    padding-right: 16px;
   }
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: ${props => props.theme.shadows.regular};
-    background-color: ${props => props.theme.colors.accent};
+  @media (min-width: 1440px) {
+    padding-left: 16px;
   }
-  @media screen and (min-width: 768px) {
-    padding: 16px 60px;
-    font-size: 20px;
-    line-height: 120%;
+`;
+
+export const Wrapper = styled.div`
+  margin-bottom: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 128.571%;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  /* padding: 6px 0 6px 14px; */
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 150%;
   }
+`;
+
+export const P = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;

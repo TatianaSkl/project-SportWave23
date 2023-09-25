@@ -1,78 +1,89 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useTable } from 'react-table';
-// import { deleteProduct } from 'redux/diary/operations';
+import { deleteProduct } from 'redux/diary/operations';
 import icon from 'images/sprite.svg';
+import { ProductTable, Text, Title, Wrapper } from './ProductsTable.styled';
 
-export const ProductsTable = ({ data, id, date }) => {
-  // const dispatch = useDispatch();
+export const ProductsTable = ({ products }) => {
+  const dispatch = useDispatch();
 
-  // // const handleDelete = ({ date, id }) => {
-  // //   dispatch(deleteProduct(id, date));
-  // // };
   const columns = React.useMemo(
     () => [
       {
         Header: 'Title',
-        accessor: 'Title',
+        accessor: row => row.product?.title || '',
       },
       {
         Header: 'Category',
-        accessor: 'Category',
+        accessor: row => row.product?.category || '',
       },
       {
         Header: 'Calories',
-        accessor: 'Calories',
+        accessor: row => row.calories || '',
       },
       {
         Header: 'Weight',
-        accessor: 'Weight',
+        accessor: row => row.product?.weight || '',
       },
       {
         Header: 'Recommend',
-        accessor: 'Recommend',
+        accessor: row => row.amount || '',
       },
       {
-        Header: 'Delete',
+        Header: '',
         accessor: 'Delete',
-        Cell: () => (
-          <svg width={'20'} height={'20'}>
-            <use href={icon + '#icon-trash'} />
-          </svg>
+        Cell: ({ row }) => (
+          <button
+            id={row.original.productId}
+            onClick={() =>
+              dispatch(deleteProduct({ id: row.original._id, date: row.original.date }))
+            }
+          >
+            <svg width={'20'} height={'20'}>
+              <use href={icon + '#icon-trash'} />
+            </svg>
+          </button>
         ),
       },
     ],
-    []
+    [dispatch]
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
     columns,
-    data,
+    data: products,
   });
 
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map(row => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-              })}
+    <ProductTable>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <Title {...column.getHeaderProps()}>{column.render('Header')}</Title>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map(row => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => {
+                  return (
+                    <Text {...cell.getCellProps()}>
+                      <Wrapper>{cell.render('Cell')}</Wrapper>
+                    </Text>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </ProductTable>
   );
 };

@@ -5,6 +5,7 @@ import {
   Title,
   WrapperDayExercises,
   WrapperFlex,
+  WrapperScrol,
 } from './DayExercises.styled';
 
 export const DayExercises = () => {
@@ -17,7 +18,9 @@ export const DayExercises = () => {
           <IconArrow />
         </LinkExercises>
       </WrapperFlex>
-      <Text>Not found exercises</Text>
+      <WrapperScrol>
+        <Text>Not found exercises</Text>
+      </WrapperScrol>
     </WrapperDayExercises>
   );
 };

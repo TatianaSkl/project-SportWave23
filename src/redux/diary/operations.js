@@ -7,7 +7,6 @@ export const getDataProducts = createAsyncThunk(
   async (date, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`/products_diary/${date}`);
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -20,27 +19,6 @@ export const getDataExercises = createAsyncThunk(
   async (date, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`/exercise_diary/${date}`);
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-export const getProduct = createAsyncThunk('diary/getProduct', async (id, { rejectWithValue }) => {
-  try {
-    const { data } = await axios.get(`/products/${id}`);
-    return data;
-  } catch (error) {
-    return rejectWithValue(error.message);
-  }
-});
-
-export const getExercise = createAsyncThunk(
-  'diary/getExercises',
-  async (id, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.get(`/exercises/${id}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
