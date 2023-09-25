@@ -46,8 +46,6 @@ export const SignInForm = () => {
       })
     );
     resetForm();
-    console.log(email);
-    console.log(password);
   };
 
   return (

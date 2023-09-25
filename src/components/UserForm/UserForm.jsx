@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
 import { selectUser } from 'redux/auth/selectors';
-import { updateParams } from 'redux/auth/operations';
+import { updateName, updateParams } from 'redux/auth/operations';
 import icon from 'images/sprite.svg';
 import { Button } from 'components';
 import {
@@ -79,22 +80,29 @@ export const UserForm = () => {
       levelActivity: (user.userParams.levelActivity || '').toString(),
     },
     validationSchema: schemaUs,
-    onSubmit: values => {
-      const userData = {
-        height: parseInt(values.height),
-        currentWeight: parseInt(values.currentWeight),
-        desiredWeight: parseInt(values.desiredWeight),
-        birthday: values.birthday,
-        blood: parseInt(values.blood),
-        sex: values.sex,
-        levelActivity: parseInt(values.levelActivity),
-      };
-      dispatch(updateParams(userData));
-      // const userName = {
-      //   name: values.name,
-      // };
-      // dispatch(updateName(userName));
-      setIsFormDirty(false);
+    onSubmit: async values => {
+      try {
+        await schemaUs.validate(values, { abortEarly: false });
+        const userData = {
+          height: parseInt(values.height),
+          currentWeight: parseInt(values.currentWeight),
+          desiredWeight: parseInt(values.desiredWeight),
+          birthday: values.birthday,
+          blood: parseInt(values.blood),
+          sex: values.sex,
+          levelActivity: parseInt(values.levelActivity),
+        };
+        dispatch(updateParams(userData));
+        const userName = {
+          name: values.name,
+        };
+        dispatch(updateName(userName));
+        setIsFormDirty(false);
+      } catch (validationErrors) {
+        validationErrors.inner.forEach(error => {
+          toast.error(error.message);
+        });
+      }
     },
   });
 
@@ -154,7 +162,7 @@ export const UserForm = () => {
             onChange={handleFieldChange}
             value={formik.values.birthday}
           />
-          <ButtonIcon>
+          <ButtonIcon type="button">
             <svg width={'18'} height={'18'}>
               <use href={icon + '#icon-calendar'}></use>
             </svg>

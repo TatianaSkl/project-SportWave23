@@ -84,6 +84,7 @@ export const updateParams = createAsyncThunk('users/params', async (userData, th
     const res = await axios.put('/users/params', userData);
     return res.data;
   } catch (error) {
+    toast.error('Oops... Something went wrong! Try again!');
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -99,16 +100,13 @@ export const updateName = createAsyncThunk('users/username', async (userName, th
     const res = await axios.patch('/users/username', userName);
     return res.data;
   } catch (error) {
+    toast.error('Oops... Something went wrong! Try again!');
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-export const updateAvatarUrl = createAsyncThunk(
-  'auth/updateAvatarUrl',
-  async (avatarUrl) => {
-    
-    localStorage.setItem('userAvatarUrl', avatarUrl);
-    
-    return { avatarURL: avatarUrl };
-  }
-);
+export const updateAvatarUrl = createAsyncThunk('auth/updateAvatarUrl', async avatarUrl => {
+  localStorage.setItem('userAvatarUrl', avatarUrl);
+
+  return { avatarURL: avatarUrl };
+});

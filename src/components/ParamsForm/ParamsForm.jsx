@@ -20,9 +20,13 @@ import {
 } from './ParamsForm.styled';
 import { TextGrey, TitlePage } from 'components';
 import { PressButton } from 'components/Button/Button.styled';
+import { useDispatch } from 'react-redux';
+import { updateParams } from 'redux/auth/operations';
 
 const ParamsForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       height: '',
@@ -46,7 +50,16 @@ const ParamsForm = () => {
       levelActivity: Yup.number().oneOf([1, 2, 3, 4, 5]).required(),
     }),
     onSubmit: values => {
-      // бекенд
+      const userData = {
+        height: parseInt(values.height),
+        currentWeight: parseInt(values.currentWeight),
+        desiredWeight: parseInt(values.desiredWeight),
+        birthday: values.birthday,
+        blood: parseInt(values.blood),
+        sex: values.sex,
+        levelActivity: parseInt(values.levelActivity),
+      };
+      dispatch(updateParams(userData));
       if (currentStep === 2) {
         // Відправка
       } else {
@@ -160,8 +173,8 @@ const ParamsForm = () => {
                   <input
                     type="radio"
                     name="blood"
-                    value="1"
-                    checked={formik.values.blood === '1'}
+                    value="2"
+                    checked={formik.values.blood === '2'}
                     onChange={formik.handleChange}
                   />
                   2
@@ -172,8 +185,8 @@ const ParamsForm = () => {
                   <input
                     type="radio"
                     name="blood"
-                    value="1"
-                    checked={formik.values.blood === '1'}
+                    value="3"
+                    checked={formik.values.blood === '3'}
                     onChange={formik.handleChange}
                   />
                   3
@@ -184,8 +197,8 @@ const ParamsForm = () => {
                   <input
                     type="radio"
                     name="blood"
-                    value="1"
-                    checked={formik.values.blood === '1'}
+                    value="4"
+                    checked={formik.values.blood === '4'}
                     onChange={formik.handleChange}
                   />
                   4
@@ -212,8 +225,8 @@ const ParamsForm = () => {
                   <input
                     type="radio"
                     name="sex"
-                    value="male"
-                    checked={formik.values.sex === 'male'}
+                    value="female"
+                    checked={formik.values.sex === 'female'}
                     onChange={formik.handleChange}
                   />
                   Female
@@ -282,8 +295,7 @@ const ParamsForm = () => {
                   checked={formik.values.levelActivity === '5'}
                   onChange={formik.handleChange}
                 />
-                Extremely active (very strenuous exercises/sports and physical
-                work)
+                Extremely active (very strenuous exercises/sports and physical work)
               </LevelActivityText>
             </RadioLabel>
           </ActiveContainer>
@@ -313,10 +325,7 @@ const ParamsForm = () => {
       )}
 
       {currentStep < 2 && (
-        <NextButton
-          type="button"
-          onClick={() => setCurrentStep(currentStep + 1)}
-        >
+        <NextButton type="button" onClick={() => setCurrentStep(currentStep + 1)}>
           Next
         </NextButton>
       )}

@@ -30,7 +30,10 @@ export const ExercisesTable = ({ exercises }) => {
         accessor: 'Body Part',
         Cell: ({ row }) => (
           <WrapperB>
-            <div>{row.original.exercise.bodyPart}</div>
+            <div>
+              {row.original.exercise.bodyPart.charAt(0).toUpperCase() +
+                row.original.exercise.bodyPart.slice(1)}
+            </div>
           </WrapperB>
         ),
       },
@@ -39,7 +42,10 @@ export const ExercisesTable = ({ exercises }) => {
         accessor: 'Equipment',
         Cell: ({ row }) => (
           <WrapperE>
-            <div>{row.original.exercise.equipment}</div>
+            <div>
+              {row.original.exercise.equipment.charAt(0).toUpperCase() +
+                row.original.exercise.equipment.slice(1)}
+            </div>
           </WrapperE>
         ),
       },
@@ -48,7 +54,10 @@ export const ExercisesTable = ({ exercises }) => {
         accessor: 'Name',
         Cell: ({ row }) => (
           <WrapperN>
-            <div>{row.original.exercise.name}</div>
+            <div>
+              {row.original.exercise.name.charAt(0).toUpperCase() +
+                row.original.exercise.name.slice(1)}
+            </div>
           </WrapperN>
         ),
       },
@@ -57,7 +66,10 @@ export const ExercisesTable = ({ exercises }) => {
         accessor: 'Target',
         Cell: ({ row }) => (
           <WrapperT>
-            <div>{row.original.exercise.target}</div>
+            <div>
+              {row.original.exercise.target.charAt(0).toUpperCase() +
+                row.original.exercise.target.slice(1)}
+            </div>
           </WrapperT>
         ),
       },
@@ -158,7 +170,10 @@ export const ExercisesTable = ({ exercises }) => {
                 <BoxTitle>Time</BoxTitle>
                 <BoxText>{exer.exercise.time}</BoxText>
               </div>
-              <button style={{ display: 'flex', marginLeft: '8px' }}>
+              <button
+                onClick={() => dispatch(deleteExercise({ id: exer.exerciseId, date: exer.date }))}
+                style={{ display: 'flex', marginLeft: '8px' }}
+              >
                 <svg width={'20'} height={'20'}>
                   <use href={icon + '#icon-trash'} />
                 </svg>
