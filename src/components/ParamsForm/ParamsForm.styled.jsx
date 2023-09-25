@@ -23,15 +23,45 @@ export const FormGroupContent = styled.div`
   }
 `;
 
+// export const StyledLabel = styled.label``;
+
 export const FormGroup = styled.div`
+  position: relative;
   display: block;
   margin-bottom: 14px;
   margin-right: 14px;
 
-  /* label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  } */
+  label {
+    position: absolute;
+    font-size: 14px;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: top 0.2s, left 0.2s, transform 0.2s;
+    color: rgba(239, 237, 232, 0.6);
+  }
+
+  input[type='number']:focus + label,
+  input[type='number']:not(:placeholder-shown) + label,
+  input[type='date']:focus + label,
+  input[type='date']:not(:placeholder-shown) + label {
+    color: rgba(239, 237, 232, 0.6);
+    font-size: 12px;
+    line-height: 18px;
+    transform: translateY(-44px);
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+      transform: translateY(-48px);
+    }
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
 
   input[type='number']:focus,
   input[type='date']:focus,
@@ -51,6 +81,7 @@ export const FormGroup = styled.div`
   input[type='date'],
   select {
     color: rgba(239, 237, 232, 0.6);
+
     font-size: 14px;
     line-height: 18px;
     padding: 14px 52px 14px 14px;

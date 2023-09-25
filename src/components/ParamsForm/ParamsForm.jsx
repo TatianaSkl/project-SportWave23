@@ -23,6 +23,7 @@ import { PressButton } from 'components/Button/Button.styled';
 
 const ParamsForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
+
   const formik = useFormik({
     initialValues: {
       height: '',
@@ -38,7 +39,7 @@ const ParamsForm = () => {
       currentWeight: Yup.number().min(35).required(),
       desiredWeight: Yup.number().min(35).required(),
       birthday: Yup.date()
-        .strict()
+
         .max(new Date(new Date().getFullYear() - 18, 0, 1))
         .required(),
       blood: Yup.number().oneOf([1, 2, 3, 4]).required(),
@@ -67,67 +68,64 @@ const ParamsForm = () => {
       {currentStep === 0 && (
         <FormSection>
           <TitlePage text="Get closer to your goals!" />
-
           <TextGrey text="To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:" />
           <FormGroupContent>
             <FormGroup>
-              <label htmlFor="height">
-                {/* Height: */}
-                <input
-                  type="number"
-                  id="height"
-                  name="height"
-                  placeholder="Height"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.height}
-                />
-                {formik.touched.height && formik.errors.height ? (
-                  <div>{formik.errors.height}</div>
-                ) : null}
-              </label>
+              <input
+                type="number"
+                id="height"
+                name="height"
+                placeholder=" "
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.height}
+              />
+              <label htmlFor="height">Height:</label>
+              {formik.touched.height && formik.errors.height ? (
+                <div>{formik.errors.height}</div>
+              ) : null}
             </FormGroup>
             <FormGroup>
-              <label htmlFor="currentWeight">{/* Current Weight: */}</label>
               <input
                 type="number"
                 id="currentWeight"
                 name="currentWeight"
-                placeholder="currentWeight"
+                placeholder=" "
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.currentWeight}
               />
+              <label htmlFor="currentWeight">Current Weight:</label>
               {formik.touched.currentWeight && formik.errors.currentWeight ? (
                 <div>{formik.errors.currentWeight}</div>
               ) : null}
             </FormGroup>
             <FormGroup>
-              <label htmlFor="desiredWeight">{/* Desired Weight: */}</label>
               <input
                 type="number"
                 id="desiredWeight"
                 name="desiredWeight"
-                placeholder="desiredWeight"
+                placeholder=" "
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.desiredWeight}
               />
+              <label htmlFor="desiredWeight">Desired Weight:</label>
               {formik.touched.desiredWeight && formik.errors.desiredWeight ? (
                 <div>{formik.errors.desiredWeight}</div>
               ) : null}
             </FormGroup>
             <FormGroup>
-              <label htmlFor="birthday">{/* Birthday: */}</label>
               <input
                 type="date"
                 id="birthday"
                 name="birthday"
-                placeholder="birthday"
+                // placeholder=""
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.birthday}
               />
+              <label htmlFor="birthday">Birthday:</label>
               {formik.touched.birthday && formik.errors.birthday ? (
                 <div>{formik.errors.birthday}</div>
               ) : null}
