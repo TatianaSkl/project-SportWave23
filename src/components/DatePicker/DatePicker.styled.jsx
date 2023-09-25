@@ -16,13 +16,6 @@ export const DataBtn = styled.div`
     font-size: 16px;
   }
 `;
-export const Wrapper = styled.div`
-  position: absolute;
-  left: -40%;
-  top: 50%;
-  transform: translate(0%, 0%);
-  z-index: 999;
-`;
 
 export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
@@ -31,33 +24,29 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-1%, 0%);
+    right: 0;
+    top: 0;
+    /* transform: translate(-50%, -50%); */
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 327px;
-    height: 354px;
-    padding: 9px 18px;
-  background-color: #3e85f3;
-    font-family: Inter;
-    border-radius: 16px;
-  }
-  .react-datepicker__month-container {
-    float: inherit;
-    box-sizing: border-box;
+    width: 215px;
+    height: 236px;
+    padding: 14px;
+    background-color: #EF8964;
+    font-family: Roboto;
+   border-radius: 8px;
   }
   .react-datepicker__header {
-    position: relative;
-    background-color: #3e85f3;
+    /* position: relative; */
+    background-color: #EF8964;
   }
   .react-datepicker__day-names {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    /* padding: 8px 8px; */
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.4); */
   }
   .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
     border-bottom: 0px;
@@ -68,13 +57,15 @@ export const CalendarGlobalStyles = createGlobalStyle`
     border: none;
 }
   .react-datepicker__current-month {
-    font-family: Inter;
-    font-size: 20px;
+   color: #EFEDE8;
+    
+    font-size: 16px;
     font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
-    text-align: center;
-    color: white;
+    font-weight: 500;
+    line-height: normal;
+   letter-spacing: -0.32px;
+  padding-bottom:14px;
+   border-bottom: 2px solid rgba(239, 237, 232, 0.3);
   }
   .react-datepicker__day-name {
     margin: 0;
@@ -131,10 +122,10 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__month {
     display: flex;
-    gap: 7px;
+    
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 16px;
+   
     margin: 0;
   }
   .react-datepicker__day--selected {

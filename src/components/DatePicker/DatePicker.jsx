@@ -1,6 +1,6 @@
 import DatePicker from 'react-datepicker';
-import { CalendarGlobalStyles, Wrapper } from './StyledDatepicker.styled';
 import 'react-datepicker/dist/react-datepicker.css';
+import { CalendarGlobalStyles } from './DatePicker.styled';
 
 const StyledDatepicker = ({ selectedDate, setSelectedDate, isOpen }) => {
   const handleDateChange = date => {
@@ -8,13 +8,13 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate, isOpen }) => {
   };
 
   return (
-    <Wrapper>
+    <>
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}
-        dateFormat="dd MM yyyy"
+        dateFormat="yyyy-MM-dd"
         calendarStartDay={1}
-        formatWeekDay={day => day.substr(0, 1)}
+        formatWeekDay={day => day.substr(0, 2)}
         open={isOpen}
         customInput={<div style={{ display: 'none' }} />}
         popperModifiers={{
@@ -26,7 +26,7 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate, isOpen }) => {
         }}
       />
       <CalendarGlobalStyles />
-    </Wrapper>
+    </>
   );
 };
 

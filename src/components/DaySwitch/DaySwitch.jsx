@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import icon from 'images/sprite.svg';
 import { ChevronButton, DataButton, Icon, IconLeft, IconRight, Wrapper } from './DaySwitch.styled';
+import StyledDatepicker from 'components/DatePicker/DatePicker';
 
 export const DaySwitch = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -31,6 +32,7 @@ export const DaySwitch = () => {
 
   const handleCalenderBtnClick = () => {
     setIsDatepickerOpen(prev => !prev);
+    console.log(isDatepickerOpen);
   };
 
   return (
@@ -55,7 +57,7 @@ export const DaySwitch = () => {
       <button type="button" tabIndex={isDatepickerOpen ? -1 : 0} onClick={switchToNextDay}>
         <IconRight />
       </button>
-      {/* {isDatepickerOpen && (
+      {isDatepickerOpen && (
         <StyledDatepicker
           selectedDate={currentDate}
           setSelectedDate={handleDateChange}
@@ -63,7 +65,7 @@ export const DaySwitch = () => {
           setIsOpen={setIsDatepickerOpen}
           anchorEl={buttonRef.current}
         />
-      )} */}
+      )}
     </Wrapper>
   );
 };
