@@ -3,7 +3,23 @@ import { useDispatch } from 'react-redux';
 import { useTable } from 'react-table';
 import { deleteProduct } from 'redux/diary/operations';
 import icon from 'images/sprite.svg';
-import { ProductTable, Text, Title, Wrapper } from './ProductsTable.styled';
+import {
+  Box,
+  BoxFlex,
+  BoxText,
+  BoxTitle,
+  ProductTable,
+  ValueTd,
+  Title,
+  WrapperT,
+  WrapperCg,
+  WrapperCl,
+  WrapperW,
+  WrapperR,
+  BoxR,
+  BoxColor,
+  BoxColorText,
+} from './ProductsTable.styled';
 
 export const ProductsTable = ({ products }) => {
   const dispatch = useDispatch();
@@ -12,32 +28,61 @@ export const ProductsTable = ({ products }) => {
     () => [
       {
         Header: 'Title',
-        accessor: row => row.product?.title || '',
+        accessor: 'Title',
+        Cell: ({ row }) => (
+          <WrapperT>
+            <div>{row.original.product.title}</div>
+          </WrapperT>
+        ),
       },
       {
         Header: 'Category',
-        accessor: row => row.product?.category || '',
+        accessor: 'Category',
+        Cell: ({ row }) => (
+          <WrapperCg>
+            <div>
+              {row.original.product.category.charAt(0).toUpperCase() +
+                row.original.product.category.slice(1)}
+            </div>
+          </WrapperCg>
+        ),
       },
       {
         Header: 'Calories',
-        accessor: row => row.calories || '',
+        accessor: 'Calories',
+        Cell: ({ row }) => (
+          <WrapperCl>
+            <div>{row.original.calories}</div>
+          </WrapperCl>
+        ),
       },
       {
         Header: 'Weight',
-        accessor: row => row.product?.weight || '',
+        accessor: 'Weight',
+        Cell: ({ row }) => (
+          <WrapperW>
+            <div>{row.original.product.weight}</div>
+          </WrapperW>
+        ),
       },
       {
         Header: 'Recommend',
-        accessor: row => row.amount || '',
+        accessor: 'Recommend',
+        Cell: ({ row }) => (
+          <WrapperR>
+            <BoxColor></BoxColor>
+            <div>{row.original.amount}</div>
+          </WrapperR>
+        ),
       },
       {
         Header: '',
         accessor: 'Delete',
         Cell: ({ row }) => (
           <button
-            id={row.original.productId}
+            style={{ marginLeft: '4px' }}
             onClick={() =>
-              dispatch(deleteProduct({ id: row.original._id, date: row.original.date }))
+              dispatch(deleteProduct({ id: row.original.productId, date: row.original.date }))
             }
           >
             <svg width={'20'} height={'20'}>
@@ -56,34 +101,70 @@ export const ProductsTable = ({ products }) => {
   });
 
   return (
-    <ProductTable>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <Title {...column.getHeaderProps()}>{column.render('Header')}</Title>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return (
-                    <Text {...cell.getCellProps()}>
-                      <Wrapper>{cell.render('Cell')}</Wrapper>
-                    </Text>
-                  );
-                })}
+    <>
+      <ProductTable>
+        <table {...getTableProps()}>
+          <thead>
+            {headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map(column => (
+                  <Title {...column.getHeaderProps()}>{column.render('Header')}</Title>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </ProductTable>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map(row => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map(cell => {
+                    return <ValueTd {...cell.getCellProps()}>{cell.render('Cell')}</ValueTd>;
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </ProductTable>
+      <Box>
+        {products?.map(prod => (
+          <div key={prod._id}>
+            <div>
+              <BoxTitle>Title</BoxTitle>
+              <BoxText>{prod.product.title}</BoxText>
+            </div>
+            <div>
+              <BoxTitle>Category</BoxTitle>
+              <BoxText>
+                {prod.product.category.charAt(0).toUpperCase() + prod.product.category.slice(1)}
+              </BoxText>
+            </div>
+            <BoxFlex>
+              <div>
+                <BoxTitle>Calories</BoxTitle>
+                <BoxText>{prod.calories}</BoxText>
+              </div>
+              <div>
+                <BoxTitle>Weight</BoxTitle>
+                <BoxText>{prod.product.weight}</BoxText>
+              </div>
+              <div>
+                <BoxTitle>Recommend</BoxTitle>
+                <BoxR>
+                  <BoxColor></BoxColor>
+                  <BoxColorText>{prod.amount}</BoxColorText>
+                </BoxR>
+              </div>
+              <button style={{ display: 'flex', marginLeft: '8px' }}>
+                <svg width={'20'} height={'20'}>
+                  <use href={icon + '#icon-trash'} />
+                </svg>
+              </button>
+            </BoxFlex>
+          </div>
+        ))}
+      </Box>
+    </>
   );
 };

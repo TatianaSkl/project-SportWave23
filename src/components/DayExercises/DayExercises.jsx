@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   IconArrow,
   LinkExercises,
@@ -7,8 +8,12 @@ import {
   WrapperFlex,
   WrapperScrol,
 } from './DayExercises.styled';
+import { selectExercises } from 'redux/diary/selectors';
+import { ExercisesTable } from 'components';
 
 export const DayExercises = () => {
+  const exercises = useSelector(selectExercises);
+
   return (
     <WrapperDayExercises>
       <WrapperFlex>
@@ -19,7 +24,11 @@ export const DayExercises = () => {
         </LinkExercises>
       </WrapperFlex>
       <WrapperScrol>
-        <Text>Not found exercises</Text>
+        {exercises?.length > 0 ? (
+          <ExercisesTable exercises={exercises} />
+        ) : (
+          <Text>Not found exercises</Text>
+        )}
       </WrapperScrol>
     </WrapperDayExercises>
   );
