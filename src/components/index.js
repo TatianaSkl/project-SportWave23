@@ -28,6 +28,7 @@ export * from 'components/SignInForm/SignInForm.jsx';
 export * from 'components/SignUpForm/SignUpForm.jsx';
 export * from 'components/StatisticsInfo/StatisticsInfo.jsx';
 export * from 'components/StepBar/StepBar.jsx';
+export * from 'components/StyledDatepicker/StyledDatepicker.jsx';
 export * from 'components/TitlePage/TitlePage.jsx';
 export * from 'components/UserBar/UserBar.jsx';
 export * from 'components/UserCard/UserCard.jsx';
