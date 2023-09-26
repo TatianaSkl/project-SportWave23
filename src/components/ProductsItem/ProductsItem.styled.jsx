@@ -6,7 +6,9 @@ export const ProductCard = styled.li`
   border: 1px solid rgba(239, 237, 232, 0.20);
   border-radius: 12px;
   padding:16px;
-  /* gap: 20px; */
+  @media screen and (min-width: 1440px){
+    width:405px;
+  }
 `;
 
 export const RecomendedContainer = styled.div`
@@ -60,6 +62,9 @@ export const Discription = styled.div`
   display: flex;
   align-items: baseline;
   margin-top: 40px;
+  @media screen and (min-width: 1440px){
+    margin-top: 30px;
+  }
 `;
 
 export const Icon = styled.span`
