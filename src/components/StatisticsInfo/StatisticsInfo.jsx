@@ -1,5 +1,8 @@
 import icon from 'images/sprite.svg';
-
+import { useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { getstatistics } from 'redux/statistics/operations';
+import { selectStatistics } from 'redux/statistics/selectors';
 import {
   Number,
   NumberDinamic,
@@ -13,6 +16,15 @@ import {
 } from './StatisticsInfo.styled';
 
 export const StatisticsInfo = () => {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getstatistics());
+  // }, [dispatch]);
+  const statistics = useSelector(selectStatistics);
+  console.log(statistics);
+
+  // const products = useSelector(selectProducts);
+
   return (
     <>
       <WrapperVideoCount>
