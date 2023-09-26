@@ -27,14 +27,18 @@ export default function ProductsFilters({setArrayProducts, setValue, setCategory
     setArrayProducts([]);
   };
 
-  const handleCategoryChange = (selectedOption) => {
-    
+  const handleClean = () => {
+    setValue('');
+    setSearch('');
+    setArrayProducts([]);
+  }
+
+  const handleCategoryChange = (selectedOption) => {    
     setCategory(selectedOption.value)
     setArrayProducts([]);
   };
 
-  const handleTypeChange = (selectedType) => {
-    
+  const handleTypeChange = (selectedType) => {    
     setType(selectedType.value)
     setArrayProducts([]);
   };
@@ -42,9 +46,9 @@ export default function ProductsFilters({setArrayProducts, setValue, setCategory
   return (
     <Form>
       <InputContainer>
-        <Input onChange={handlChange} type="text" placeholder='Search' />
+        <Input onChange={handlChange} value={search} type="text" placeholder='Search' />
         <BtnContainer>
-          {search !== '' && <BtnClose>
+          {search !== '' && <BtnClose type='button' onClick={handleClean}>
             <AiOutlineClose style={{ fontSize: '24px', color: theme.colors.orange, fontWeight: 'bold' }}/>
           </BtnClose>}
           <BtnOpen>

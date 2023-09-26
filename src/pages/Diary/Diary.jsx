@@ -8,7 +8,6 @@ export default function Diary() {
   const dispatch = useDispatch();
 
   const date = '2023-09-15';
-  console.log(date);
 
   useEffect(() => {
     dispatch(getDataProducts(date));
