@@ -3,6 +3,9 @@ import { theme } from 'styles/theme';
 
 export const Form = styled.form`
 margin-top: 40px;
+@media screen and (min-width: 1440px){
+display: flex;
+}
 `;
 
 export const InputContainer = styled.div`
@@ -16,8 +19,9 @@ border-radius: 12px;
 padding: 14px;
 border-color: ${theme.colors.white};
 color: ${theme.colors.white};
-
-
+@media screen and (min-width: 1440px){
+width: 236px;
+}
 &:focus {
     outline: none;
     border: 1px solid ${theme.colors.orange};
@@ -45,6 +49,10 @@ export const BtnOpen = styled.button`
 export const SelectContainer = styled.div`
 display: flex;
 margin-top:16px;
+@media screen and (min-width: 1440px){
+  margin-top:0px;
+  margin-left: 16px;
+}
 `;
 
 export const SelectProduct = styled.div`
@@ -52,12 +60,19 @@ width: 43%;
 margin-right: 6%;
 color: ${theme.colors.white};
 background: ${theme.colors.main};
+@media screen and (min-width: 1440px){
+  width: 192px;
+  margin-right: 16px;
+}
 `;
 
 export const SelectType = styled.div`
 width: 51%;
 color: ${theme.colors.white};
 background: ${theme.colors.main};
+@media screen and (min-width: 1440px){
+  width: 204px;
+}
 `;
 
 export const Option = styled.option`
@@ -93,10 +108,3 @@ export const customStyles = {
       display: 'none',
     }),
 };
-  
-// export const Wrapper = styled.div`
-//   margin-top: 52px;
-//   @media screen and (min-width: 768px) {
-//     margin-top: 80px;
-//   }
-// `;

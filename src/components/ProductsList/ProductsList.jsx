@@ -1,8 +1,9 @@
-import { ProductList } from './ProductsList.styled';
+import { ProductList,FlexContainer } from './ProductsList.styled';
 import ProductsItem from '../ProductsItem/ProductsItem';
 import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-export default function ProductsList({ productsArray, groupBlood }) {
+export default function ProductsList({hasMore, page, setPage, productsArray, groupBlood }) {
 
   const [data, setData] = useState([]);
 
@@ -12,8 +13,20 @@ export default function ProductsList({ productsArray, groupBlood }) {
     }
   }, [productsArray]);
 
+  const fetchMoreData = () => {
+    setPage(page + 1);
+  };
+
   return (    
     <ProductList>
+      <InfiniteScroll
+        dataLength={data.length}
+        next={fetchMoreData}
+          hasMore={hasMore}
+        height={490}
+        loader={''}
+      >
+        <FlexContainer>
       {data && data.map((item) => (
         <ProductsItem
         key={item._id}
@@ -26,6 +39,8 @@ export default function ProductsList({ productsArray, groupBlood }) {
         title = { item.title}
       />
       ))}
+          </FlexContainer>
+        </InfiniteScroll>
       </ProductList>      
   );
 }

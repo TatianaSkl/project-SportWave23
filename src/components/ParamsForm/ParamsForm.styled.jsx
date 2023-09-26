@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 // @media screen and (min-width: 768px)
 // @media screen and (min-width: 1440px)
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: block;
 `;
 
@@ -14,9 +16,13 @@ export const FormSection = styled.div`
 export const FormGroupContent = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding-top: 22px;
+  margin-bottom: -14px;
+  margin-right: -14px;
   @media screen and (min-width: 768px) {
     max-width: 554px;
-    margin-top: 54px;
+    margin-bottom: 0;
+    margin-right: 0;
   }
   @media screen and (min-width: 1440px) {
     max-width: 527px;
@@ -61,7 +67,7 @@ export const FormGroup = styled.div`
   }
 
   input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
+  input[type='date']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     appearance: none;
     margin: 0;
@@ -91,7 +97,7 @@ export const FormGroup = styled.div`
     padding: 14px 14px 14px 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
-    max-width: 150px;
+    width: 155px;
     background-color: transparent;
     outline: none;
     @media screen and (min-width: 768px) {
@@ -111,12 +117,18 @@ export const FormGroup = styled.div`
     color: #e6533c;
   }
 `;
-
+export const ButtonIcon = styled.button`
+  position: absolute;
+  bottom: 35%;
+  left: 80%;
+  width: 18px;
+  height: 18px;
+`;
 ////////////////////////////////
 
 export const BloodSexContainer = styled.div`
   display: flex;
-  margin-top: 25px;
+  margin-top: 28px;
   @media screen and (min-width: 768px) {
     margin-top: 30px;
   }
@@ -126,7 +138,7 @@ export const BloodSex = styled.label`
   color: #efede8;
   font-size: 14px;
   line-height: 18px;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 24px;
@@ -136,7 +148,7 @@ export const BloodSex = styled.label`
 export const BloodContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 65px;
+  margin-right: 64px;
 `;
 
 export const SexContainer = styled.div`
@@ -162,29 +174,126 @@ export const LevelActivityText = styled.label`
 `;
 
 export const RadioLabel = styled.label`
-  margin-bottom: 10px;
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
 `;
 
 ////////
 
 export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgba(239, 237, 232, 0.6);
-  font-size: 16px;
-  line-height: 24px;
-  margin-right: 15px;
+  font-size: 14px;
+  line-height: 18px;
+  margin-right: 16px;
+  margin-top: 28px;
+  @media screen and (min-width: 768px) {
+    line-height: 24px;
+    font-size: 16px;
+  }
+`;
+export const IconArrowR = styled(AiOutlineArrowRight)`
+  color: ${props => props.theme.colors.orange};
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+`;
+export const IconArrowL = styled(AiOutlineArrowLeft)`
+  color: ${props => props.theme.colors.orange};
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
 `;
 
 export const NextButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
   color: #efede8;
-  font-size: 16px;
   line-height: 18px;
-  margin-top: 30px;
+  margin-top: 28px;
   @media screen and (min-width: 768px) {
     line-height: 24px;
+    font-size: 16px;
+  }
+`;
+
+export const BackButtonT = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(239, 237, 232, 0.6);
+  font-size: 14px;
+  line-height: 18px;
+  @media screen and (min-width: 768px) {
+    line-height: 24px;
+    font-size: 16px;
+  }
+`;
+
+export const PictureBg = styled.picture`
+  position: absolute;
+  top: 60%;
+  left: 30%;
+  z-index: -1;
+  background: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    top: 60%;
+    left: 40%;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 0;
+    left: 54%;
+    background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);
+  }
+`;
+
+export const PictureBgT = styled.picture`
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  z-index: -1;
+  background: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    top: 35%;
+    left: 40%;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 0;
+    left: 54%;
+    background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);
+  }
+`;
+export const PictureBgW = styled.picture`
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  z-index: -1;
+  background: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    top: 50%;
+    left: 40%;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 0;
+    left: 54%;
+    background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);
   }
 `;
 
 export const GoBackContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin-top: 30px;
   @media screen and (min-width: 768px) {
     margin-top: 65px;

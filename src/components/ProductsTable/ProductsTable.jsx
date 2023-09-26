@@ -70,8 +70,8 @@ export const ProductsTable = ({ products }) => {
         accessor: 'Recommend',
         Cell: ({ row }) => (
           <WrapperR>
-            <BoxColor></BoxColor>
-            <div>{row.original.amount}</div>
+            <BoxColor isRecommended={row.original.recommended}></BoxColor>
+            <div>{row.original.recommended ? 'Yes' : 'No'}</div>
           </WrapperR>
         ),
       },
@@ -81,9 +81,7 @@ export const ProductsTable = ({ products }) => {
         Cell: ({ row }) => (
           <button
             style={{ marginLeft: '4px' }}
-            onClick={() =>
-              dispatch(deleteProduct({ id: row.original.productId, date: row.original.date }))
-            }
+            onClick={() => dispatch(deleteProduct({ id: row.original._id }))}
           >
             <svg width={'20'} height={'20'}>
               <use href={icon + '#icon-trash'} />
@@ -152,12 +150,12 @@ export const ProductsTable = ({ products }) => {
               <div>
                 <BoxTitle>Recommend</BoxTitle>
                 <BoxR>
-                  <BoxColor></BoxColor>
-                  <BoxColorText>{prod.amount}</BoxColorText>
+                  <BoxColor isRecommended={prod.recommended}></BoxColor>
+                  <BoxColorText>{prod.recommended ? 'Yes' : 'No'}</BoxColorText>
                 </BoxR>
               </div>
               <button
-                onClick={() => dispatch(deleteProduct({ id: prod.productId, date: prod.date }))}
+                onClick={() => dispatch(deleteProduct({ id: prod._id }))}
                 style={{ display: 'flex', marginLeft: '8px' }}
               >
                 <svg width={'20'} height={'20'}>

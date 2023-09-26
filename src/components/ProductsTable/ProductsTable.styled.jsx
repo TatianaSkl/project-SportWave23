@@ -142,7 +142,8 @@ export const BoxR = styled.div`
 export const BoxColor = styled.div`
   width: 14px;
   height: 14px;
-  background-color: ${props => props.theme.colors.success};
+  background-color: ${props =>
+    props.isRecommended ? props.theme.colors.success : props.theme.colors.error};
   border-radius: 50%;
   margin-right: 8px;
 `;

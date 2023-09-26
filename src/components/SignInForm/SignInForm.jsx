@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { logIn } from 'redux/auth/operations';
@@ -17,7 +17,9 @@ import {
   SuccessText,
   Wrapper,
 } from './SignInForm.styled';
-import { Button, StatisticsInfo } from 'components';
+import { Button } from 'components';
+import { useNavigate } from 'react-router-dom';
+import { selectUser } from 'redux/auth/selectors';
 
 const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const passwordRegex = /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/;
@@ -29,22 +31,34 @@ export const schemaLog = yup.object().shape({
     .required('This field is required!'),
   password: yup
     .string()
-    .matches(passwordRegex, 'Must be exactly 7 characters long')
-    .min(7, 'Must be at least 7 characters long')
+    .matches(
+      passwordRegex,
+      'Must be exactly 7 characters long with 6 letters and 1 digit'
+    )
+    .min(7, 'Must be exactly 7 characters long with 6 letters and 1 digit')
     .required('This field is required!'),
 });
 
 export const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = ({ email, password }, { resetForm }) => {
-    dispatch(
+  const handleSubmit = async ({ email, password }, { resetForm }) => {
+    const success = await dispatch(
       logIn({
         email,
         password,
       })
     );
+    if (success) {
+      if (Object.keys(user.userParams).length !== 0) {
+        navigate('/params');
+      } else {
+        navigate('/diary');
+      }
+    }
     resetForm();
   };
 

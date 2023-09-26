@@ -40,6 +40,10 @@ export const FieldName = styled.input`
   font-size: 14px;
   line-height: 128.571%;
   margin-bottom: 14px;
+  outline: none;
+  &:hover {
+    border-color: ${props => props.theme.colors.orange};
+  }
   @media screen and (min-width: 768px) {
     width: 341px;
     height: 52px;
@@ -108,6 +112,7 @@ export const InputField = styled.input`
   font-size: 14px;
   line-height: 128.571%;
   margin-bottom: 14px;
+  outline: none;
   &:hover {
     border-color: ${props => props.theme.colors.orange};
   }
@@ -136,6 +141,10 @@ export const Input = styled.input`
   background-color: transparent;
   font-size: 16px;
   line-height: 150%;
+  outline: none;
+  &:hover {
+    border-color: ${props => props.theme.colors.orange};
+  }
   &[name='desiredWeight'] {
     margin-right: 14px;
   }
