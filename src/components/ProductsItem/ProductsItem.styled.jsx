@@ -6,6 +6,9 @@ export const ProductCard = styled.li`
   border: 1px solid rgba(239, 237, 232, 0.20);
   border-radius: 12px;
   padding:16px;
+  @media screen and (min-width: 768px){
+    width:335px;
+  }
   @media screen and (min-width: 1440px){
     width:405px;
   }
@@ -62,6 +65,9 @@ export const Discription = styled.div`
   display: flex;
   align-items: baseline;
   margin-top: 40px;
+  @media screen and (min-width: 768px){
+    margin-top: 27px;
+  }
   @media screen and (min-width: 1440px){
     margin-top: 30px;
   }
@@ -107,4 +113,7 @@ export const StatData = styled.span`
   display: inline-block;
   margin-left: 4px;
   margin-right: 16px;
+  @media screen and (min-width: 768px){
+    font-size: 12px;
+  }
 `;

@@ -1,11 +1,12 @@
-import {Title, Product, ProductsHeader, ProductContainer} from './Products.styled.jsx';
+import {PictureBg, Title, Product, ProductsHeader, ProductContainer} from './Products.styled.jsx';
 import axios from 'axios';
 import ProductsFilters from '../../components/ProductsFilters/ProductsFilters';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-// import InfiniteScroll from 'react-infinite-scroll-component';
+import bg from 'images/bg';
+const { bg5Desktop1x, bg5Desktop2x} = bg;
 
 export default function Products() {
   const [searchValue, setSearchValue] = useState('');
@@ -14,14 +15,16 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
-  const [blood, setBlood] =useState('')
+  const [blood, setBlood] = useState('');
+  
 
   const user = useSelector(selectUser);
 
   const TOKEN = user.token;
   console.log(TOKEN)
-
   axios.defaults.baseURL = 'https://power-pulse-project-backend.onrender.com';
+
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,12 +57,9 @@ export default function Products() {
     fetchData();
   }, [TOKEN, searchValue, categoryProduct, page, typeProduct]);
 
-  // const fetchMoreData = () => {
-  //   setPage(page + 1);
-  // };
-
   return (
-    <Product>
+    <>
+      <Product>
       <ProductsHeader>
       <Title>Products</Title>
       <ProductsFilters
@@ -70,16 +70,18 @@ export default function Products() {
         />
       </ProductsHeader>
       <ProductContainer>
-      {/* <InfiniteScroll
-        dataLength={products.length}
-        next={fetchMoreData}
-          hasMore={hasMore}
-          height={490}
-        loader={''}
-      > */}
         <ProductsList hasMore={hasMore} page={page} setPage={setPage} productsArray={products} groupBlood={blood} />
-        {/* </InfiniteScroll> */}
-        </ProductContainer>
+      </ProductContainer>
     </Product>
+
+    <PictureBg>
+      <source
+        type="image/jpg"
+        media="(min-width: 1440px)"
+        srcSet={`${bg5Desktop1x} 1x, ${bg5Desktop2x} 2x`}
+      />
+      <img src={`${bg5Desktop1x}`} alt="Woman doing sports" />
+    </PictureBg>
+    </>
   );
 }
