@@ -13,8 +13,13 @@ import {
   TextBoxGrey,
   WrapperTablet,
 } from './DayDashboard.styled';
+import { useSelector } from 'react-redux';
+import { selectallCaloriesDay, selectallExercisesDay } from 'redux/diary/selectors';
 
 export const DayDashboard = () => {
+  const allCaloriesDay = useSelector(selectallCaloriesDay);
+  const allExercisesDay = useSelector(selectallExercisesDay);
+
   return (
     <div>
       <WrapperTablet>
@@ -46,7 +51,7 @@ export const DayDashboard = () => {
               </svg>
               <TextBoxGrey>Calories consumed</TextBoxGrey>
             </div>
-            <Number>707</Number>
+            <Number>{allCaloriesDay}</Number>
           </WrapperCalories>
           <WrapperCalories>
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -55,7 +60,7 @@ export const DayDashboard = () => {
               </svg>
               <TextBoxGrey>Calories burned</TextBoxGrey>
             </div>
-            <Number>855</Number>
+            <Number>{allExercisesDay}</Number>
           </WrapperCalories>
         </WrapperBox>
         <WrapperBox>

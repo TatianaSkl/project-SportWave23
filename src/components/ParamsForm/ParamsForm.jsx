@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import icon from 'images/sprite.svg';
 import {
   FormContainer,
   FormSection,
@@ -42,9 +43,7 @@ const ParamsForm = () => {
       levelActivity: '',
     },
     validationSchema: Yup.object({
-      height: Yup.number()
-        .min(150, 'Must be at least 150 cm!')
-        .required('This field is required!'),
+      height: Yup.number().min(150, 'Must be at least 150 cm!').required('This field is required!'),
       currentWeight: Yup.number().min(35, 'Must be at least 35 kg!').required(),
       desiredWeight: Yup.number().min(35, 'Must be at least 35 kg!').required(),
       birthday: Yup.date()
@@ -63,15 +62,9 @@ const ParamsForm = () => {
           return null;
         })
         .required('This field is required!'),
-      blood: Yup.number()
-        .oneOf([1, 2, 3, 4])
-        .required('This field is required!'),
-      sex: Yup.string()
-        .oneOf(['male', 'female'])
-        .required('This field is required!'),
-      levelActivity: Yup.number()
-        .oneOf([1, 2, 3, 4, 5])
-        .required('This field is required!'),
+      blood: Yup.number().oneOf([1, 2, 3, 4]).required('This field is required!'),
+      sex: Yup.string().oneOf(['male', 'female']).required('This field is required!'),
+      levelActivity: Yup.number().oneOf([1, 2, 3, 4, 5]).required('This field is required!'),
     }),
     onSubmit: values => {
       const userData = {
@@ -83,6 +76,7 @@ const ParamsForm = () => {
         sex: values.sex,
         levelActivity: parseInt(values.levelActivity),
       };
+      console.log(userData);
       dispatch(updateParams(userData));
       if (currentStep === 2) {
         // Відправка
@@ -159,10 +153,10 @@ const ParamsForm = () => {
                   onChange={formik.handleChange}
                   value={formik.values.birthday}
                 />
-                <ButtonIcon>
-                  {/* <svg width={'18'} height={'18'}>
-                  <use href={icon + '#icon-calendar'}></use>
-                </svg> */}
+                <ButtonIcon type="button">
+                  <svg width={'18'} height={'18'}>
+                    <use href={icon + '#icon-calendar'}></use>
+                  </svg>
                 </ButtonIcon>
               </div>
             </FormGroup>
@@ -268,9 +262,7 @@ const ParamsForm = () => {
                   checked={formik.values.levelActivity === '1'}
                   onChange={formik.handleChange}
                 />
-                <LabelRadio>
-                  Sedentary lifestyle (little or no physical activity)
-                </LabelRadio>
+                <LabelRadio>Sedentary lifestyle (little or no physical activity)</LabelRadio>
               </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
@@ -282,9 +274,7 @@ const ParamsForm = () => {
                   checked={formik.values.levelActivity === '2'}
                   onChange={formik.handleChange}
                 />
-                <LabelRadio>
-                  Light activity (light exercises/sports 1-3 days per week)
-                </LabelRadio>
+                <LabelRadio>Light activity (light exercises/sports 1-3 days per week)</LabelRadio>
               </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
@@ -297,8 +287,7 @@ const ParamsForm = () => {
                   onChange={formik.handleChange}
                 />
                 <LabelRadio>
-                  Moderately active (moderate exercises/sports 3-5 days per
-                  week)
+                  Moderately active (moderate exercises/sports 3-5 days per week)
                 </LabelRadio>
               </LevelActivityText>
             </RadioLabel>
@@ -311,9 +300,7 @@ const ParamsForm = () => {
                   checked={formik.values.levelActivity === '4'}
                   onChange={formik.handleChange}
                 />
-                <LabelRadio>
-                  Very active (intense exercises/sports 6-7 days per week)
-                </LabelRadio>
+                <LabelRadio>Very active (intense exercises/sports 6-7 days per week)</LabelRadio>
               </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
@@ -327,8 +314,7 @@ const ParamsForm = () => {
                 />
 
                 <LabelRadio>
-                  Extremely active (very strenuous exercises/sports and physical
-                  work)
+                  Extremely active (very strenuous exercises/sports and physical work)
                 </LabelRadio>
               </LevelActivityText>
             </RadioLabel>
@@ -359,10 +345,7 @@ const ParamsForm = () => {
       )}
 
       {currentStep < 2 && (
-        <NextButton
-          type="button"
-          onClick={() => setCurrentStep(currentStep + 1)}
-        >
+        <NextButton type="button" onClick={() => setCurrentStep(currentStep + 1)}>
           Next
         </NextButton>
       )}
