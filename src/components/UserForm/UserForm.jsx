@@ -93,11 +93,13 @@ export const UserForm = () => {
           levelActivity: parseInt(values.levelActivity),
         };
         dispatch(updateParams(userData));
+
         const userName = {
           name: values.name,
         };
         dispatch(updateName(userName));
         setIsFormDirty(false);
+        console.log(userData);
       } catch (validationErrors) {
         validationErrors.inner.forEach(error => {
           toast.error(error.message);

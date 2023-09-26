@@ -60,6 +60,7 @@ export const FormField = styled(Field)`
   font-size: 14px;
   line-height: 128.571%;
   margin-bottom: 2px;
+  outline: none;
   &:hover {
     border-color: ${props => props.theme.colors.orange};
   }
