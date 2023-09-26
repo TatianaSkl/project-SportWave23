@@ -22,6 +22,7 @@ const ProfilePage = lazy(() => import('pages/Profile/Profile'));
 export const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

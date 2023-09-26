@@ -1,14 +1,29 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
 import bg from 'images/bg';
 const { logoDesktop1x, logoDesktop2x, logoMobile1x, logoMobile2x } = bg;
 
 export const Logo = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
+  const navigate = useNavigate();
 
-  return isLoggedIn ? (
-    <Link to="/params">
+  const handleClick = () => {
+    if (isLoggedIn) {
+      if (Object.keys(user.userParams).length !== 0) {
+        navigate('/diary');
+      } else {
+        navigate('/params');
+      }
+    } else {
+      navigate('/');
+    }
+    console.log(user.userParams);
+  };
+
+  return (
+    <div onClick={handleClick}>
       <picture>
         <source
           type="image/png"
@@ -22,22 +37,6 @@ export const Logo = () => {
         />
         <img src={`${logoDesktop1x}`} alt="logo" />
       </picture>
-    </Link>
-  ) : (
-    <Link to="/">
-      <picture>
-        <source
-          type="image/png"
-          media="(max-width: 767px)"
-          srcSet={`${logoMobile1x} 1x, ${logoMobile2x} 2x`}
-        />
-        <source
-          type="image/png"
-          media="(min-width: 768px)"
-          srcSet={`${logoDesktop1x} 1x, ${logoDesktop2x} 2x`}
-        />
-        <img src={`${logoDesktop1x}`} alt="logo" />
-      </picture>
-    </Link>
+    </div>
   );
 };

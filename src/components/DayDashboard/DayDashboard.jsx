@@ -15,10 +15,29 @@ import {
 } from './DayDashboard.styled';
 import { useSelector } from 'react-redux';
 import { selectallCaloriesDay, selectallExercisesDay } from 'redux/diary/selectors';
+import { useEffect, useState } from 'react';
 
 export const DayDashboard = () => {
   const allCaloriesDay = useSelector(selectallCaloriesDay);
   const allExercisesDay = useSelector(selectallExercisesDay);
+  const [data, setData] = useState({
+    dailyCalorieIntake: 2200,
+    dailyNormOfSports: 110,
+    caloriesConsumed: allCaloriesDay,
+    caloriesBurned: allExercisesDay,
+    restOfCalories: 2200 - allCaloriesDay,
+    restOfSports: 110 - allExercisesDay / 11,
+  });
+
+  useEffect(() => {
+    setData(prevData => ({
+      ...prevData,
+      caloriesConsumed: allCaloriesDay,
+      caloriesBurned: allExercisesDay,
+      restOfCalories: prevData.dailyCalorieIntake - allCaloriesDay,
+      restOfSports: (prevData.dailyNormOfSports - allExercisesDay / 11).toFixed(0),
+    }));
+  }, [allCaloriesDay, allExercisesDay, data.dailyCalorieIntake, data.dailyNormOfSports]);
 
   return (
     <div>
@@ -31,7 +50,7 @@ export const DayDashboard = () => {
               </svg>
               <TextBox>Daily calorie intake</TextBox>
             </div>
-            <Number>2200</Number>
+            <Number>{data.dailyCalorieIntake}</Number>
           </WrapperDaily>
           <WrapperTime>
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -40,7 +59,7 @@ export const DayDashboard = () => {
               </svg>
               <TextBox>Daily nom of sports</TextBox>
             </div>
-            <Number>110 min</Number>
+            <Number>{data.dailyNormOfSports} min</Number>
           </WrapperTime>
         </WrapperBox>
         <WrapperBox>
@@ -51,7 +70,7 @@ export const DayDashboard = () => {
               </svg>
               <TextBoxGrey>Calories consumed</TextBoxGrey>
             </div>
-            <Number>{allCaloriesDay}</Number>
+            <Number>{data.caloriesConsumed}</Number>
           </WrapperCalories>
           <WrapperCalories>
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -60,27 +79,35 @@ export const DayDashboard = () => {
               </svg>
               <TextBoxGrey>Calories burned</TextBoxGrey>
             </div>
-            <Number>{allExercisesDay}</Number>
+            <Number>{data.caloriesBurned}</Number>
           </WrapperCalories>
         </WrapperBox>
         <WrapperBox>
-          <WrapperRest>
+          <WrapperRest
+            style={{
+              borderColor: data.caloriesConsumed > data.dailyCalorieIntake ? '#D80027' : '#3CBF61',
+            }}
+          >
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <svg width="20" height="20">
                 <use href={icon + '#icon-bubble'}></use>
               </svg>
               <TextBoxGrey>The rest of the caloris</TextBoxGrey>
             </div>
-            <Number>1493</Number>
+            <Number>{data.restOfCalories}</Number>
           </WrapperRest>
-          <WrapperRest>
+          <WrapperRest
+            style={{
+              borderColor: data.caloriesBurned > data.dailyNormOfSports ? '#D80027' : '#3CBF61',
+            }}
+          >
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <svg width="20" height="20">
                 <use href={icon + '#icon-running'}></use>
               </svg>
               <TextBoxGrey>The rest of sports </TextBoxGrey>
             </div>
-            <Number>85 min</Number>
+            <Number>{data.restOfSports} min</Number>
           </WrapperRest>
         </WrapperBox>
       </WrapperTablet>
