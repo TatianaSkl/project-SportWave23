@@ -30,8 +30,8 @@ export const deleteProduct = createAsyncThunk(
   'diary/deleteProduct',
   async (params, { rejectWithValue }) => {
     try {
-      const { id, date } = params;
-      await axios.delete(`/products_diary/${id}/${date}`);
+      const { id } = params;
+      await axios.delete(`/products_diary/${id}`);
       return id;
     } catch (error) {
       toast.error('Oops... Something went wrong! Try again!');
@@ -44,8 +44,8 @@ export const deleteExercise = createAsyncThunk(
   'diary/deleteExercise',
   async (params, { rejectWithValue }) => {
     try {
-      const { id, date } = params;
-      await axios.delete(`/exercise_diary/${id}/${date}`);
+      const { id } = params;
+      await axios.delete(`/exercise_diary/${id}`);
       return id;
     } catch (error) {
       toast.error('Oops... Something went wrong! Try again!');
