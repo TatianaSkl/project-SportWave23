@@ -3,7 +3,7 @@ import icon from 'images/sprite.svg';
 import { ChevronButton, DataButton, Icon, IconLeft, IconRight, Wrapper } from './DaySwitch.styled';
 import StyledDatepicker from 'components/DatePicker/DatePicker';
 
-export const DaySwitch = () => {
+export const DaySwitch = ({ onDateChange }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isDatepickerOpen, setIsDatepickerOpen] = useState(false);
 
@@ -26,13 +26,13 @@ export const DaySwitch = () => {
   const handleDateChange = date => {
     setCurrentDate(date);
     setIsDatepickerOpen(false);
+    onDateChange(date);
   };
 
   const buttonRef = useRef(null);
 
   const handleCalenderBtnClick = () => {
     setIsDatepickerOpen(prev => !prev);
-    console.log(isDatepickerOpen);
   };
 
   return (

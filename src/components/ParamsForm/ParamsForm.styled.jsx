@@ -51,6 +51,10 @@ export const FormGroup = styled.div`
     line-height: 18px;
     transform: translateY(-44px);
     @media screen and (min-width: 768px) {
+      &[name='birthday'] {
+        margin-top: 26px;
+        width: 187px;
+      }
       font-size: 14px;
       transform: translateY(-48px);
     }
@@ -84,7 +88,7 @@ export const FormGroup = styled.div`
 
     font-size: 14px;
     line-height: 18px;
-    padding: 14px 52px 14px 14px;
+    padding: 14px 14px 14px 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     max-width: 150px;
@@ -94,9 +98,9 @@ export const FormGroup = styled.div`
       font-size: 16px;
       line-height: 24px;
     }
-    @media screen and (min-width: 1440px) {
+    /* @media screen and (min-width: 1440px) {
       padding: 14px 112px 14px 14px;
-    }
+    } */
   }
 
   div {

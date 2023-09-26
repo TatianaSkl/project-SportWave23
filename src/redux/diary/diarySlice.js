@@ -6,6 +6,8 @@ const initialState = {
   error: null,
   products: [],
   exercises: [],
+  allCaloriesDay: 0,
+  allExercisesDay: 0,
 };
 
 const handlePending = state => {
@@ -31,14 +33,16 @@ const diary = createSlice({
     builder.addCase(getDataProducts.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.error = null;
-      state.products = payload;
+      state.products = payload.result;
+      state.allCaloriesDay = payload.allCaloriesDay;
     });
     builder.addCase(getDataProducts.rejected, handleRejected);
     builder.addCase(getDataExercises.pending, handlePending);
     builder.addCase(getDataExercises.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.error = null;
-      state.exercises = payload;
+      state.exercises = payload.result;
+      state.allExercisesDay = payload.allCaloriesDay;
     });
     builder.addCase(getDataExercises.rejected, handleRejected);
 
