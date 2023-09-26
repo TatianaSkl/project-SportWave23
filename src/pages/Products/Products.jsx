@@ -1,11 +1,11 @@
-import {Title, Product} from './Products.styled.jsx';
+import {Title, Product, ProductsHeader, ProductContainer} from './Products.styled.jsx';
 import axios from 'axios';
 import ProductsFilters from '../../components/ProductsFilters/ProductsFilters';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-import InfiniteScroll from 'react-infinite-scroll-component';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Products() {
   const [searchValue, setSearchValue] = useState('');
@@ -54,27 +54,32 @@ export default function Products() {
     fetchData();
   }, [TOKEN, searchValue, categoryProduct, page, typeProduct]);
 
-  const fetchMoreData = () => {
-    setPage(page + 1);
-  };
+  // const fetchMoreData = () => {
+  //   setPage(page + 1);
+  // };
 
   return (
     <Product>
+      <ProductsHeader>
       <Title>Products</Title>
       <ProductsFilters
         setArrayProducts={setProducts}
         setValue={setSearchValue}
         setCategory={setCategoryProduct}
         setType={setTypeProduct}
-      />
-      <InfiniteScroll
+        />
+      </ProductsHeader>
+      <ProductContainer>
+      {/* <InfiniteScroll
         dataLength={products.length}
         next={fetchMoreData}
-        hasMore={hasMore}
+          hasMore={hasMore}
+          height={490}
         loader={''}
-      >
-        <ProductsList productsArray={products} groupBlood={blood} />
-      </InfiniteScroll>
+      > */}
+        <ProductsList hasMore={hasMore} page={page} setPage={setPage} productsArray={products} groupBlood={blood} />
+        {/* </InfiniteScroll> */}
+        </ProductContainer>
     </Product>
   );
 }
