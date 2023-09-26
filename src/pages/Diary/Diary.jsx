@@ -2,24 +2,38 @@ import { DayDashboard, DayExercises, DayProducts, DaySwitch, TitlePage } from 'c
 import { SectionDiary, Wrapper, WrapperMobil, WrapperTablet } from './Diary.styled';
 import { useDispatch } from 'react-redux';
 import { getDataExercises, getDataProducts } from 'redux/diary/operations';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Diary() {
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(
+    2,
+    '0'
+  )}-${String(currentDate.getDate()).padStart(2, '0')}`;
+  const [date, setDate] = useState(formattedDate);
   const dispatch = useDispatch();
 
-  const date = '2023-09-15';
-  console.log(date);
+  const formatToYYYYMMDD = date => {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(
+      date.getDate()
+    ).padStart(2, '0')}`;
+  };
+
+  const handleDateChange = newDate => {
+    const formattedNewDate = formatToYYYYMMDD(newDate);
+    setDate(formattedNewDate);
+  };
 
   useEffect(() => {
     dispatch(getDataProducts(date));
     dispatch(getDataExercises(date));
-  }, [dispatch]);
+  }, [dispatch, date]);
 
   return (
     <SectionDiary>
       <Wrapper>
         <TitlePage text="Diary" />
-        <DaySwitch />
+        <DaySwitch onDateChange={handleDateChange} />
       </Wrapper>
       <WrapperMobil>
         <DayDashboard />

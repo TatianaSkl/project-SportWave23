@@ -23,15 +23,49 @@ export const FormGroupContent = styled.div`
   }
 `;
 
+// export const StyledLabel = styled.label``;
+
 export const FormGroup = styled.div`
+  position: relative;
   display: block;
   margin-bottom: 14px;
   margin-right: 14px;
 
-  /* label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  } */
+  label {
+    position: absolute;
+    font-size: 14px;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: top 0.2s, left 0.2s, transform 0.2s;
+    color: rgba(239, 237, 232, 0.6);
+  }
+
+  input[type='number']:focus + label,
+  input[type='number']:not(:placeholder-shown) + label,
+  input[type='date']:focus + label,
+  input[type='date']:not(:placeholder-shown) + label {
+    color: rgba(239, 237, 232, 0.6);
+    font-size: 12px;
+    line-height: 18px;
+    transform: translateY(-44px);
+    @media screen and (min-width: 768px) {
+      &[name='birthday'] {
+        margin-top: 26px;
+        width: 187px;
+      }
+      font-size: 14px;
+      transform: translateY(-48px);
+    }
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
 
   input[type='number']:focus,
   input[type='date']:focus,
@@ -51,9 +85,10 @@ export const FormGroup = styled.div`
   input[type='date'],
   select {
     color: rgba(239, 237, 232, 0.6);
+
     font-size: 14px;
     line-height: 18px;
-    padding: 14px 52px 14px 14px;
+    padding: 14px 14px 14px 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.3);
     max-width: 150px;
@@ -63,13 +98,17 @@ export const FormGroup = styled.div`
       font-size: 16px;
       line-height: 24px;
     }
-    @media screen and (min-width: 1440px) {
+    /* @media screen and (min-width: 1440px) {
       padding: 14px 112px 14px 14px;
-    }
+    } */
   }
 
   div {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    font-size: 12px;
+    line-height: 15px;
+    color: #e6533c;
   }
 `;
 
@@ -149,5 +188,34 @@ export const GoBackContainer = styled.div`
   margin-top: 30px;
   @media screen and (min-width: 768px) {
     margin-top: 65px;
+  }
+`;
+////////////////
+
+export const LabelRadio = styled.label`
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 128.571%;
+  cursor: pointer;
+  &::before {
+    content: ' ';
+    margin-right: 9px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #636366;
+    border-radius: 10px;
+    @media screen and (min-width: 768px) {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 150%;
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
   }
 `;

@@ -1,53 +1,47 @@
 import {
-  ExerciseItem,
+  ExerciseItemEl,
+  BtnWrapper,
   MainTitle,
+  BtnText,
   Title,
-  TitleBlock,
   Statistics,
-  Button,
-  Span,
   StatItem,
+  StatItemValue,
 } from './ExercisesItem.styled';
-import { useDispatch } from 'react-redux';
 
-const ExercisesItem = ({ name, burnedCalories, bodyPart, target, index }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <ExerciseItem>
-      <MainTitle>WORKOUT</MainTitle>
-      <TitleBlock>
-        <svg
-          width={24}
-          height={24}
-          style={{ marginRight: 16 }}
-          viewBox="0 0 24 24"
-        >
-          <use href="" />
-        </svg>
-        <Title>{name}</Title>
-      </TitleBlock>
-      <Statistics>
-        <StatItem>
-          Burned calories: <Span>{burnedCalories}</Span>
-        </StatItem>
-        <StatItem>
-          Body part: <Span>{bodyPart}</Span>
-        </StatItem>
-        <StatItem>
-          Target: <Span>{target}</Span>
-        </StatItem>
-      </Statistics>
-      <Button
-        type="button"
-        onClick={() => {
-          dispatch();
-        }}
-      >
-        Start
-      </Button>
-    </ExerciseItem>
-  );
+const texts = {
+  mainTitle: 'Workout',
+  btnText: 'Start',
+  stats: {
+    burnedCalories: 'Burned calories:',
+    bodyPart: 'Body part:',
+    target: 'Target:',
+  },
 };
 
-export default ExercisesItem;
+const capitalizeFirstLeter = string => {
+  const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
+  return newString;
+};
+
+export const ExercisesItem = data => {
+  return (
+    <ExerciseItemEl>
+      <BtnWrapper>
+        <MainTitle>{texts.mainTitle}</MainTitle>
+        <BtnText type="button">{texts.btnText}</BtnText>
+      </BtnWrapper>
+      <Title>{capitalizeFirstLeter(data.data.name)} </Title>
+      <Statistics>
+        {Object.keys(texts.stats).map(e => (
+          <StatItem key={e}>
+            {texts.stats[e]}
+            <StatItemValue>
+              {capitalizeFirstLeter(String(data.data[e]))}
+            </StatItemValue>
+          </StatItem>
+        ))}
+      </Statistics>
+    </ExerciseItemEl>
+  );
+};

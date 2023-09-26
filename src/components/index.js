@@ -39,3 +39,4 @@ export * from 'components/Button/Button.jsx';
 export * from 'components/TextGrey/TextGrey.jsx';
 export * from 'components/Logo/Logo.jsx';
 export * from 'components/ModalMenu/ModalMenu.jsx';
+export * from 'components/DatePicker/DatePicker.jsx';

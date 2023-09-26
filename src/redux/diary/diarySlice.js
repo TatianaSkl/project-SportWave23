@@ -6,6 +6,8 @@ const initialState = {
   error: null,
   products: [],
   exercises: [],
+  allCaloriesDay: 0,
+  allExercisesDay: 0,
 };
 
 const handlePending = state => {
@@ -31,21 +33,23 @@ const diary = createSlice({
     builder.addCase(getDataProducts.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.error = null;
-      state.products = payload;
+      state.products = payload.result;
+      state.allCaloriesDay = payload.allCaloriesDay;
     });
     builder.addCase(getDataProducts.rejected, handleRejected);
     builder.addCase(getDataExercises.pending, handlePending);
     builder.addCase(getDataExercises.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.error = null;
-      state.exercises = payload;
+      state.exercises = payload.result;
+      state.allExercisesDay = payload.allCaloriesDay;
     });
     builder.addCase(getDataExercises.rejected, handleRejected);
 
     builder.addCase(deleteProduct.pending, handlePending);
     builder.addCase(deleteProduct.fulfilled, (state, { payload }) => {
       handleFullfield(state);
-      const newProductsList = state.products.filter(product => product._id !== payload);
+      const newProductsList = state.products.filter(product => product.productId !== payload);
       state.products = newProductsList;
     });
     builder.addCase(deleteProduct.rejected, handleRejected);
@@ -53,7 +57,7 @@ const diary = createSlice({
     builder.addCase(deleteExercise.pending, handlePending);
     builder.addCase(deleteExercise.fulfilled, (state, { payload }) => {
       handleFullfield(state);
-      const newExercisesList = state.exercises.filter(exercise => exercise._id !== payload);
+      const newExercisesList = state.exercises.filter(exercise => exercise.exerciseId !== payload);
       state.exercises = newExercisesList;
     });
     builder.addCase(deleteExercise.rejected, handleRejected);

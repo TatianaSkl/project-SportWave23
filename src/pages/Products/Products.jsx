@@ -1,4 +1,4 @@
-import style from './Products.module.css';
+import {Title, Product} from './Products.styled.jsx';
 import axios from 'axios';
 import ProductsFilters from '../../components/ProductsFilters/ProductsFilters';
 import ProductsList from '../../components/ProductsList/ProductsList';
@@ -14,7 +14,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
-  // const [blood, setBlood] =useState('')
+  const [blood, setBlood] =useState('')
 
   const user = useSelector(selectUser);
 
@@ -37,7 +37,7 @@ export default function Products() {
 
         const response = await axios.request(config);
         const data = response.data;
-        console.log(data)
+        setBlood(data.blood);
 
         if (data.result.length >= 10) {
           setHasMore(true);
@@ -59,8 +59,8 @@ export default function Products() {
   };
 
   return (
-    <>
-      <h1 className={style.title}>Products</h1>
+    <Product>
+      <Title>Products</Title>
       <ProductsFilters
         setArrayProducts={setProducts}
         setValue={setSearchValue}
@@ -71,10 +71,10 @@ export default function Products() {
         dataLength={products.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        // loader={''}
+        loader={''}
       >
-        <ProductsList productsArray={products} />
+        <ProductsList productsArray={products} groupBlood={blood} />
       </InfiniteScroll>
-    </>
+    </Product>
   );
 }

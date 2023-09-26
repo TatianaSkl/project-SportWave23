@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
+import icon from 'images/sprite.svg';
 import {
   FormContainer,
   FormSection,
@@ -17,12 +17,21 @@ import {
   ActiveContainer,
   LevelActivityText,
   BloodSex,
+  LabelRadio,
 } from './ParamsForm.styled';
 import { TextGrey, TitlePage } from 'components';
 import { PressButton } from 'components/Button/Button.styled';
 
+import { ButtonIcon, FielRadio } from 'components/UserForm/UserForm.styled';
+import { Input } from 'components/ProductsFilters/ProductsFilters.styled';
+
+import { useDispatch } from 'react-redux';
+import { updateParams } from 'redux/auth/operations';
+
 const ParamsForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       height: '',
@@ -34,19 +43,41 @@ const ParamsForm = () => {
       levelActivity: '',
     },
     validationSchema: Yup.object({
-      height: Yup.number().min(150).required(),
-      currentWeight: Yup.number().min(35).required(),
-      desiredWeight: Yup.number().min(35).required(),
+      height: Yup.number().min(150, 'Must be at least 150 cm!').required('This field is required!'),
+      currentWeight: Yup.number().min(35, 'Must be at least 35 kg!').required(),
+      desiredWeight: Yup.number().min(35, 'Must be at least 35 kg!').required(),
       birthday: Yup.date()
-        .strict()
-        .max(new Date(new Date().getFullYear() - 18, 0, 1))
-        .required(),
-      blood: Yup.number().oneOf([1, 2, 3, 4]).required(),
-      sex: Yup.string().oneOf(['male', 'female']).required(),
-      levelActivity: Yup.number().oneOf([1, 2, 3, 4, 5]).required(),
+        .max(
+          new Date(new Date().getFullYear() - 18, 0, 1),
+          'You must be at least 18 years old to use this app'
+        )
+        .transform((currentValue, originalValue) => {
+          if (originalValue) {
+            const parts = originalValue.split('-');
+            const year = parseInt(parts[0]);
+            const month = parseInt(parts[1]) - 1;
+            const day = parseInt(parts[2]);
+            return new Date(year, month, day);
+          }
+          return null;
+        })
+        .required('This field is required!'),
+      blood: Yup.number().oneOf([1, 2, 3, 4]).required('This field is required!'),
+      sex: Yup.string().oneOf(['male', 'female']).required('This field is required!'),
+      levelActivity: Yup.number().oneOf([1, 2, 3, 4, 5]).required('This field is required!'),
     }),
     onSubmit: values => {
-      // бекенд
+      const userData = {
+        height: parseInt(values.height),
+        currentWeight: parseInt(values.currentWeight),
+        desiredWeight: parseInt(values.desiredWeight),
+        birthday: values.birthday,
+        blood: parseInt(values.blood),
+        sex: values.sex,
+        levelActivity: parseInt(values.levelActivity),
+      };
+      console.log(userData);
+      dispatch(updateParams(userData));
       if (currentStep === 2) {
         // Відправка
       } else {
@@ -67,70 +98,67 @@ const ParamsForm = () => {
       {currentStep === 0 && (
         <FormSection>
           <TitlePage text="Get closer to your goals!" />
-
           <TextGrey text="To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:" />
           <FormGroupContent>
             <FormGroup>
-              <label htmlFor="height">
-                {/* Height: */}
-                <input
-                  type="number"
-                  id="height"
-                  name="height"
-                  placeholder="Height"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.height}
-                />
-                {formik.touched.height && formik.errors.height ? (
-                  <div>{formik.errors.height}</div>
-                ) : null}
-              </label>
+              <input
+                type="number"
+                id="height"
+                name="height"
+                placeholder=" "
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.height}
+              />
+              <label htmlFor="height">Height:</label>
+              {formik.touched.height && formik.errors.height ? (
+                <div>{formik.errors.height}</div>
+              ) : null}
             </FormGroup>
             <FormGroup>
-              <label htmlFor="currentWeight">{/* Current Weight: */}</label>
               <input
                 type="number"
                 id="currentWeight"
                 name="currentWeight"
-                placeholder="currentWeight"
+                placeholder=" "
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.currentWeight}
               />
+              <label htmlFor="currentWeight">Current Weight:</label>
               {formik.touched.currentWeight && formik.errors.currentWeight ? (
                 <div>{formik.errors.currentWeight}</div>
               ) : null}
             </FormGroup>
             <FormGroup>
-              <label htmlFor="desiredWeight">{/* Desired Weight: */}</label>
               <input
                 type="number"
                 id="desiredWeight"
                 name="desiredWeight"
-                placeholder="desiredWeight"
+                placeholder=" "
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.desiredWeight}
               />
+              <label htmlFor="desiredWeight">Desired Weight:</label>
               {formik.touched.desiredWeight && formik.errors.desiredWeight ? (
                 <div>{formik.errors.desiredWeight}</div>
               ) : null}
             </FormGroup>
             <FormGroup>
-              <label htmlFor="birthday">{/* Birthday: */}</label>
-              <input
-                type="date"
-                id="birthday"
-                name="birthday"
-                placeholder="birthday"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.birthday}
-              />
-              {formik.touched.birthday && formik.errors.birthday ? (
-                <div>{formik.errors.birthday}</div>
-              ) : null}
+              <div style={{ position: 'relative' }}>
+                <Input
+                  type="date"
+                  name="birthday"
+                  onChange={formik.handleChange}
+                  value={formik.values.birthday}
+                />
+                <ButtonIcon type="button">
+                  <svg width={'18'} height={'18'}>
+                    <use href={icon + '#icon-calendar'}></use>
+                  </svg>
+                </ButtonIcon>
+              </div>
             </FormGroup>
           </FormGroupContent>
         </FormSection>
@@ -145,50 +173,50 @@ const ParamsForm = () => {
               <div></div>
               <RadioLabel>
                 <label>
-                  <input
+                  <FielRadio
                     type="radio"
                     name="blood"
                     value="1"
                     checked={formik.values.blood === '1'}
                     onChange={formik.handleChange}
                   />
-                  1
+                  <LabelRadio> 1</LabelRadio>
                 </label>
               </RadioLabel>
               <RadioLabel>
                 <label>
-                  <input
+                  <FielRadio
                     type="radio"
                     name="blood"
-                    value="1"
-                    checked={formik.values.blood === '1'}
+                    value="2"
+                    checked={formik.values.blood === '2'}
                     onChange={formik.handleChange}
                   />
-                  2
+                  <LabelRadio>2</LabelRadio>
                 </label>
               </RadioLabel>
               <RadioLabel>
                 <label>
-                  <input
+                  <FielRadio
                     type="radio"
                     name="blood"
-                    value="1"
-                    checked={formik.values.blood === '1'}
+                    value="3"
+                    checked={formik.values.blood === '3'}
                     onChange={formik.handleChange}
                   />
-                  3
+                  <LabelRadio>3</LabelRadio>
                 </label>
               </RadioLabel>
               <RadioLabel>
                 <label>
-                  <input
+                  <FielRadio
                     type="radio"
                     name="blood"
-                    value="1"
-                    checked={formik.values.blood === '1'}
+                    value="4"
+                    checked={formik.values.blood === '4'}
                     onChange={formik.handleChange}
                   />
-                  4
+                  <LabelRadio>4</LabelRadio>
                 </label>
               </RadioLabel>
             </BloodContainer>
@@ -197,26 +225,26 @@ const ParamsForm = () => {
               <BloodSex>Sex:</BloodSex>
               <RadioLabel>
                 <BloodSex>
-                  <input
+                  <FielRadio
                     type="radio"
                     name="sex"
                     value="male"
                     checked={formik.values.sex === 'male'}
                     onChange={formik.handleChange}
                   />
-                  Male
+                  <LabelRadio>Male</LabelRadio>
                 </BloodSex>
               </RadioLabel>
               <RadioLabel>
                 <BloodSex>
-                  <input
+                  <FielRadio
                     type="radio"
                     name="sex"
-                    value="male"
-                    checked={formik.values.sex === 'male'}
+                    value="female"
+                    checked={formik.values.sex === 'female'}
                     onChange={formik.handleChange}
                   />
-                  Female
+                  <LabelRadio>Female</LabelRadio>
                 </BloodSex>
               </RadioLabel>
             </SexContainer>
@@ -227,63 +255,67 @@ const ParamsForm = () => {
 
             <RadioLabel>
               <LevelActivityText>
-                <input
+                <FielRadio
                   type="radio"
                   name="levelActivity"
                   value="1"
                   checked={formik.values.levelActivity === '1'}
                   onChange={formik.handleChange}
                 />
-                Sedentary lifestyle (little or no physical activity)
+                <LabelRadio>Sedentary lifestyle (little or no physical activity)</LabelRadio>
               </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
               <LevelActivityText>
-                <input
+                <FielRadio
                   type="radio"
                   name="levelActivity"
                   value="2"
                   checked={formik.values.levelActivity === '2'}
                   onChange={formik.handleChange}
                 />
-                Light activity (light exercises/sports 1-3 days per week)
+                <LabelRadio>Light activity (light exercises/sports 1-3 days per week)</LabelRadio>
               </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
               <LevelActivityText>
-                <input
+                <FielRadio
                   type="radio"
                   name="levelActivity"
                   value="3"
                   checked={formik.values.levelActivity === '3'}
                   onChange={formik.handleChange}
                 />
-                Moderately active (moderate exercises/sports 3-5 days per week)
+                <LabelRadio>
+                  Moderately active (moderate exercises/sports 3-5 days per week)
+                </LabelRadio>
               </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
               <LevelActivityText>
-                <input
+                <FielRadio
                   type="radio"
                   name="levelActivity"
                   value="4"
                   checked={formik.values.levelActivity === '4'}
                   onChange={formik.handleChange}
                 />
-                Very active (intense exercises/sports 6-7 days per week)
+                <LabelRadio>Very active (intense exercises/sports 6-7 days per week)</LabelRadio>
               </LevelActivityText>
             </RadioLabel>
             <RadioLabel>
               <LevelActivityText>
-                <input
+                <FielRadio
                   type="radio"
                   name="levelActivity"
                   value="5"
                   checked={formik.values.levelActivity === '5'}
                   onChange={formik.handleChange}
                 />
-                Extremely active (very strenuous exercises/sports and physical
-                work)
+
+                <LabelRadio>
+                  Extremely active (very strenuous exercises/sports and physical work)
+                </LabelRadio>
               </LevelActivityText>
             </RadioLabel>
           </ActiveContainer>
@@ -313,10 +345,7 @@ const ParamsForm = () => {
       )}
 
       {currentStep < 2 && (
-        <NextButton
-          type="button"
-          onClick={() => setCurrentStep(currentStep + 1)}
-        >
+        <NextButton type="button" onClick={() => setCurrentStep(currentStep + 1)}>
           Next
         </NextButton>
       )}

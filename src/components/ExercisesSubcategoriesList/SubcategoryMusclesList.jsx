@@ -8,7 +8,7 @@ import { SubCategoryExercisesItem } from 'components';
 import Pagination from 'components/ExercisesPagination/ExercisesPagination';
 import { PaginationList } from 'components/ExercisesPagination/ExercisesPagination.styled';
 
-export const MusclesList = () => {
+export const MusclesList = ({ handleFilterClick, handleSetExerciseName }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,7 +54,12 @@ export const MusclesList = () => {
     <PaginationList>
       <ExercisesSublist>
         {currentItems.map(item => (
-          <SubCategoryExercisesItem key={item._id} exercisesItem={item} />
+          <SubCategoryExercisesItem
+            key={item._id}
+            exercisesItem={item}
+            handleFilterClick={handleFilterClick}
+            handleSetExerciseName={handleSetExerciseName}
+          />
         ))}
       </ExercisesSublist>
       {itemsPerPage < muscles.length && (
