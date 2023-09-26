@@ -100,7 +100,11 @@ export const FormGroup = styled.div`
   }
 
   div {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    font-size: 12px;
+    line-height: 15px;
+    color: #e6533c;
   }
 `;
 
@@ -180,5 +184,34 @@ export const GoBackContainer = styled.div`
   margin-top: 30px;
   @media screen and (min-width: 768px) {
     margin-top: 65px;
+  }
+`;
+////////////////
+
+export const LabelRadio = styled.label`
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 128.571%;
+  cursor: pointer;
+  &::before {
+    content: ' ';
+    margin-right: 9px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #636366;
+    border-radius: 10px;
+    @media screen and (min-width: 768px) {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 150%;
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
   }
 `;
