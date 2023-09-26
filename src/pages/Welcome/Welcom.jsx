@@ -1,4 +1,4 @@
-import { BackgroundImage } from 'components';
+import { BackgroundImage, StatisticsInfo } from 'components';
 import { Picture, SignIn, SignUp, Title, Wrapper } from './Welcom.styled';
 import bg from 'images/bg';
 const { lineD1x, lineD2x, lineM1x, lineM2x } = bg;
@@ -24,7 +24,7 @@ export default function Welcome() {
         <SignUp to="register">Sign Up</SignUp>
         <SignIn to="login">Sign In</SignIn>
       </Wrapper>
-
+      <StatisticsInfo />
       <BackgroundImage />
     </>
   );

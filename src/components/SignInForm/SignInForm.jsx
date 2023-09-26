@@ -17,7 +17,7 @@ import {
   SuccessText,
   Wrapper,
 } from './SignInForm.styled';
-import { Button } from 'components';
+import { Button, StatisticsInfo } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { selectUser } from 'redux/auth/selectors';
 

@@ -4,7 +4,7 @@ import { getStatistics } from './operations';
 const initialState = {
   isLoading: false,
   error: null,
-  statistics: null,
+  statistics: {},
 };
 
 const handlePending = state => {

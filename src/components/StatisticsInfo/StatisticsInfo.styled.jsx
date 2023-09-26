@@ -100,7 +100,7 @@ export const NumberDinamic = styled.p`
   font-weight: 700;
   line-height: 24px; /* 100% */
   letter-spacing: -1px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   line-height: 100%;
   @media (min-width: 768px) {
     margin-top: 8px;
