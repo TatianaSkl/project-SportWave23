@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { selectUser } from 'redux/auth/selectors';
-import { updateName, updateParams } from 'redux/auth/operations';
+import { getBmr, updateName, updateParams } from 'redux/auth/operations';
 import icon from 'images/sprite.svg';
 import { Button } from 'components';
 import {
@@ -98,6 +98,7 @@ export const UserForm = () => {
           name: values.name,
         };
         dispatch(updateName(userName));
+        dispatch(getBmr());
         setIsFormDirty(false);
         console.log(userData);
       } catch (validationErrors) {

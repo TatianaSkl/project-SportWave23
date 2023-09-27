@@ -58,6 +58,21 @@ export const refreshUser = createAsyncThunk('users/refresh', async (_, thunkAPI)
   }
 });
 
+export const getBmr = createAsyncThunk('users/bmr', async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const persistedToken = state.auth.token;
+  if (!persistedToken) {
+    return thunkAPI.rejectWithValue('Unable to fetch user');
+  }
+  try {
+    setAuthHeader(persistedToken);
+    const res = await axios.get('/users/current');
+    return res.data.bmr;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export const updateAvatar = createAsyncThunk('users/avatar', async (file, thunkAPI) => {
   try {
     const formData = new FormData();
@@ -66,7 +81,6 @@ export const updateAvatar = createAsyncThunk('users/avatar', async (file, thunkA
     const res = await axios.patch('/users/avatars', formData, {
       headers: { 'content-type': 'multipart/form-data' },
     });
-
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

@@ -14,6 +14,18 @@ export const getDataProducts = createAsyncThunk(
   }
 );
 
+export const getAllCaloriesDay = createAsyncThunk(
+  'diary/getDataProducts',
+  async (date, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`/products_diary/${date}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getDataExercises = createAsyncThunk(
   'diary/getDataExercises',
   async (date, { rejectWithValue }) => {
