@@ -24,9 +24,26 @@ export const ProductsHeader = styled.div`
 `;
 
 export const ProductContainer = styled.div`
+@media screen and (min-width: 768px){
+  margin-top: 40px;
+  width: 690px;
+} 
 @media screen and (min-width: 1440px){
   margin-top: 40px;
   width: 830px;
   height:490px;
 }  
+`;
+
+export const PictureBg = styled.picture`
+  display: none;
+  @media screen and (min-width: 1440px) {
+    display: block;
+    position: absolute;
+    width: 70%;
+  top: 11%;
+    left: 72%;
+  z-index: -1;
+    background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);
+  }
 `;
