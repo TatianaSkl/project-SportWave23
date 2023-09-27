@@ -24,20 +24,27 @@ const capitalizeFirstLeter = string => {
   return newString;
 };
 
-export const ExercisesItem = data => {
+export const ExercisesItem = ({ data, openModalToggle }) => {
   return (
     <ExerciseItemEl>
       <BtnWrapper>
         <MainTitle>{texts.mainTitle}</MainTitle>
-        <BtnText type="button">{texts.btnText}</BtnText>
+        <BtnText
+          onClick={() => {
+            openModalToggle(data);
+          }}
+          type="button"
+        >
+          {texts.btnText}
+        </BtnText>
       </BtnWrapper>
-      <Title>{capitalizeFirstLeter(data.data.name)} </Title>
+      <Title>{capitalizeFirstLeter(data.name)} </Title>
       <Statistics>
         {Object.keys(texts.stats).map(e => (
           <StatItem key={e}>
             {texts.stats[e]}
             <StatItemValue>
-              {capitalizeFirstLeter(String(data.data[e]))}
+              {capitalizeFirstLeter(String(data[e]))}
             </StatItemValue>
           </StatItem>
         ))}

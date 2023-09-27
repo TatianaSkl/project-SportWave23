@@ -1,19 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ExercisesItem } from 'components';
 import { ExercisesListAll, LoadingText } from './ExercisesList.styled';
 import { fetchExercises } from 'redux/exercises/operations';
 import { selectExercises } from 'redux/exercises/selectors';
+import BasicModalWindow from 'components/BasicModalWindow/BasicModalWindow';
+import { ExersiceModalWindow } from 'components';
 
 export const ExercisesList = ({ exerciseName }) => {
+  const [modalData, setModalData] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchExercises());
   }, [dispatch]);
 
+  const openModalToggle = el => {
+    setModalData(el);
+  };
+
+  const closeModal = () => {
+    setModalData(null);
+  };
+
   const exercises = useSelector(selectExercises);
-  console.log(exercises);
+
   const filteredExercises = exercises.filter(
     exercise =>
       exercise.bodyPart ||
@@ -21,12 +32,33 @@ export const ExercisesList = ({ exerciseName }) => {
       exercise.equipment === exerciseName
   );
   return (
-    <ExercisesListAll>
-      {filteredExercises.length ? (
-        filteredExercises.map(el => <ExercisesItem key={el._id} data={el} />)
-      ) : (
-        <LoadingText>Please wait. We are loading exercises.</LoadingText>
+    <>
+      {modalData && (
+        <BasicModalWindow isOpenModalToggle={closeModal}>
+          {modalData.gifUrl ? (
+            <ExersiceModalWindow data={modalData} onClick={openModalToggle} />
+          ) : (
+            <ExersiceModalWindow
+              closeModal={closeModal}
+              data={modalData}
+              onClick={closeModal}
+            />
+          )}
+        </BasicModalWindow>
       )}
-    </ExercisesListAll>
+      <ExercisesListAll>
+        {filteredExercises.length ? (
+          filteredExercises.map(el => (
+            <ExercisesItem
+              key={el._id}
+              data={el}
+              openModalToggle={openModalToggle}
+            />
+          ))
+        ) : (
+          <LoadingText>Please wait. We are loading exercises.</LoadingText>
+        )}
+      </ExercisesListAll>
+    </>
   );
 };
