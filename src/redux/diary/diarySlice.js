@@ -53,7 +53,6 @@ const diary = createSlice({
       handleFullfield(state);
       const newProductsList = state.products.filter(product => product._id !== payload);
       state.products = newProductsList;
-      // state.allCaloriesDay = payload.allCaloriesDay;
     });
     builder.addCase(deleteProduct.rejected, handleRejected);
 
@@ -62,8 +61,6 @@ const diary = createSlice({
       handleFullfield(state);
       const newExercisesList = state.exercises.filter(exercise => exercise._id !== payload);
       state.exercises = newExercisesList;
-      // state.allExercisesDay = payload.allCaloriesDay;
-      // state.allTimeDay = payload.allTimeDay;
     });
 
     builder.addCase(deleteExercise.rejected, handleRejected);

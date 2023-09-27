@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectBmr } from 'redux/auth/selectors';
+import { useEffect } from 'react';
+import { getBmr } from 'redux/auth/operations';
 import {
-  // selectExercises,
-  // selectProducts,
   selectallCaloriesDay,
   selectallExercisesDay,
   selectallTimeDay,
@@ -22,30 +22,20 @@ import {
   TextBoxGrey,
   WrapperTablet,
 } from './DayDashboard.styled';
-// import { useEffect } from 'react';
-// import { getDataExercises, getDataProducts } from 'redux/diary/operations';
 
 export const DayDashboard = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const allCaloriesDay = useSelector(selectallCaloriesDay);
   const allExercisesDay = useSelector(selectallExercisesDay);
   const allTimeDay = useSelector(selectallTimeDay);
-  const user = useSelector(selectUser);
-  // const products = useSelector(selectProducts);
-  // const exercises = useSelector(selectExercises);
+  const bmr = useSelector(selectBmr);
 
-  const restOfCalories = user.bmr - allCaloriesDay;
+  const restOfCalories = bmr - allCaloriesDay;
   const restOfSports = Math.abs(allTimeDay - 110);
 
-  // useEffect(() => {
-  //   if (products !== selectProducts) {
-  //     dispatch(getDataProducts(date));
-  //   }
-
-  //   if (exercises !== selectExercises) {
-  //     dispatch(getDataExercises(date));
-  //   }
-  // }, [date, products, exercises, selectProducts, selectExercises, dispatch]);
+  useEffect(() => {
+    dispatch(getBmr());
+  }, [dispatch]);
 
   return (
     <div>
@@ -58,7 +48,7 @@ export const DayDashboard = () => {
               </svg>
               <TextBox>Daily calorie intake</TextBox>
             </div>
-            <Number>{user.bmr}</Number>
+            <Number>{bmr}</Number>
           </WrapperDaily>
           <WrapperTime>
             <div style={{ display: 'flex', alignItems: 'center' }}>

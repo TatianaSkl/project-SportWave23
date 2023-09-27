@@ -76,6 +76,18 @@ export const Text = styled.p`
 export const WrapperScrol = styled.div`
   overflow-y: auto;
   max-height: 824px;
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+  }
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+  }
   @media (min-width: 768px) {
     max-height: 160px;
   }

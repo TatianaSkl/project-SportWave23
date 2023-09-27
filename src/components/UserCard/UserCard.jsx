@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { selectBmr, selectUser } from 'redux/auth/selectors';
 import { useDropzone } from 'react-dropzone';
 import { useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
@@ -19,17 +19,21 @@ import {
   WrapperFoto,
   WrapperTime,
   WrapperUserCard,
-  WrapperWarning
+  WrapperWarning,
 } from './UserCard.styled';
 import icon from 'images/sprite.svg';
 import { LogOutBtn } from 'components';
-import { updateAvatarUrl } from 'redux/auth/operations';
+import { getBmr, updateAvatarUrl } from 'redux/auth/operations';
 
 export const UserCard = () => {
   const user = useSelector(selectUser);
+  const bmr = useSelector(selectBmr);
   const [selectedImageUrl, setSelectedImageUrl] = useState(null);
-  
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBmr());
+  }, [dispatch]);
 
   useEffect(() => {
     const savedImageUrl = localStorage.getItem(`userAvatar_${user.name}`);
@@ -38,16 +42,16 @@ export const UserCard = () => {
     }
   }, [user.name]);
 
-  const onDrop = (acceptedFiles) => {
+  const onDrop = acceptedFiles => {
     const file = acceptedFiles[0];
     const reader = new FileReader();
-  
+
     reader.onload = () => {
       const imageUrl = reader.result;
       setSelectedImageUrl(imageUrl);
       localStorage.setItem(`userAvatar_${user.name}`, imageUrl);
     };
-  
+
     reader.readAsDataURL(file);
   };
 
@@ -57,7 +61,7 @@ export const UserCard = () => {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
-    input.onchange = (e) => {
+    input.onchange = e => {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
@@ -98,7 +102,7 @@ export const UserCard = () => {
             </svg>
             <TextBox>Daily calorie intake</TextBox>
           </div>
-          <Number>{user.bmr}</Number>
+          <Number>{bmr}</Number>
         </WrapperCalor>
         <WrapperTime>
           <div style={{ display: 'flex', alignItems: 'center' }}>

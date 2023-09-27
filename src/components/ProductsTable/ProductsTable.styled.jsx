@@ -18,6 +18,12 @@ export const Title = styled.th`
   line-height: 150%;
   text-align: left;
   padding: 0 0 4px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  /* display: -webkit-box; */
 `;
 
 export const ValueTd = styled.td`
@@ -29,19 +35,21 @@ export const ValueTd = styled.td`
 `;
 
 export const WrapperT = styled.div`
-  display: flex;
+  /* display: flex; */
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   font-size: 16px;
   line-height: 150%;
   padding: 6px 14px;
-  width: 204px;
-  overflow: hidden;
-  white-space: nowrap;
+  width: 202px;
   text-overflow: ellipsis;
-  flex: 1;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  white-space: nowrap;
   @media (min-width: 1440px) {
-    width: 212px;
+    width: 210px;
   }
 `;
 
@@ -51,11 +59,11 @@ export const WrapperCg = styled.div`
   font-size: 16px;
   line-height: 150%;
   padding: 6px 14px;
-  width: 128px;
+  width: 126px;
   overflow: hidden;
   white-space: nowrap;
   @media (min-width: 1440px) {
-    width: 165px;
+    width: 162px;
   }
 `;
 
@@ -67,7 +75,7 @@ export const WrapperCl = styled.div`
   padding: 6px 14px;
   width: 90px;
   @media (min-width: 1440px) {
-    width: 105px;
+    width: 104px;
   }
 `;
 
@@ -79,7 +87,7 @@ export const WrapperW = styled.div`
   padding: 6px 14px;
   width: 90px;
   @media (min-width: 1440px) {
-    width: 105px;
+    width: 104px;
   }
 `;
 
@@ -151,15 +159,3 @@ export const BoxColorText = styled.div`
   font-size: 14px;
   line-height: 128.571%;
 `;
-
-// const bgColorIsOnline = props => {
-//   const { status, theme } = props;
-//   switch (status) {
-//     case true:
-//       return theme.colors.green;
-//     case false:
-//       return theme.colors.red;
-//     default:
-//       return theme.colors.gray;
-//   }
-// };
