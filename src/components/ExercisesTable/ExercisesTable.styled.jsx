@@ -86,7 +86,7 @@ export const WrapperT = styled.div`
   overflow: hidden;
   white-space: nowrap;
   @media (min-width: 1440px) {
-    width: 104px;
+    width: 103px;
   }
 `;
 
@@ -100,7 +100,7 @@ export const WrapperBc = styled.div`
   overflow: hidden;
   white-space: nowrap;
   @media (min-width: 1440px) {
-    width: 95px;
+    width: 94px;
   }
 `;
 
@@ -114,7 +114,7 @@ export const WrapperTm = styled.div`
   overflow: hidden;
   white-space: nowrap;
   @media (min-width: 1440px) {
-    width: 86px;
+    width: 82px;
   }
 `;
 
