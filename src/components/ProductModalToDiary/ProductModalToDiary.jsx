@@ -8,7 +8,7 @@ import {
   SpanText,
   Text,
   Wrap,
-} from './ExercisesModalToDiary.styled';
+} from './ProductModalToDiary.styled';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { addProduct } from 'redux/diary/operations';
@@ -38,7 +38,6 @@ export const ExercisesModalToDiary = ({ title, calories, id }) => {
         productId: id,
         amount: quantity,
         calories,
-        owner: '650ff3903d54d8214c89739e',
       })
     );
     //   .then(() => {
