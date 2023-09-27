@@ -17,7 +17,7 @@ import {
   SuccessText,
   Wrapper,
 } from './SignInForm.styled';
-import { Button } from 'components';
+import { Button, StatisticsInfo } from 'components';
 import { useNavigate } from 'react-router-dom';
 import { selectUser } from 'redux/auth/selectors';
 
@@ -31,7 +31,10 @@ export const schemaLog = yup.object().shape({
     .required('This field is required!'),
   password: yup
     .string()
-    .matches(passwordRegex, 'Must be exactly 7 characters long with 6 letters and 1 digit')
+    .matches(
+      passwordRegex,
+      'Must be exactly 7 characters long with 6 letters and 1 digit'
+    )
     .min(7, 'Must be exactly 7 characters long with 6 letters and 1 digit')
     .required('This field is required!'),
 });
@@ -60,67 +63,73 @@ export const SignInForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={{ email: '', password: '' }}
-      validationSchema={schemaLog}
-      onSubmit={handleSubmit}
-    >
-      {formik => (
-        <FormAuth autoComplete="off">
-          <Wrapper>
-            <FieldWrapper
-              className={`${
-                formik.touched.email && formik.errors.email
-                  ? 'error'
-                  : formik.touched.email && !formik.errors.email
-                  ? 'success'
-                  : ''
-              }`}
-            >
-              <FormField type="email" name="email" placeholder="Email" />
-              <MessageWrapper>
-                <ErrorIcon data-status="error" />
-                <ErrorText name="email" component="div" />
-              </MessageWrapper>
-              {formik.touched.email && !formik.errors.email && (
+    <>
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={schemaLog}
+        onSubmit={handleSubmit}
+      >
+        {formik => (
+          <FormAuth autoComplete="off">
+            <Wrapper>
+              <FieldWrapper
+                className={`${
+                  formik.touched.email && formik.errors.email
+                    ? 'error'
+                    : formik.touched.email && !formik.errors.email
+                    ? 'success'
+                    : ''
+                }`}
+              >
+                <FormField type="email" name="email" placeholder="Email" />
                 <MessageWrapper>
-                  <SuccessIcon data-status="success" />
-                  <SuccessText>Success email</SuccessText>
+                  <ErrorIcon data-status="error" />
+                  <ErrorText name="email" component="div" />
                 </MessageWrapper>
-              )}
-            </FieldWrapper>
-            <FieldWrapper
-              className={`${
-                formik.touched.password && formik.errors.password
-                  ? 'error'
-                  : formik.touched.password && !formik.errors.password
-                  ? 'success'
-                  : ''
-              }`}
-            >
-              <FormField
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
-              />
-              <MessageWrapper>
-                <ErrorIcon data-status="error" />
-                <ErrorText name="password" component="div" />
-              </MessageWrapper>
-              {formik.touched.password && !formik.errors.password && (
+                {formik.touched.email && !formik.errors.email && (
+                  <MessageWrapper>
+                    <SuccessIcon data-status="success" />
+                    <SuccessText>Success email</SuccessText>
+                  </MessageWrapper>
+                )}
+              </FieldWrapper>
+              <FieldWrapper
+                className={`${
+                  formik.touched.password && formik.errors.password
+                    ? 'error'
+                    : formik.touched.password && !formik.errors.password
+                    ? 'success'
+                    : ''
+                }`}
+              >
+                <FormField
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                />
                 <MessageWrapper>
-                  <SuccessIcon data-status="success" />
-                  <SuccessText>Success password</SuccessText>
+                  <ErrorIcon data-status="error" />
+                  <ErrorText name="password" component="div" />
                 </MessageWrapper>
-              )}
-              <BottonEye type="button" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <IconBsEyeSlash /> : <IconBsEye />}
-              </BottonEye>
-            </FieldWrapper>
-          </Wrapper>
-          <Button label="Sign In" />
-        </FormAuth>
-      )}
-    </Formik>
+                {formik.touched.password && !formik.errors.password && (
+                  <MessageWrapper>
+                    <SuccessIcon data-status="success" />
+                    <SuccessText>Success password</SuccessText>
+                  </MessageWrapper>
+                )}
+                <BottonEye
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <IconBsEyeSlash /> : <IconBsEye />}
+                </BottonEye>
+              </FieldWrapper>
+            </Wrapper>
+            <Button label="Sign In" />
+          </FormAuth>
+        )}
+      </Formik>
+      <StatisticsInfo randomNumber={2} />
+    </>
   );
 };

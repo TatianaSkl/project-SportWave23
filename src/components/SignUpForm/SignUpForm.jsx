@@ -18,7 +18,7 @@ import {
   Wrapper,
   BottonEye,
 } from './SignUpForm.styled';
-import { Button } from 'components';
+import { Button, StatisticsInfo } from 'components';
 
 const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*\.\w{2,3}$/;
 const passwordRegex = /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/;
@@ -34,7 +34,10 @@ export const schemaReg = yup.object().shape({
     .required('This field is required!'),
   password: yup
     .string()
-    .matches(passwordRegex, 'Must be exactly 7 characters long with 6 letters and 1 digit')
+    .matches(
+      passwordRegex,
+      'Must be exactly 7 characters long with 6 letters and 1 digit'
+    )
     .min(7, 'Must be exactly 7 characters long with 6 letters and 1 digit')
     .required('This field is required!'),
 });
@@ -55,89 +58,95 @@ export const SignUpForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={{ name: '', email: '', password: '' }}
-      validationSchema={schemaReg}
-      onSubmit={handleSubmit}
-    >
-      {formik => (
-        <FormAuth autoComplete="off">
-          <Wrapper>
-            <FieldWrapper
-              className={`${
-                formik.touched.name && formik.errors.name
-                  ? 'error'
-                  : formik.touched.name && !formik.errors.name
-                  ? 'success'
-                  : ''
-              }`}
-            >
-              <FormField type="text" name="name" placeholder="Name" />
-              <MessageWrapper>
-                <ErrorIcon data-status="error" />
-                <ErrorText name="name" component="div" />
-              </MessageWrapper>
+    <>
+      <Formik
+        initialValues={{ name: '', email: '', password: '' }}
+        validationSchema={schemaReg}
+        onSubmit={handleSubmit}
+      >
+        {formik => (
+          <FormAuth autoComplete="off">
+            <Wrapper>
+              <FieldWrapper
+                className={`${
+                  formik.touched.name && formik.errors.name
+                    ? 'error'
+                    : formik.touched.name && !formik.errors.name
+                    ? 'success'
+                    : ''
+                }`}
+              >
+                <FormField type="text" name="name" placeholder="Name" />
+                <MessageWrapper>
+                  <ErrorIcon data-status="error" />
+                  <ErrorText name="name" component="div" />
+                </MessageWrapper>
 
-              {formik.touched.name && !formik.errors.name && (
+                {formik.touched.name && !formik.errors.name && (
+                  <MessageWrapper>
+                    <SuccessIcon data-status="success" />
+                    <SuccessText>Success name</SuccessText>
+                  </MessageWrapper>
+                )}
+              </FieldWrapper>
+              <FieldWrapper
+                className={`${
+                  formik.touched.email && formik.errors.email
+                    ? 'error'
+                    : formik.touched.email && !formik.errors.email
+                    ? 'success'
+                    : ''
+                }`}
+              >
+                <FormField type="email" name="email" placeholder="Email" />
                 <MessageWrapper>
-                  <SuccessIcon data-status="success" />
-                  <SuccessText>Success name</SuccessText>
+                  <ErrorIcon data-status="error" />
+                  <ErrorText name="email" component="div" />
                 </MessageWrapper>
-              )}
-            </FieldWrapper>
-            <FieldWrapper
-              className={`${
-                formik.touched.email && formik.errors.email
-                  ? 'error'
-                  : formik.touched.email && !formik.errors.email
-                  ? 'success'
-                  : ''
-              }`}
-            >
-              <FormField type="email" name="email" placeholder="Email" />
-              <MessageWrapper>
-                <ErrorIcon data-status="error" />
-                <ErrorText name="email" component="div" />
-              </MessageWrapper>
-              {formik.touched.email && !formik.errors.email && (
+                {formik.touched.email && !formik.errors.email && (
+                  <MessageWrapper>
+                    <SuccessIcon data-status="success" />
+                    <SuccessText>Success email</SuccessText>
+                  </MessageWrapper>
+                )}
+              </FieldWrapper>
+              <FieldWrapper
+                className={`${
+                  formik.touched.password && formik.errors.password
+                    ? 'error'
+                    : formik.touched.password && !formik.errors.password
+                    ? 'success'
+                    : ''
+                }`}
+              >
+                <FormField
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                />
                 <MessageWrapper>
-                  <SuccessIcon data-status="success" />
-                  <SuccessText>Success email</SuccessText>
+                  <ErrorIcon data-status="error" />
+                  <ErrorText name="password" component="div" />
                 </MessageWrapper>
-              )}
-            </FieldWrapper>
-            <FieldWrapper
-              className={`${
-                formik.touched.password && formik.errors.password
-                  ? 'error'
-                  : formik.touched.password && !formik.errors.password
-                  ? 'success'
-                  : ''
-              }`}
-            >
-              <FormField
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
-              />
-              <MessageWrapper>
-                <ErrorIcon data-status="error" />
-                <ErrorText name="password" component="div" />
-              </MessageWrapper>
-              {formik.touched.password && !formik.errors.password && (
-                <MessageWrapper>
-                  <SuccessIcon data-status="success" />
-                  <SuccessText>Success password</SuccessText>
-                </MessageWrapper>
-              )}
-              <BottonEye type="button" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <IconBsEyeSlash /> : <IconBsEye />}
-              </BottonEye>
-            </FieldWrapper>
-          </Wrapper>
-          <Button label="Sign Up" />
-        </FormAuth>
-      )}
-    </Formik>
+                {formik.touched.password && !formik.errors.password && (
+                  <MessageWrapper>
+                    <SuccessIcon data-status="success" />
+                    <SuccessText>Success password</SuccessText>
+                  </MessageWrapper>
+                )}
+                <BottonEye
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <IconBsEyeSlash /> : <IconBsEye />}
+                </BottonEye>
+              </FieldWrapper>
+            </Wrapper>
+            <Button label="Sign Up" />
+          </FormAuth>
+        )}
+      </Formik>
+      <StatisticsInfo randomNumber={2} />
+    </>
   );
 };

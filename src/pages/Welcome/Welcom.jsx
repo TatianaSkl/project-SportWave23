@@ -1,9 +1,17 @@
-import { BackgroundImage } from 'components';
+import { BackgroundImage, StatisticsInfo } from 'components';
 import { Picture, SignIn, SignUp, Title, Wrapper } from './Welcom.styled';
 import bg from 'images/bg';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getStatistics } from 'redux/statistics/operations';
 const { lineD1x, lineD2x, lineM1x, lineM2x } = bg;
 
 export default function Welcome() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getStatistics());
+  }, [dispatch]);
   return (
     <>
       <Title>Transforming your body shape with Power Pulse</Title>
@@ -24,7 +32,7 @@ export default function Welcome() {
         <SignUp to="register">Sign Up</SignUp>
         <SignIn to="login">Sign In</SignIn>
       </Wrapper>
-
+      <StatisticsInfo randomNumber={2} />
       <BackgroundImage />
     </>
   );

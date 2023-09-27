@@ -8,6 +8,7 @@ export const theme = Object.freeze({
     normal: '#EFEDE899',
     success: '#3CBF61',
     error: '#D80027',
+    statisticsVideo: '#303030',
   },
   fontSizes: {
     small: '14px',
