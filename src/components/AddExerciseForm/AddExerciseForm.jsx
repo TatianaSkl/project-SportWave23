@@ -1,64 +1,40 @@
+import AddExerciseFormItem from './AddExerciseFormItem/AddExerciseFormItem';
 import {
-  PictureWrap,
-  AnimatedImage,
-  TimeText,
-  TimeSpinner,
-  SpinnerWrap,
-  TimeLeft,
-  TimePauseButton,
-  Calories,
-  CaloriesValue,
-  StatisticInfo,
-  StatisticItem,
-  StatisticList,
-  StatisticSubtitle,
-  AddButton,
+  ExerciseModalContainer,
+  ExerciseModalImg,
+  ExerciseModalImgWrapper,
+  ExerciseModalTimer,
+  ExerciseModalWindowBtn,
+  ExerciseModalWindowWrap,
+  BoxBtn,
 } from './AddExerciseForm.styled';
+import ExercisesTimer from 'components/ExercisesTimer/ExercisesTimer';
 
-const AddExerciseForm = ({ data }) => {
-  const { bodyPart, equipment, gifUrl, name, target, burnedCalories, time } =
-    data;
+export const ExersiceModalWindow = ({ data }) => {
+  const { bodyPart, equipment, gifUrl, name, target, time } = data;
 
   return (
-    <>
-      <PictureWrap>
-        <AnimatedImage src={gifUrl} alt={name} />
-      </PictureWrap>
-      <SpinnerWrap>
-        <TimeText>Time</TimeText>
-        <TimeSpinner>
-          <TimeLeft>02:10</TimeLeft>
-        </TimeSpinner>
-        <TimePauseButton>||</TimePauseButton>
-      </SpinnerWrap>
-      <Calories>
-        Burned calories: <CaloriesValue>{burnedCalories}</CaloriesValue>
-      </Calories>
-      <StatisticList>
-        <StatisticItem>
-          <StatisticSubtitle>Name</StatisticSubtitle>
-          <StatisticInfo>{name}</StatisticInfo>
-        </StatisticItem>
-        <StatisticItem>
-          <StatisticSubtitle>Target</StatisticSubtitle>
-          <StatisticInfo>{target}</StatisticInfo>
-        </StatisticItem>
-        <StatisticItem>
-          <StatisticSubtitle>Body part</StatisticSubtitle>
-          <StatisticInfo>{bodyPart}</StatisticInfo>
-        </StatisticItem>
-        <StatisticItem>
-          <StatisticSubtitle>Equipment</StatisticSubtitle>
-          <StatisticInfo>{equipment}</StatisticInfo>
-        </StatisticItem>
-        <StatisticItem>
-          <StatisticSubtitle>Time</StatisticSubtitle>
-          <StatisticInfo>{time} minutes</StatisticInfo>
-        </StatisticItem>
-      </StatisticList>
-      <AddButton type="submit">Add to diary</AddButton>
-    </>
+    <ExerciseModalContainer>
+      <ExerciseModalWindowWrap>
+        <ExerciseModalImgWrapper>
+          <ExerciseModalImg src={gifUrl} alt={name} />
+        </ExerciseModalImgWrapper>
+        <ExerciseModalTimer>
+          <AddExerciseFormItem
+            name={name}
+            bodypart={bodyPart}
+            target={target}
+            equipment={equipment}
+            time={time}
+          />
+          <ExercisesTimer data={data} />
+        </ExerciseModalTimer>
+        <BoxBtn>
+          <ExerciseModalWindowBtn type="button">
+            Add to diary
+          </ExerciseModalWindowBtn>
+        </BoxBtn>
+      </ExerciseModalWindowWrap>
+    </ExerciseModalContainer>
   );
 };
-
-export default AddExerciseForm;
