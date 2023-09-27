@@ -39,5 +39,5 @@ export * from 'components/TextGrey/TextGrey.jsx';
 export * from 'components/Logo/Logo.jsx';
 export * from 'components/ModalMenu/ModalMenu.jsx';
 export * from 'components/DatePicker/DatePicker.jsx';
-export * from 'components/ExercisesModalToDiary/ExercisesModalToDiary.jsx';
-export * from 'components/ExercisesModalToNext/ExercisesModalToNext.jsx';
+export * from 'components/ProductModalToDiary/ProductModalToDiary.jsx';
+export * from 'components/ProductModalToNext/ProductModalToNext.jsx';
