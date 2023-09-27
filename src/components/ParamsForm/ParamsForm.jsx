@@ -114,6 +114,7 @@ const ParamsForm = () => {
       }
       if (currentStep === 2) {
         // Відправка
+        formik.handleSubmit();
       } else {
         // розділ
         setCurrentStep(currentStep + 1);
@@ -456,6 +457,7 @@ const ParamsForm = () => {
         )}
       </div>
     </FormContainer>
+    
   );
 };
 
