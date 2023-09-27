@@ -4,7 +4,7 @@ import ProductsFilters from '../../components/ProductsFilters/ProductsFilters';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
+import { selectToken } from 'redux/auth/selectors';
 import bg from 'images/bg';
 const { bg5Desktop1x, bg5Desktop2x} = bg;
 
@@ -17,16 +17,22 @@ export default function Products() {
   const [hasMore, setHasMore] = useState(false);
   const [blood, setBlood] = useState('');
   
+ 
+  const token = useSelector(selectToken);
 
-  const user = useSelector(selectUser);
+  // const token = localStorage.getItem('auth')
+  // const key = JSON.parse(localStorage.getItem('persist:auth'));
+  // const token = key.token.replace(/"/g, '')
+  // console.log(token)
 
-  const TOKEN = user.token;
+  const TOKEN = token;
   console.log(TOKEN)
   axios.defaults.baseURL = 'https://power-pulse-project-backend.onrender.com';
 
   
 
   useEffect(() => {
+    
     const fetchData = async () => {
       try {
         const config = {
