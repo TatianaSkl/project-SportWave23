@@ -129,7 +129,7 @@ export const SignInForm = () => {
           </FormAuth>
         )}
       </Formik>
-      <StatisticsInfo />
+      <StatisticsInfo randomNumber={2} />
     </>
   );
 };

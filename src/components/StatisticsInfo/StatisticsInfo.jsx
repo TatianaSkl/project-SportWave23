@@ -1,7 +1,7 @@
 import icon from 'images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getStatistics } from 'redux/statistics/operations';
+import { useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { getStatistics } from 'redux/statistics/operations';
 import { selectStatistics } from 'redux/statistics/selectors';
 import {
   Number,
@@ -13,25 +13,25 @@ import {
   WrapperStatistics,
   WrapperSvg,
   WrapperVideoCount,
+  WrapperVideoCountTwo,
 } from './StatisticsInfo.styled';
 
-export const StatisticsInfo = () => {
-  const dispatch = useDispatch();
+export const StatisticsInfo = ({ stylePosition, randomNumber }) => {
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getStatistics());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getStatistics());
+  // }, [dispatch]);
 
   const statistics = useSelector(selectStatistics);
-  console.log(statistics);
-  const min = 1;
-  const max = 4;
+  // console.log(statistics);
+  // const min = 1;
+  // const max = 4;
+  // const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 
-  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-
+  console.log(randomNumber);
   const { exercisesVideo, exercisesDone, allTime, allUser, allCalories } =
     statistics;
-  console.log(2);
 
   const renderContentRandom = () => {
     switch (randomNumber) {
@@ -66,20 +66,37 @@ export const StatisticsInfo = () => {
 
   return (
     <>
-      <WrapperVideoCount>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <WrapperSvg>
-            <SvgPlay>
-              <use href={icon + '#icon-Polygon-1'}></use>
-            </SvgPlay>
-          </WrapperSvg>
+      {!stylePosition ? (
+        <WrapperVideoCount>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <WrapperSvg>
+              <SvgPlay>
+                <use href={icon + '#icon-Polygon-1'}></use>
+              </SvgPlay>
+            </WrapperSvg>
 
-          <div>
-            <Number>{exercisesVideo}</Number>
-            <TextBox>Video tutorial</TextBox>
+            <div>
+              <Number>{exercisesVideo}</Number>
+              <TextBox>Video tutorial</TextBox>
+            </div>
           </div>
-        </div>
-      </WrapperVideoCount>
+        </WrapperVideoCount>
+      ) : (
+        <WrapperVideoCountTwo>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <WrapperSvg>
+              <SvgPlay>
+                <use href={icon + '#icon-Polygon-1'}></use>
+              </SvgPlay>
+            </WrapperSvg>
+
+            <div>
+              <Number>{exercisesVideo}</Number>
+              <TextBox>Video tutorial</TextBox>
+            </div>
+          </div>
+        </WrapperVideoCountTwo>
+      )}
       <WrapperStatistics>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <SvgRun>

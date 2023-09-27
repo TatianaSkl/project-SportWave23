@@ -28,6 +28,28 @@ export const WrapperVideoCount = styled.div`
   }
 `;
 
+export const WrapperVideoCountTwo = styled.div`
+  position: absolute;
+  top: 600px;
+  left: 160px;
+  height: 66px;
+  width: 146px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background-color: ${props => props.theme.colors.statisticsVideo};
+  @media (min-width: 768px) {
+    top: 714px;
+    left: 331px;
+    width: 206px;
+    height: 96px;
+    padding: 20px;
+  }
+  @media (min-width: 1440px) {
+    top: 384px;
+    left: 770px;
+  }
+`;
+
 export const TextBox = styled.p`
   margin-top: 4px;
   color: rgba(239, 237, 232, 0.65);
@@ -44,6 +66,7 @@ export const TextBox = styled.p`
 
 export const WrapperStatistics = styled.div`
   position: absolute;
+  /* box-sizing: content-box; */
   top: 675px;
   right: 20px;
   width: 119px;
@@ -56,7 +79,7 @@ export const WrapperStatistics = styled.div`
     right: 32px;
     width: 180px;
     height: 110px;
-    padding: 14px 28px;
+    padding: 14px 20px;
   }
   @media (min-width: 1440px) {
     top: 519px;
@@ -69,6 +92,7 @@ export const Number = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: 112.5%;
+
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 100%;
@@ -100,11 +124,12 @@ export const NumberDinamic = styled.p`
   font-weight: 700;
   line-height: 24px; /* 100% */
   letter-spacing: -1px;
+  /* width: 280px; */
   /* text-transform: uppercase; */
   line-height: 100%;
   @media (min-width: 768px) {
     margin-top: 8px;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 104.167%;
     letter-spacing: -1px;
   }

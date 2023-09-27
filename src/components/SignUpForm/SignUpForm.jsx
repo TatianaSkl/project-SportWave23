@@ -34,7 +34,10 @@ export const schemaReg = yup.object().shape({
     .required('This field is required!'),
   password: yup
     .string()
-    .matches(passwordRegex, 'Must be exactly 7 characters long with 6 letters and 1 digit')
+    .matches(
+      passwordRegex,
+      'Must be exactly 7 characters long with 6 letters and 1 digit'
+    )
     .min(7, 'Must be exactly 7 characters long with 6 letters and 1 digit')
     .required('This field is required!'),
 });
@@ -143,7 +146,7 @@ export const SignUpForm = () => {
           </FormAuth>
         )}
       </Formik>
-      <StatisticsInfo />
+      <StatisticsInfo randomNumber={2} />
     </>
   );
 };
