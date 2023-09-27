@@ -6,7 +6,6 @@ import { selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 import Welcome from 'pages/Welcome/Welcom';
 import NotFound from 'pages/NotFound/NotFound';
-import TestModal from 'pages/TestModal/TestModal';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 
@@ -39,7 +38,6 @@ export const App = () => {
           <Route path="diary" element={<DiaryPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="exercises" element={<ExercisesPage />} />
-          <Route path="TestModal" element={<TestModal />} />
         </Route>
         <Route element={<RestrictedRoute redirectTo="params" restricted />}>
           <Route path="/login" element={<SingInPage />} />

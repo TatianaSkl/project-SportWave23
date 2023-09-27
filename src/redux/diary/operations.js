@@ -14,11 +14,11 @@ export const getDataProducts = createAsyncThunk(
   }
 );
 
-export const getAllCaloriesDay = createAsyncThunk(
-  'diary/getDataProducts',
+export const getDataExercises = createAsyncThunk(
+  'diary/getDataExercises',
   async (date, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/products_diary/${date}`);
+      const { data } = await axios.get(`/exercise_diary/${date}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -26,11 +26,12 @@ export const getAllCaloriesDay = createAsyncThunk(
   }
 );
 
-export const getDataExercises = createAsyncThunk(
-  'diary/getDataExercises',
-  async (date, { rejectWithValue }) => {
+export const addProduct = createAsyncThunk(
+  'diary/addProduct',
+  async (productDate, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/exercise_diary/${date}`);
+      const { data } = await axios.post(`/products_diary/`, productDate);
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
