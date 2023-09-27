@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const PictureBg = styled.picture`
+  height: 100vh;
   position: absolute;
   width: 70%;
   top: 80%;
@@ -14,6 +15,7 @@ export const PictureBg = styled.picture`
     left: 40%;
   }
   @media screen and (min-width: 1440px) {
+    height: 100vh;
     top: 0;
     left: 54%;
     background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);

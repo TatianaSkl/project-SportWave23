@@ -7,9 +7,11 @@ export const SharedLayout = () => {
   return (
     <Container>
       <Header />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <main>
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </main>
       <ToastContainer autoClose={2500} />
     </Container>
   );
