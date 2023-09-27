@@ -23,7 +23,8 @@ import {
 } from './UserCard.styled';
 import icon from 'images/sprite.svg';
 import { LogOutBtn } from 'components';
-import { getBmr, updateAvatarUrl } from 'redux/auth/operations';
+import { getBmr } from 'redux/auth/operations';
+import { updateAvatar, refreshUser } from 'redux/auth/operations';
 
 export const UserCard = () => {
   const user = useSelector(selectUser);
@@ -35,46 +36,32 @@ export const UserCard = () => {
     dispatch(getBmr());
   }, [dispatch]);
 
-  useEffect(() => {
-    const savedImageUrl = localStorage.getItem(`userAvatar_${user.name}`);
-    if (savedImageUrl) {
-      setSelectedImageUrl(savedImageUrl);
-    }
-  }, [user.name]);
-
-  const onDrop = acceptedFiles => {
+  const onDrop = async (acceptedFiles) => {
     const file = acceptedFiles[0];
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const imageUrl = reader.result;
-      setSelectedImageUrl(imageUrl);
-      localStorage.setItem(`userAvatar_${user.name}`, imageUrl);
-    };
-
-    reader.readAsDataURL(file);
-  };
-
+        
+    try {
+      const { data } = await dispatch(refreshUser());
+      if (data) {
+        console.log(data)
+        const userId = data.id;
+        const response = await updateAvatar({ file, userId });
+        const newAvatarUrl = response.avatarURL;
+        setSelectedImageUrl(newAvatarUrl);
+      } else {
+        console.error('No data returned from refreshUser');
+      }
+    } catch (error) {
+      console.error('Error updating avatar:', error);
+    }
+  }
+  
   const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: 'image/*', maxFiles: 1 });
 
-  const handleChange = () => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.onchange = e => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const imageUrl = reader.result;
-          setSelectedImageUrl(imageUrl);
-          localStorage.setItem(`userAvatar_${user.name}`, imageUrl);
-          dispatch(updateAvatarUrl(imageUrl));
-        };
-        reader.readAsDataURL(file);
-      }
-    };
-    input.click();
+  const handleOpenDropzone = () => {
+    const input = document.querySelector('input[type="file"]');
+    if (input) {
+      input.click();
+    }
   };
 
   return (
@@ -87,7 +74,7 @@ export const UserCard = () => {
           <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
         )}
       </WrapperFoto>
-      <ButtonPlus onClick={handleChange}>
+      <ButtonPlus onClick={handleOpenDropzone}>
         <SvgPlus>
           <use href={icon + '#check'}></use>
         </SvgPlus>
