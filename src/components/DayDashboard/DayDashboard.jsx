@@ -14,12 +14,17 @@ import {
   WrapperTablet,
 } from './DayDashboard.styled';
 import { useSelector } from 'react-redux';
-import { selectallCaloriesDay, selectallExercisesDay } from 'redux/diary/selectors';
+import {
+  selectallCaloriesDay,
+  selectallExercisesDay,
+  selectallTimeDay,
+} from 'redux/diary/selectors';
 import { useEffect, useState } from 'react';
 
 export const DayDashboard = () => {
   const allCaloriesDay = useSelector(selectallCaloriesDay);
   const allExercisesDay = useSelector(selectallExercisesDay);
+  const allTimeDay = useSelector(selectallTimeDay);
   const [data, setData] = useState({
     dailyCalorieIntake: 2200,
     dailyNormOfSports: 110,
