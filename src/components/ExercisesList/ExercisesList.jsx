@@ -13,6 +13,7 @@ export const ExercisesList = ({ exerciseName }) => {
   }, [dispatch]);
 
   const exercises = useSelector(selectExercises);
+  console.log(exercises);
   const filteredExercises = exercises.filter(
     exercise =>
       exercise.bodyPart ||
