@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/project-SportWave23/static/css/main.345bd7ed.css",
-    "main.js": "/project-SportWave23/static/js/main.ae695ee9.js",
-    "static/js/975.89f00e68.chunk.js": "/project-SportWave23/static/js/975.89f00e68.chunk.js",
-    "static/js/131.d6a650d5.chunk.js": "/project-SportWave23/static/js/131.d6a650d5.chunk.js",
-    "static/js/608.5206ace1.chunk.js": "/project-SportWave23/static/js/608.5206ace1.chunk.js",
-    "static/js/719.fee6ae2d.chunk.js": "/project-SportWave23/static/js/719.fee6ae2d.chunk.js",
-    "static/js/291.8095061a.chunk.js": "/project-SportWave23/static/js/291.8095061a.chunk.js",
+    "main.js": "/project-SportWave23/static/js/main.acf66602.js",
+    "static/js/975.0439afc0.chunk.js": "/project-SportWave23/static/js/975.0439afc0.chunk.js",
+    "static/js/131.ae6999a5.chunk.js": "/project-SportWave23/static/js/131.ae6999a5.chunk.js",
+    "static/js/608.e5063b98.chunk.js": "/project-SportWave23/static/js/608.e5063b98.chunk.js",
+    "static/js/719.80500d8f.chunk.js": "/project-SportWave23/static/js/719.80500d8f.chunk.js",
+    "static/js/291.ccc6ab7d.chunk.js": "/project-SportWave23/static/js/291.ccc6ab7d.chunk.js",
     "static/js/786.f97824f6.chunk.js": "/project-SportWave23/static/js/786.f97824f6.chunk.js",
-    "static/js/616.90aeeaa3.chunk.js": "/project-SportWave23/static/js/616.90aeeaa3.chunk.js",
+    "static/js/616.27cacb69.chunk.js": "/project-SportWave23/static/js/616.27cacb69.chunk.js",
     "static/media/foto4-d-2x.jpg": "/project-SportWave23/static/media/foto4-d-2x.2a27f30b9d8b32cf5b2e.jpg",
     "static/media/foto2-d-2x.jpg": "/project-SportWave23/static/media/foto2-d-2x.43f7a65ca2bbb86ea5b9.jpg",
     "static/media/foto3-d-2x.jpg": "/project-SportWave23/static/media/foto3-d-2x.f6d8986551885d8026bb.jpg",
@@ -24,22 +24,22 @@
     "static/media/foto5-d.jpg": "/project-SportWave23/static/media/foto5-d.efd61cff679860094c60.jpg",
     "static/media/foto2-m-2x.jpg": "/project-SportWave23/static/media/foto2-m-2x.0d9be89c0f6ff300ae37.jpg",
     "static/media/foto4-m.jpg": "/project-SportWave23/static/media/foto4-m.f2e62bb8b4d059990122.jpg",
-    "static/media/sprite.svg": "/project-SportWave23/static/media/sprite.b6404a09d3fa03aa39d39f24b09db98a.svg",
+    "static/media/sprite.svg": "/project-SportWave23/static/media/sprite.31e493581119ebcc1110f78ee4b34be8.svg",
     "static/media/foto1-m.jpg": "/project-SportWave23/static/media/foto1-m.2c72a6565445af5ddb9d.jpg",
     "static/media/foto3-m.jpg": "/project-SportWave23/static/media/foto3-m.2f2adc5345f616965477.jpg",
     "index.html": "/project-SportWave23/index.html",
     "main.345bd7ed.css.map": "/project-SportWave23/static/css/main.345bd7ed.css.map",
-    "main.ae695ee9.js.map": "/project-SportWave23/static/js/main.ae695ee9.js.map",
-    "975.89f00e68.chunk.js.map": "/project-SportWave23/static/js/975.89f00e68.chunk.js.map",
-    "131.d6a650d5.chunk.js.map": "/project-SportWave23/static/js/131.d6a650d5.chunk.js.map",
-    "608.5206ace1.chunk.js.map": "/project-SportWave23/static/js/608.5206ace1.chunk.js.map",
-    "719.fee6ae2d.chunk.js.map": "/project-SportWave23/static/js/719.fee6ae2d.chunk.js.map",
-    "291.8095061a.chunk.js.map": "/project-SportWave23/static/js/291.8095061a.chunk.js.map",
+    "main.acf66602.js.map": "/project-SportWave23/static/js/main.acf66602.js.map",
+    "975.0439afc0.chunk.js.map": "/project-SportWave23/static/js/975.0439afc0.chunk.js.map",
+    "131.ae6999a5.chunk.js.map": "/project-SportWave23/static/js/131.ae6999a5.chunk.js.map",
+    "608.e5063b98.chunk.js.map": "/project-SportWave23/static/js/608.e5063b98.chunk.js.map",
+    "719.80500d8f.chunk.js.map": "/project-SportWave23/static/js/719.80500d8f.chunk.js.map",
+    "291.ccc6ab7d.chunk.js.map": "/project-SportWave23/static/js/291.ccc6ab7d.chunk.js.map",
     "786.f97824f6.chunk.js.map": "/project-SportWave23/static/js/786.f97824f6.chunk.js.map",
-    "616.90aeeaa3.chunk.js.map": "/project-SportWave23/static/js/616.90aeeaa3.chunk.js.map"
+    "616.27cacb69.chunk.js.map": "/project-SportWave23/static/js/616.27cacb69.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.345bd7ed.css",
-    "static/js/main.ae695ee9.js"
+    "static/js/main.acf66602.js"
   ]
 }
