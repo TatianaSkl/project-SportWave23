@@ -22,7 +22,7 @@ const ExerciseModalLinkSub = styled.p`
 `;
 
 const ExerciseModalLinkTitle = styled.p`
-  color: var(--white-color);
+  color: #efede8;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;

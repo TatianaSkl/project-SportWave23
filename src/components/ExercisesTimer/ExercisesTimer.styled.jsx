@@ -23,7 +23,7 @@ const FormattedTitle = styled.p`
 `;
 
 const TimerBtn = styled.button`
-  background-color: var(--orange-color);
+  background-color: #e6533c;
   margin-bottom: 8px;
   padding: 10px;
   border-radius: 5px;
@@ -45,7 +45,7 @@ const TimerText = styled.p`
 `;
 
 const TimerSub = styled.span`
-  color: var(--orange-color);
+  color: #e6533c;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;

@@ -47,7 +47,7 @@ const MainTitle = styled.p`
 const BtnText = styled.button`
   background: transparent;
   border: none;
-  color: var(--orange-color);
+  color: #e6533c;
   font-size: 16px;
   line-height: 1.5;
   display: flex;
@@ -57,17 +57,17 @@ const BtnText = styled.button`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &::after {
-    content: url(../../../../src/components/MainExercises/Waist/img/Icon.svg);
+    content: url('../../images/icon-arrow.svg');
     display: block;
     width: 16px;
     height: 16px;
   }
 
   &:hover {
-    color: var(--white-color);
+    color: #efede8;
   }
   &:focus {
-    color: var(--white-color);
+    color: #efede8;
   }
 `;
 
@@ -75,7 +75,7 @@ const Title = styled.h3`
   position: relative;
   font-size: 24px;
   line-height: 1.333;
-  color: var(--white-color);
+  color: #efede8;
 
   margin-bottom: 8px;
   overflow: hidden;
@@ -110,7 +110,7 @@ const StatItem = styled.li`
 `;
 
 const StatItemValue = styled.span`
-  color: var(--white-color);
+  color: #efede8;
 `;
 
 export {

@@ -44,7 +44,7 @@ const SubCategoryItemTitle = styled.h3`
   font-size: 20px;
   line-height: 1.2;
 
-  color: var(--white-color);
+  color: #efede8;
 
   @media screen and (min-width: 375px) {
     font-size: 24px;
