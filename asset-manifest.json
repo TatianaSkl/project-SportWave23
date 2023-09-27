@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/project-SportWave23/static/css/main.2270961a.css",
-    "main.js": "/project-SportWave23/static/js/main.339de0e1.js",
-    "static/js/975.ae675b79.chunk.js": "/project-SportWave23/static/js/975.ae675b79.chunk.js",
-    "static/js/131.38f13e2e.chunk.js": "/project-SportWave23/static/js/131.38f13e2e.chunk.js",
-    "static/js/608.0fc32dbd.chunk.js": "/project-SportWave23/static/js/608.0fc32dbd.chunk.js",
-    "static/js/719.64a2c592.chunk.js": "/project-SportWave23/static/js/719.64a2c592.chunk.js",
-    "static/js/291.d6e70244.chunk.js": "/project-SportWave23/static/js/291.d6e70244.chunk.js",
+    "main.js": "/project-SportWave23/static/js/main.4829af0d.js",
+    "static/js/975.675a0c54.chunk.js": "/project-SportWave23/static/js/975.675a0c54.chunk.js",
+    "static/js/131.ec0e33ab.chunk.js": "/project-SportWave23/static/js/131.ec0e33ab.chunk.js",
+    "static/js/608.87c731e1.chunk.js": "/project-SportWave23/static/js/608.87c731e1.chunk.js",
+    "static/js/719.37ce4cdc.chunk.js": "/project-SportWave23/static/js/719.37ce4cdc.chunk.js",
+    "static/js/291.99f7a9aa.chunk.js": "/project-SportWave23/static/js/291.99f7a9aa.chunk.js",
     "static/js/786.f97824f6.chunk.js": "/project-SportWave23/static/js/786.f97824f6.chunk.js",
-    "static/js/616.46907ba7.chunk.js": "/project-SportWave23/static/js/616.46907ba7.chunk.js",
+    "static/js/616.11f43fee.chunk.js": "/project-SportWave23/static/js/616.11f43fee.chunk.js",
     "static/media/foto4-d-2x.jpg": "/project-SportWave23/static/media/foto4-d-2x.2a27f30b9d8b32cf5b2e.jpg",
     "static/media/foto2-d-2x.jpg": "/project-SportWave23/static/media/foto2-d-2x.43f7a65ca2bbb86ea5b9.jpg",
     "static/media/foto3-d-2x.jpg": "/project-SportWave23/static/media/foto3-d-2x.f6d8986551885d8026bb.jpg",
@@ -29,17 +29,17 @@
     "static/media/foto3-m.jpg": "/project-SportWave23/static/media/foto3-m.2f2adc5345f616965477.jpg",
     "index.html": "/project-SportWave23/index.html",
     "main.2270961a.css.map": "/project-SportWave23/static/css/main.2270961a.css.map",
-    "main.339de0e1.js.map": "/project-SportWave23/static/js/main.339de0e1.js.map",
-    "975.ae675b79.chunk.js.map": "/project-SportWave23/static/js/975.ae675b79.chunk.js.map",
-    "131.38f13e2e.chunk.js.map": "/project-SportWave23/static/js/131.38f13e2e.chunk.js.map",
-    "608.0fc32dbd.chunk.js.map": "/project-SportWave23/static/js/608.0fc32dbd.chunk.js.map",
-    "719.64a2c592.chunk.js.map": "/project-SportWave23/static/js/719.64a2c592.chunk.js.map",
-    "291.d6e70244.chunk.js.map": "/project-SportWave23/static/js/291.d6e70244.chunk.js.map",
+    "main.4829af0d.js.map": "/project-SportWave23/static/js/main.4829af0d.js.map",
+    "975.675a0c54.chunk.js.map": "/project-SportWave23/static/js/975.675a0c54.chunk.js.map",
+    "131.ec0e33ab.chunk.js.map": "/project-SportWave23/static/js/131.ec0e33ab.chunk.js.map",
+    "608.87c731e1.chunk.js.map": "/project-SportWave23/static/js/608.87c731e1.chunk.js.map",
+    "719.37ce4cdc.chunk.js.map": "/project-SportWave23/static/js/719.37ce4cdc.chunk.js.map",
+    "291.99f7a9aa.chunk.js.map": "/project-SportWave23/static/js/291.99f7a9aa.chunk.js.map",
     "786.f97824f6.chunk.js.map": "/project-SportWave23/static/js/786.f97824f6.chunk.js.map",
-    "616.46907ba7.chunk.js.map": "/project-SportWave23/static/js/616.46907ba7.chunk.js.map"
+    "616.11f43fee.chunk.js.map": "/project-SportWave23/static/js/616.11f43fee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2270961a.css",
-    "static/js/main.339de0e1.js"
+    "static/js/main.4829af0d.js"
   ]
 }
