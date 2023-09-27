@@ -15,6 +15,6 @@ export const TimerProgressCircle = styled.circle`
 export const TimerProgressCircleSec = styled.circle`
   fill: transparent;
   stroke-width: 4;
-  stroke: var(--orange-color);
+  stroke: #e6533c;
   transition: stroke-dashoffset 0.25s linear;
 `;

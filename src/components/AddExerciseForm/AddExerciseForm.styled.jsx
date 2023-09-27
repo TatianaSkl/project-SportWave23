@@ -66,17 +66,17 @@ const BoxBtn = styled.div`
 `;
 
 const ExerciseModalWindowBtn = styled.button`
-  color: var(--white);
+  color: #efede8;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   padding: 12px 32px;
   border-radius: 12px;
-  background: var(--orange-color);
+  background: #e6533c;
   align-self: flex-start;
   &:hover {
-    background: var(--orange-light-color);
-    color: var(--white-color);
+    background: #efa082;
+    color: #efede8;
   }
   @media screen and (min-width: 768px) {
     align-self: flex-end;
