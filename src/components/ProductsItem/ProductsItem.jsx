@@ -1,3 +1,4 @@
+import BasicModalWind from 'components/BasicModalWind/BasicModalWind';
 import {
   StatData,
   StatName,
@@ -15,6 +16,8 @@ import {
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FaPersonRunning } from 'react-icons/fa6';
 import { theme } from 'styles/theme';
+import { useState } from 'react';
+import { ExercisesModalToDiary } from 'components';
 
 export default function ProductsItem({
   id,
@@ -25,6 +28,7 @@ export default function ProductsItem({
   category,
   weight,
 }) {
+  const [modalActive, setModalActive] = useState(false);
   return (
     <ProductCard key={id}>
       <RecomendedContainer>
@@ -33,8 +37,8 @@ export default function ProductsItem({
         ) : (
           <NotRecomended>Not recommended</NotRecomended>
         )}
-        <BtnAdd>
-          Add{' '}
+        <BtnAdd onClick={() => setModalActive(true)}>
+          Add
           <AiOutlineArrowRight
             style={{
               fontSize: '14px',
@@ -44,6 +48,9 @@ export default function ProductsItem({
             }}
           />
         </BtnAdd>
+        <BasicModalWind active={modalActive} setActive={setModalActive}>
+          <ExercisesModalToDiary title={title} calories={calories} id={id} />
+        </BasicModalWind>
       </RecomendedContainer>
       <Discription>
         <Icon>
