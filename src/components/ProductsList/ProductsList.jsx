@@ -7,8 +7,9 @@ export default function ProductsList({hasMore, page, setPage, productsArray, gro
 
   const [data, setData] = useState([]);
 
+  
   useEffect(() => {
-    if (productsArray) {
+    if (productsArray && productsArray.length > 0) {
       setData(productsArray);
     }
   }, [productsArray]);

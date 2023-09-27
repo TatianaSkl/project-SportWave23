@@ -29,7 +29,7 @@ export const fetchMuscles = createAsyncThunk(
   'exercises/fetchMuscles',
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get('exercises/muscles');
+      const res = await axios.get('exercises/muscules');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
