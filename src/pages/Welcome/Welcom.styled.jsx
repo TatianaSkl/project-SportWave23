@@ -86,3 +86,14 @@ export const Picture = styled.picture`
     left: 5%;
   }
 `;
+
+export const Wrap = styled.div`
+  height: 812px;
+  @media screen and (min-width: 768px) {
+    height: 1024px;
+    overflow-x: hidden;
+  }
+  @media (min-width: 1440px) {
+    height: 800px;
+  }
+`;

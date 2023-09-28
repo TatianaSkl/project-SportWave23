@@ -1,5 +1,5 @@
 import { BackgroundImage, StatisticsInfo } from 'components';
-import { Picture, SignIn, SignUp, Title, Wrapper } from './Welcom.styled';
+import { Picture, SignIn, SignUp, Title, Wrap, Wrapper } from './Welcom.styled';
 import bg from 'images/bg';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -13,7 +13,7 @@ export default function Welcome() {
     dispatch(getStatistics());
   }, [dispatch]);
   return (
-    <>
+    <Wrap>
       <Title>Transforming your body shape with Power Pulse</Title>
       <Picture>
         <source
@@ -34,6 +34,6 @@ export default function Welcome() {
       </Wrapper>
       <StatisticsInfo randomNumber={2} />
       <BackgroundImage />
-    </>
+    </Wrap>
   );
 }
