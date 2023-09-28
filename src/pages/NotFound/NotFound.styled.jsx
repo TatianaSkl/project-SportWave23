@@ -42,7 +42,7 @@ export const PictureBg = styled.picture`
   position: absolute;
   width: 70%;
   top: 35%;
-  left: 35%;
+  left: 30%;
   z-index: -1;
   background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
@@ -52,6 +52,7 @@ export const PictureBg = styled.picture`
     left: 40%;
   }
   @media screen and (min-width: 1440px) {
+    width: 670px;
     top: 0;
     left: 54%;
   }

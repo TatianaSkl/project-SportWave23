@@ -74,15 +74,15 @@ export const SignIn = styled(Link)`
 
 export const Picture = styled.picture`
   position: absolute;
-  top: 53%;
+  top: 20.5%;
   left: 3%;
   z-index: -1;
   @media screen and (min-width: 768px) {
-    top: 50%;
+    top: 27%;
     left: 2%;
   }
   @media screen and (min-width: 1440px) {
-    top: 52%;
+    top: 36%;
     left: 5%;
   }
 `;

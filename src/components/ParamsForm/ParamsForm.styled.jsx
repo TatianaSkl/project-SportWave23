@@ -237,56 +237,59 @@ export const BackButtonT = styled.button`
 
 export const PictureBg = styled.picture`
   position: absolute;
-  top: 60%;
+  top: 37.7%;
   left: 30%;
   z-index: -1;
   background: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
   @media screen and (min-width: 768px) {
     width: 100%;
-    top: 60%;
+    top: 22%;
     left: 40%;
   }
   @media screen and (min-width: 1440px) {
+    width: 670px;
     top: 0;
-    left: 54%;
+    left: 53.5%;
     background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);
   }
 `;
 
 export const PictureBgT = styled.picture`
   position: absolute;
-  top: 40%;
+  top: 37.7%;
   left: 30%;
   z-index: -1;
   background: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
   @media screen and (min-width: 768px) {
     width: 100%;
-    top: 35%;
+    top: 22%;
     left: 40%;
   }
   @media screen and (min-width: 1440px) {
+    width: 670px;
     top: 0;
-    left: 54%;
+    left: 53.5%;
     background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);
   }
 `;
 export const PictureBgW = styled.picture`
   position: absolute;
-  top: 70%;
+  top: 37.7%;
   left: 30%;
   z-index: -1;
   background: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
   @media screen and (min-width: 768px) {
     width: 100%;
-    top: 50%;
+    top: 22%;
     left: 40%;
   }
   @media screen and (min-width: 1440px) {
+    width: 670px;
     top: 0;
-    left: 54%;
+    left: 53.5%;
     background: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%);
   }
 `;
@@ -326,5 +329,28 @@ export const LabelRadio = styled.label`
     &:not(:last-child) {
       margin-right: 8px;
     }
+  }
+`;
+
+export const FormBtn = styled.button`
+  margin-right: 16px;
+  padding: 12px 40px;
+  border-radius: 12px;
+  background: ${props => props.theme.colors.orange};
+  font-weight: 500;
+  line-height: 112.5%;
+  box-shadow: ${props => props.theme.shadows.small};
+  transition-property: transform, box-shadow, background-color;
+  transition-duration: 0.25s;
+  transition-timing-function: ${props => props.theme.animation.cubicBezier};
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: ${props => props.theme.shadows.regular};
+    background-color: ${props => props.theme.colors.accent};
+  }
+  @media screen and (min-width: 768px) {
+    padding: 16px 60px;
+    font-size: 20px;
+    line-height: 120%;
   }
 `;

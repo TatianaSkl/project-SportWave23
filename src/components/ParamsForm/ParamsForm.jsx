@@ -27,10 +27,10 @@ import {
   IconArrowL,
   PictureBgW,
   BackButtonT,
+  FormBtn,
 } from './ParamsForm.styled';
 
 import { StatisticsInfo, TextGrey, TitlePage } from 'components';
-import { PressButton } from 'components/Button/Button.styled';
 import { FielRadio } from 'components/UserForm/UserForm.styled';
 
 import { useDispatch } from 'react-redux';
@@ -49,8 +49,6 @@ const {
   bg4Desktop2x,
   bg4Mobile1x,
   bg4Mobile2x,
-  bg3T1x,
-  bg3T2x,
 } = bg;
 
 const ParamsForm = ({ currentStep, setCurrentStep }) => {
@@ -61,7 +59,6 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
   useEffect(() => {
     setLocalCurrentStep(currentStep);
   }, [currentStep]);
-
 
   const formik = useFormik({
     initialValues: {
@@ -112,20 +109,12 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
         navigate('/diary');
       }
       if (currentStep === 2) {
-        // Відправка
         formik.handleSubmit();
       } else {
-        // розділ
         setCurrentStep(currentStep + 1);
       }
     },
   });
-
-  // const handlePrevClick = () => {
-  //   if (currentStep > 0) {
-  //     setCurrentStep(currentStep - 1);
-  //   }
-  // };
 
   const handlePrevClick = () => {
     if (localCurrentStep > 0) {
@@ -396,11 +385,6 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
                 <source
                   type="image/jpg"
                   media="(min-width: 768px)"
-                  srcSet={`${bg3T1x} 1x, ${bg3T2x} 2x`}
-                />
-                <source
-                  type="image/jpg"
-                  media="(min-width: 1440px)"
                   srcSet={`${bg3Desktop1x} 1x, ${bg3Desktop2x} 2x`}
                 />
                 <img src={`${bg3Desktop1x}`} alt="Woman doing sports" />
@@ -419,9 +403,7 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
               <TextGrey text="Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach." />
 
               <GoBackContainer>
-                <PressButton type="submit" style={{ marginRight: '15px' }}>
-                  Go
-                </PressButton>
+                <FormBtn type="submit">Go</FormBtn>
                 <BackButtonT type="button" onClick={handlePrevClick}>
                   <IconArrowL />
                   Back
@@ -461,7 +443,6 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
         )}
       </div>
     </FormContainer>
-    
   );
 };
 
