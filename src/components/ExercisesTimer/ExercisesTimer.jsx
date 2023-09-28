@@ -1,4 +1,3 @@
-import { Loader } from 'components';
 import {
   FormattedTitle,
   PlayIcon,
@@ -15,7 +14,6 @@ const ExercisesTimer = ({ data }) => {
   return (
     <TimerWrapper>
       <TimerTitle>Time</TimerTitle>
-      <Loader />
       <FormattedTitle>{data.time}</FormattedTitle>
       <TimerBtn>
         <PlayIcon>
