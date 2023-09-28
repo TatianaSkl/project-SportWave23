@@ -10,7 +10,7 @@ const Pagination = ({
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handlePageChange = newPage => {
-    if (newPage >= 1 && newPage < totalPages) {
+    if (newPage >= 1 && newPage <= totalPages) {
       onPageChange(newPage);
     }
   };
@@ -28,7 +28,7 @@ const Pagination = ({
             {i}
             {i === currentPage && (
               <svg>
-                <use href={`${sprite}#icon-bubble`} />
+                <use href={`${sprite}#pagination-btn`} />
               </svg>
             )}
           </button>

@@ -22,7 +22,7 @@ const ExercisesFilter = styled.li`
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background-color: var(--orange-color);
+    background-color: #e6533c;
   }
 
   &.active {
@@ -35,7 +35,7 @@ const FilterBtn = styled.button`
   font-size: 14px;
   font-weight: 400;
 
-  background-color: var(--black-color);
+  background-color: #040404;
 
   &.active {
     color: #efede8;
