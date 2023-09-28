@@ -20,9 +20,8 @@
     background-color: #10100f;
     transform: scale(0.5);
     transition: 0.4s all;
-    width: calc(100% - 2 * 20px);
-    @media (min-width: 768px) {
-      width: 480px;
+    @media (max-width: 767px) {
+      width: calc(100% - 2 * 20px);
     }
     .close__icon {
       position: absolute;

@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { FcShipped } from 'react-icons/fc';
 
 export const ModalForm = styled.form`
   padding: 48px 24px;
   @media (min-width: 768px) {
+    width: 480px;
     padding: 48px 32px;
   }
 `;
@@ -58,12 +62,6 @@ export const Text = styled.p`
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 12px;
   line-height: 150%;
-  /* @media (min-width: 768px) {
-    padding-right: 16px;
-  }
-  @media (min-width: 1440px) {
-    padding-left: 16px;
-  } */
 `;
 
 export const SpanText = styled.span`
@@ -71,12 +69,6 @@ export const SpanText = styled.span`
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 12px;
   line-height: 150%;
-  /* @media (min-width: 768px) {
-    padding-right: 16px;
-  }
-  @media (min-width: 1440px) {
-    padding-left: 16px;
-  } */
 `;
 
 export const AddButton = styled.button`
@@ -136,7 +128,86 @@ export const Wrap = styled.div`
   @media (min-width: 768px) {
     justify-content: flex-start;
   }
-  /* @media (min-width: 1440px) {
-    padding-left: 16px;
-  } */
+`;
+
+export const WrapNext = styled.div`
+  padding: 48px;
+  @media (min-width: 768px) {
+    padding: 64px;
+    width: 430px;
+  }
+`;
+
+export const WrapBtn = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const LinkDiary = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(239, 237, 232, 0.3);
+  font-size: 14px;
+  line-height: 128.571%;
+`;
+
+export const IconArrow = styled(AiOutlineArrowRight)`
+  color: rgba(239, 237, 232, 0.3);
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+`;
+
+export const TextNext = styled.p`
+  color: rgba(239, 237, 232, 0.3);
+  font-size: 14px;
+  line-height: 128.571%;
+  text-align: center;
+`;
+
+export const SpanNext = styled.span`
+  color: ${props => props.theme.colors.orange};
+  font-size: 14px;
+  line-height: 128.571%;
+`;
+
+export const Foto = styled(FcShipped)`
+  width: 123px;
+  height: 97px;
+`;
+
+export const TitleNext = styled.h3`
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 133.333%;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 16px;
+  @media (min-width: 768px) {
+    margin-top: 19px;
+  }
+`;
+
+export const NextButton = styled.button`
+  padding: 12px 30px;
+  border-radius: 12px;
+  background: ${props => props.theme.colors.orange};
+  font-weight: 500;
+  line-height: 112.5%;
+  font-size: 16px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  box-shadow: ${props => props.theme.shadows.small};
+  transition-property: transform, box-shadow, background-color;
+  transition-duration: 0.25s;
+  transition-timing-function: ${props => props.theme.animation.cubicBezier};
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: ${props => props.theme.shadows.regular};
+    background-color: ${props => props.theme.colors.accent};
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
 `;
