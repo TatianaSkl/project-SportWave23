@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: relative;
-  height: 812px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
@@ -11,8 +10,6 @@ export const Container = styled.div`
     width: 375px;
   }
   @media (min-width: 768px) {
-    height: 1024px;
-    overflow-x: hidden;
     padding: 0 32px;
     width: 768px;
   }

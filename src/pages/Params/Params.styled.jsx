@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Wrap = styled.form`
+export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
