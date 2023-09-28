@@ -39,7 +39,6 @@ export const GlobalStyles = css`
     background: ${theme.colors.main};
     color: ${theme.colors.white};
     min-height: 100vh;
-
     font-style: normal;
   }
 
