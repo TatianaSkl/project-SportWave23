@@ -9,9 +9,50 @@ import {
   BoxBtn,
 } from './AddExerciseForm.styled';
 import ExercisesTimer from 'components/ExercisesTimer/ExercisesTimer';
+import { addExercis } from 'redux/diary/operations';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-export const ExersiceModalWindow = ({ data }) => {
-  const { bodyPart, equipment, gifUrl, name, target, time } = data;
+export const ExersiceModalWindow = ({ data, onClick }) => {
+  const [currentTime, setCurrentTime] = useState(180);
+  const dispatch = useDispatch();
+
+  const {
+    bodyPart,
+    equipment,
+    burnedCalories,
+    gifUrl,
+    name,
+    target,
+    time,
+    _id,
+  } = data;
+
+  const calories = Math.floor((currentTime / 60) * (burnedCalories / time));
+
+  const handleAddExercise = () => {
+    const currentDate = new Date();
+    const date = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
+
+    const amount = burnedCalories;
+
+    dispatch(
+      addExercis({
+        date,
+        exerciseId: _id,
+        time,
+        calories,
+      })
+    )
+      .then(() => {
+        onClick(amount);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <ExerciseModalContainer>
@@ -27,10 +68,15 @@ export const ExersiceModalWindow = ({ data }) => {
             equipment={equipment}
             time={time}
           />
-          <ExercisesTimer data={data} />
+          <ExercisesTimer
+            burnedCalories={calories}
+            currentTime={currentTime}
+            setCurrentTime={setCurrentTime}
+            time={time}
+          />
         </ExerciseModalTimer>
         <BoxBtn>
-          <ExerciseModalWindowBtn type="button">
+          <ExerciseModalWindowBtn type="button" onClick={handleAddExercise}>
             Add to diary
           </ExerciseModalWindowBtn>
         </BoxBtn>
