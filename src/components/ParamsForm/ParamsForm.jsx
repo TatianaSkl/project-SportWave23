@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import icon from 'images/sprite.svg';
@@ -51,10 +51,15 @@ const {
   bg4Mobile2x,
 } = bg;
 
-const ParamsForm = () => {
-  const [currentStep, setCurrentStep] = useState(0);
+const ParamsForm = ({ currentStep, setCurrentStep }) => {
+  const [localCurrentStep, setLocalCurrentStep] = useState(currentStep);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLocalCurrentStep(currentStep);
+  }, [currentStep]);
+
 
   const formik = useFormik({
     initialValues: {
@@ -122,9 +127,16 @@ const ParamsForm = () => {
     },
   });
 
+  // const handlePrevClick = () => {
+  //   if (currentStep > 0) {
+  //     setCurrentStep(currentStep - 1);
+  //   }
+  // };
+
   const handlePrevClick = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+    if (localCurrentStep > 0) {
+      setLocalCurrentStep(localCurrentStep - 1);
+      setCurrentStep(localCurrentStep - 1);
     }
   };
 
