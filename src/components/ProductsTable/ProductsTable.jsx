@@ -81,7 +81,9 @@ export const ProductsTable = ({ products }) => {
         Cell: ({ row }) => (
           <button
             style={{ marginLeft: '4px' }}
-            onClick={() => dispatch(deleteProduct({ id: row.original._id }))}
+            onClick={() =>
+              dispatch(deleteProduct({ id: row.original._id, date: row.original.date }))
+            }
           >
             <svg width={'20'} height={'20'}>
               <use href={icon + '#icon-trash'} />
@@ -155,7 +157,7 @@ export const ProductsTable = ({ products }) => {
                 </BoxR>
               </div>
               <button
-                onClick={() => dispatch(deleteProduct({ id: prod._id }))}
+                onClick={() => dispatch(deleteProduct({ id: prod._id, date: prod.date }))}
                 style={{ display: 'flex', marginLeft: '8px' }}
               >
                 <svg width={'20'} height={'20'}>

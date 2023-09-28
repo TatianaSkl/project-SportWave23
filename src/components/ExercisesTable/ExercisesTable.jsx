@@ -95,7 +95,11 @@ export const ExercisesTable = ({ exercises }) => {
         Header: '',
         accessor: 'Delete',
         Cell: ({ row }) => (
-          <Btn onClick={() => dispatch(deleteExercise({ id: row.original._id }))}>
+          <Btn
+            onClick={() =>
+              dispatch(deleteExercise({ id: row.original._id, date: row.original.date }))
+            }
+          >
             <svg width={'20'} height={'20'}>
               <use href={icon + '#icon-trash'} />
             </svg>
@@ -167,7 +171,7 @@ export const ExercisesTable = ({ exercises }) => {
                 <BoxText>{exer.exercise.time}</BoxText>
               </div>
               <button
-                onClick={() => dispatch(deleteExercise({ id: exer._id }))}
+                onClick={() => dispatch(deleteExercise({ id: exer._id, date: exer.date }))}
                 style={{ display: 'flex', marginLeft: '8px' }}
               >
                 <svg width={'20'} height={'20'}>

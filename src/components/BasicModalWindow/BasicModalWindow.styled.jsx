@@ -37,5 +37,5 @@ export const SvgClose = styled.svg`
   width: 20px;
   height: 20px;
 
-  stroke: var(--white-color);
+  stroke: #efede8;
 `;
