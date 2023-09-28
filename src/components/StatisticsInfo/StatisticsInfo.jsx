@@ -1,7 +1,6 @@
 import icon from 'images/sprite.svg';
 import { useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { getStatistics } from 'redux/statistics/operations';
+
 import { selectStatistics } from 'redux/statistics/selectors';
 import {
   Number,
@@ -17,19 +16,8 @@ import {
 } from './StatisticsInfo.styled';
 
 export const StatisticsInfo = ({ stylePosition, randomNumber }) => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getStatistics());
-  // }, [dispatch]);
-
   const statistics = useSelector(selectStatistics);
-  // console.log(statistics);
-  // const min = 1;
-  // const max = 4;
-  // const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 
-  console.log(randomNumber);
   const { exercisesVideo, exercisesDone, allTime, allUser, allCalories } =
     statistics;
 

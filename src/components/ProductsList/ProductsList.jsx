@@ -13,7 +13,7 @@ export default function ProductsList({
   isLoading,
 }) {
   const [data, setData] = useState([]);
-  console.log(isLoading);
+
   useEffect(() => {
     if (productsArray && productsArray.length > 0) {
       setData(productsArray);

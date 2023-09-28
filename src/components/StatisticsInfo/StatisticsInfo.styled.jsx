@@ -1,11 +1,5 @@
 import styled from '@emotion/styled';
 
-// export const WrapperBox = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
 export const WrapperVideoCount = styled.div`
   position: absolute;
   top: 560px;
@@ -66,7 +60,6 @@ export const TextBox = styled.p`
 
 export const WrapperStatistics = styled.div`
   position: absolute;
-  /* box-sizing: content-box; */
   top: 675px;
   right: 20px;
   width: 119px;
@@ -122,10 +115,8 @@ export const NumberDinamic = styled.p`
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
-  line-height: 24px; /* 100% */
+  line-height: 24px;
   letter-spacing: -1px;
-  /* width: 280px; */
-  /* text-transform: uppercase; */
   line-height: 100%;
   @media (min-width: 768px) {
     margin-top: 8px;
