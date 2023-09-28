@@ -49,6 +49,8 @@ const {
   bg4Desktop2x,
   bg4Mobile1x,
   bg4Mobile2x,
+  bg3T1x,
+  bg3T2x,
 } = bg;
 
 const ParamsForm = () => {
@@ -67,9 +69,7 @@ const ParamsForm = () => {
       levelActivity: '',
     },
     validationSchema: Yup.object({
-      height: Yup.number()
-        .min(150, 'Must be at least 150 cm!')
-        .required('This field is required!'),
+      height: Yup.number().min(150, 'Must be at least 150 cm!').required('This field is required!'),
       currentWeight: Yup.number().min(35, 'Must be at least 35 kg!').required(),
       desiredWeight: Yup.number().min(35, 'Must be at least 35 kg!').required(),
       birthday: Yup.date()
@@ -88,15 +88,9 @@ const ParamsForm = () => {
           return null;
         })
         .required('This field is required!'),
-      blood: Yup.number()
-        .oneOf([1, 2, 3, 4])
-        .required('This field is required!'),
-      sex: Yup.string()
-        .oneOf(['male', 'female'])
-        .required('This field is required!'),
-      levelActivity: Yup.number()
-        .oneOf([1, 2, 3, 4, 5])
-        .required('This field is required!'),
+      blood: Yup.number().oneOf([1, 2, 3, 4]).required('This field is required!'),
+      sex: Yup.string().oneOf(['male', 'female']).required('This field is required!'),
+      levelActivity: Yup.number().oneOf([1, 2, 3, 4, 5]).required('This field is required!'),
     }),
     onSubmit: values => {
       const userData = {
@@ -317,9 +311,7 @@ const ParamsForm = () => {
                       checked={formik.values.levelActivity === '1'}
                       onChange={formik.handleChange}
                     />
-                    <LabelRadio>
-                      Sedentary lifestyle (little or no physical activity)
-                    </LabelRadio>
+                    <LabelRadio>Sedentary lifestyle (little or no physical activity)</LabelRadio>
                   </LevelActivityText>
                 </RadioLabel>
                 <RadioLabel>
@@ -346,8 +338,7 @@ const ParamsForm = () => {
                       onChange={formik.handleChange}
                     />
                     <LabelRadio>
-                      Moderately active (moderate exercises/sports 3-5 days per
-                      week)
+                      Moderately active (moderate exercises/sports 3-5 days per week)
                     </LabelRadio>
                   </LevelActivityText>
                 </RadioLabel>
@@ -376,8 +367,7 @@ const ParamsForm = () => {
                     />
 
                     <LabelRadio>
-                      Extremely active (very strenuous exercises/sports and
-                      physical work)
+                      Extremely active (very strenuous exercises/sports and physical work)
                     </LabelRadio>
                   </LevelActivityText>
                 </RadioLabel>
@@ -393,6 +383,11 @@ const ParamsForm = () => {
                 <source
                   type="image/jpg"
                   media="(min-width: 768px)"
+                  srcSet={`${bg3T1x} 1x, ${bg3T2x} 2x`}
+                />
+                <source
+                  type="image/jpg"
+                  media="(min-width: 1440px)"
                   srcSet={`${bg3Desktop1x} 1x, ${bg3Desktop2x} 2x`}
                 />
                 <img src={`${bg3Desktop1x}`} alt="Woman doing sports" />
@@ -446,10 +441,7 @@ const ParamsForm = () => {
         )}
 
         {currentStep < 2 && (
-          <NextButton
-            type="button"
-            onClick={() => setCurrentStep(currentStep + 1)}
-          >
+          <NextButton type="button" onClick={() => setCurrentStep(currentStep + 1)}>
             Next
             <IconArrowR />
           </NextButton>

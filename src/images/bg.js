@@ -30,6 +30,8 @@ import lineM1x from '../images/line.png';
 import lineM2x from '../images/line-m-2x.png';
 import chek from '../images/container.png';
 import chekM from '../images/container-m.png';
+import bg3T1x from '../images/foto3-t.jpg';
+import bg3T2x from '../images/foto3-t-2x.jpg';
 
 const bg = {
   bg1Desktop1x,
@@ -64,6 +66,8 @@ const bg = {
   lineM2x,
   chek,
   chekM,
+  bg3T1x,
+  bg3T2x,
 };
 
 export default bg;
