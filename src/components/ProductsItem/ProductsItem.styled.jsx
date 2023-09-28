@@ -6,11 +6,12 @@ export const ProductCard = styled.li`
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   padding: 16px;
+  width: 335px;
   @media screen and (min-width: 768px) {
-    width: 335px;
+    width: 325px;
   }
   @media screen and (min-width: 1440px) {
-    width: 405px;
+    width: 395px;
   }
 `;
 

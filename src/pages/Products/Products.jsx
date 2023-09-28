@@ -1,4 +1,10 @@
-import { PictureBg, Title, Product, ProductsHeader, ProductContainer } from './Products.styled.jsx';
+import {
+  PictureBg,
+  Title,
+  Product,
+  ProductsHeader,
+  ProductContainer,
+} from './Products.styled.jsx';
 import axios from 'axios';
 import ProductsFilters from '../../components/ProductsFilters/ProductsFilters';
 import ProductsList from '../../components/ProductsList/ProductsList';
@@ -16,19 +22,18 @@ export default function Products() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [blood, setBlood] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const token = useSelector(selectToken);
-
-  // const token = localStorage.getItem('auth')
-  // const key = JSON.parse(localStorage.getItem('persist:auth'));
-  // const token = key.token.replace(/"/g, '')
-  // console.log(token)
 
   const TOKEN = token;
   axios.defaults.baseURL = 'https://power-pulse-project-backend.onrender.com';
 
   useEffect(() => {
     const fetchData = async () => {
+      if (page === 1) {
+        setIsLoading(true);
+      }
       try {
         const config = {
           method: 'get',
@@ -42,7 +47,9 @@ export default function Products() {
         const response = await axios.request(config);
         const data = response.data;
         setBlood(data.blood);
-
+        if (data.result.length === 0 && page === 1) {
+          setProducts([]);
+        }
         if (data.result.length >= 10) {
           setHasMore(true);
         }
@@ -51,8 +58,10 @@ export default function Products() {
         } else {
           setProducts(prevProducts => [...prevProducts, ...data.result]);
         }
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -68,6 +77,7 @@ export default function Products() {
             setValue={setSearchValue}
             setCategory={setCategoryProduct}
             setType={setTypeProduct}
+            setPage={setPage}
           />
         </ProductsHeader>
         <ProductContainer>
@@ -77,6 +87,7 @@ export default function Products() {
             setPage={setPage}
             productsArray={products}
             groupBlood={blood}
+            isLoading={isLoading}
           />
         </ProductContainer>
       </Product>
