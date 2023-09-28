@@ -71,7 +71,7 @@ const authSlice = createSlice({
       state.user.name = action.payload.user.name;
     },
     [updateAvatar.fulfilled](state, action) {
-      state.user.avatarURL = action.payload.user.avatarURL;
+      state.user.avatarURL = action.payload.avatarURL;
     },
   },
 });
