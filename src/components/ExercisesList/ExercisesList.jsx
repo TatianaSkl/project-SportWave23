@@ -6,6 +6,7 @@ import { fetchExercises } from 'redux/exercises/operations';
 import { selectExercises } from 'redux/exercises/selectors';
 import BasicModalWindow from 'components/BasicModalWindow/BasicModalWindow';
 import { ExersiceModalWindow } from 'components';
+import { AddExerciseSuccess } from 'components';
 
 export const ExercisesList = ({ exerciseName }) => {
   const [modalData, setModalData] = useState(null);
@@ -38,7 +39,7 @@ export const ExercisesList = ({ exerciseName }) => {
           {modalData.gifUrl ? (
             <ExersiceModalWindow data={modalData} onClick={openModalToggle} />
           ) : (
-            <ExersiceModalWindow
+            <AddExerciseSuccess
               closeModal={closeModal}
               data={modalData}
               onClick={closeModal}
