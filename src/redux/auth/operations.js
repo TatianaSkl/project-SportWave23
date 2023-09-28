@@ -119,8 +119,8 @@ export const updateName = createAsyncThunk('users/username', async (userName, th
   }
 });
 
-export const updateAvatarUrl = createAsyncThunk('auth/updateAvatarUrl', async avatarUrl => {
-  localStorage.setItem('userAvatarUrl', avatarUrl);
+// export const updateAvatarUrl = createAsyncThunk('auth/updateAvatarUrl', async avatarUrl => {
+//   localStorage.setItem('userAvatarUrl', avatarUrl);
 
-  return { avatarURL: avatarUrl };
-});
+//   return { avatarURL: avatarUrl };
+// });
