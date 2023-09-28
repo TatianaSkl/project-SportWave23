@@ -108,11 +108,6 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
       if (success) {
         navigate('/diary');
       }
-      if (currentStep === 2) {
-        formik.handleSubmit();
-      } else {
-        setCurrentStep(currentStep + 1);
-      }
     },
   });
 

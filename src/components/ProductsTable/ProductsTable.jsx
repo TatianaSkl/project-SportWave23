@@ -61,7 +61,7 @@ export const ProductsTable = ({ products }) => {
         accessor: 'Weight',
         Cell: ({ row }) => (
           <WrapperW>
-            <div>{row.original.product.weight}</div>
+            <div>{row.original.amount}</div>
           </WrapperW>
         ),
       },
@@ -147,7 +147,7 @@ export const ProductsTable = ({ products }) => {
               </div>
               <div>
                 <BoxTitle>Weight</BoxTitle>
-                <BoxText>{prod.product.weight}</BoxText>
+                <BoxText>{prod.amount}</BoxText>
               </div>
               <div>
                 <BoxTitle>Recommend</BoxTitle>

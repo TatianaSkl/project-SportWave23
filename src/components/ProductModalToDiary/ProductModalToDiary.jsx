@@ -46,10 +46,16 @@ export const ProductModalToDiary = ({ title, calories, id, setActive, active }) 
         date,
         productId: id,
         amount: quantity,
-        calories,
+        calories: amount,
       })
     );
     setShowAddToDiaryForm(false);
+    setQuantity('');
+  };
+
+  const handleModalClose = () => {
+    setActive(false);
+    setShowAddToDiaryForm(true);
   };
 
   return (
@@ -85,11 +91,11 @@ export const ProductModalToDiary = ({ title, calories, id, setActive, active }) 
             Calories: <SpanNext>{amount}</SpanNext>
           </TextNext>
           <WrapBtn>
-            <NextButton type="button" onClick={() => setActive(false)}>
+            <NextButton type="button" onClick={handleModalClose}>
               Next product
             </NextButton>
           </WrapBtn>
-          <LinkDiary to="/diary">
+          <LinkDiary to="/diary" onClick={handleModalClose}>
             To the diary <IconArrow />
           </LinkDiary>
         </WrapNext>
