@@ -5,6 +5,7 @@ import {
   deleteProduct,
   deleteExercise,
   addProduct,
+  addExercis,
 } from './operations';
 
 const initialState = {
@@ -59,6 +60,12 @@ const diary = createSlice({
       state.products = action.payload;
     });
     builder.addCase(addProduct.rejected, handleRejected);
+    builder.addCase(addExercis.pending, handlePending);
+    builder.addCase(addExercis.fulfilled, (state, action) => {
+      handleFullfield(state);
+      state.products = action.payload;
+    });
+    builder.addCase(addExercis.rejected, handleRejected);
 
     builder.addCase(deleteProduct.pending, handlePending);
     builder.addCase(deleteProduct.fulfilled, (state, { payload }) => {

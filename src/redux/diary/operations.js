@@ -39,6 +39,19 @@ export const addProduct = createAsyncThunk(
   }
 );
 
+export const addExercis = createAsyncThunk(
+  'diary/addExercis',
+  async (exercisDate, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post(`/exercise_diary/`, exercisDate);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const deleteProduct = createAsyncThunk(
   'diary/deleteProduct',
   async (params, { rejectWithValue }) => {

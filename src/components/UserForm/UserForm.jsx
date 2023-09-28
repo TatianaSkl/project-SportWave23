@@ -94,10 +94,12 @@ export const UserForm = () => {
         };
         dispatch(updateParams(userData));
 
-        const userName = {
-          name: values.name,
-        };
-        dispatch(updateName(userName));
+        if (values.name !== user.name) {
+          const userName = {
+            name: values.name,
+          };
+          dispatch(updateName(userName));
+        }
         dispatch(getBmr());
         setIsFormDirty(false);
         console.log(userData);

@@ -23,7 +23,7 @@ export const Logo = () => {
   };
 
   return (
-    <div onClick={handleClick}>
+    <div style={{ cursor: 'pointer' }} onClick={handleClick}>
       <picture>
         <source
           type="image/png"
