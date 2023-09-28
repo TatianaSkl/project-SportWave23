@@ -40,4 +40,3 @@ export * from 'components/Logo/Logo.jsx';
 export * from 'components/ModalMenu/ModalMenu.jsx';
 export * from 'components/DatePicker/DatePicker.jsx';
 export * from 'components/ProductModalToDiary/ProductModalToDiary.jsx';
-export * from 'components/ProductModalToNext/ProductModalToNext.jsx';

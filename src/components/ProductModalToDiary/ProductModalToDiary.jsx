@@ -2,19 +2,28 @@ import { useState } from 'react';
 import {
   AddButton,
   CancelButton,
+  Foto,
+  IconArrow,
   InputGrams,
   InputTitle,
+  LinkDiary,
   ModalForm,
+  NextButton,
+  SpanNext,
   SpanText,
   Text,
+  TextNext,
+  TitleNext,
   Wrap,
+  WrapBtn,
+  WrapNext,
 } from './ProductModalToDiary.styled';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { addProduct } from 'redux/diary/operations';
-// import BasicModalWindow from 'components/BasicModalWind/BasicModalWind';
 
-export const ExercisesModalToDiary = ({ title, calories, id }) => {
+export const ProductModalToDiary = ({ title, calories, id, setActive, active }) => {
+  const [showAddToDiaryForm, setShowAddToDiaryForm] = useState(true);
   const [quantity, setQuantity] = useState('');
   const dispatch = useDispatch();
 
@@ -40,39 +49,51 @@ export const ExercisesModalToDiary = ({ title, calories, id }) => {
         calories,
       })
     );
-    //   .then(() => {
-    //     onClick(amount);
-    //   })
-    //   .catch(error => {
-    //     toast(error.message);
-    //   });
+    setShowAddToDiaryForm(false);
   };
 
   return (
     <>
-      <ModalForm>
-        <InputTitle type="text" value={title} disabled />
-        <InputGrams
-          type="number"
-          placeholder="grams"
-          value={quantity}
-          onChange={e => setQuantity(e.target.value)}
-        />
-        <Text>
-          Calories: <SpanText>{amount}</SpanText>
-        </Text>
-        <Wrap>
-          <AddButton type="button" onClick={handleAddProduct}>
-            Add to diary
-          </AddButton>
-          <CancelButton type="button">Cancel</CancelButton>
-        </Wrap>
-      </ModalForm>
-      {/* <BasicModalWindow
-      // active={modalActive} setActive={setModalActive}
-      >
-        <ExercisesModalToDiary />
-      </BasicModalWindow> */}
+      {showAddToDiaryForm ? (
+        <ModalForm>
+          <InputTitle type="text" value={title} disabled />
+          <InputGrams
+            type="number"
+            placeholder="grams"
+            value={quantity}
+            onChange={e => setQuantity(e.target.value)}
+          />
+          <Text>
+            Calories: <SpanText>{amount}</SpanText>
+          </Text>
+          <Wrap>
+            <AddButton type="button" onClick={handleAddProduct}>
+              Add to diary
+            </AddButton>
+            <CancelButton type="button" onClick={() => setActive(false)}>
+              Cancel
+            </CancelButton>
+          </Wrap>
+        </ModalForm>
+      ) : (
+        <WrapNext>
+          <WrapBtn>
+            <Foto />
+          </WrapBtn>
+          <TitleNext>Well done</TitleNext>
+          <TextNext>
+            Calories: <SpanNext>{amount}</SpanNext>
+          </TextNext>
+          <WrapBtn>
+            <NextButton type="button" onClick={() => setActive(false)}>
+              Next product
+            </NextButton>
+          </WrapBtn>
+          <LinkDiary to="/diary">
+            To the diary <IconArrow />
+          </LinkDiary>
+        </WrapNext>
+      )}
     </>
   );
 };

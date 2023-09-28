@@ -17,7 +17,7 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FaPersonRunning } from 'react-icons/fa6';
 import { theme } from 'styles/theme';
 import { useState } from 'react';
-import { ExercisesModalToDiary } from 'components';
+import { ProductModalToDiary } from 'components';
 
 export default function ProductsItem({
   id,
@@ -49,7 +49,13 @@ export default function ProductsItem({
           />
         </BtnAdd>
         <BasicModalWind active={modalActive} setActive={setModalActive}>
-          <ExercisesModalToDiary title={title} calories={calories} id={id} />
+          <ProductModalToDiary
+            title={title}
+            calories={calories}
+            id={id}
+            setActive={setModalActive}
+            active={modalActive}
+          />
         </BasicModalWind>
       </RecomendedContainer>
       <Discription>
