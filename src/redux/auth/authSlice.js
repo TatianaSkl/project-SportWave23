@@ -6,7 +6,7 @@ import {
   refreshUser,
   updateParams,
   updateName,
-  updateAvatarUrl,
+  updateAvatar,
   getBmr,
 } from './operations';
 
@@ -70,7 +70,7 @@ const authSlice = createSlice({
     [updateName.fulfilled](state, action) {
       state.user.name = action.payload.user.name;
     },
-    [updateAvatarUrl.fulfilled](state, action) {
+    [updateAvatar.fulfilled](state, action) {
       state.user.avatarURL = action.payload.avatarURL;
     },
   },

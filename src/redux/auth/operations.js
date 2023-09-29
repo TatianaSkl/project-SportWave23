@@ -73,14 +73,15 @@ export const getBmr = createAsyncThunk('users/bmr', async (_, thunkAPI) => {
   }
 });
 
-export const updateAvatar = createAsyncThunk('users/avatar', async (file, thunkAPI) => {
+export const updateAvatar = createAsyncThunk('users/avatars', async (file, thunkAPI) => {
   try {
     const formData = new FormData();
-    formData.append('avatar', formData);
+    formData.append('avatar', file);
 
     const res = await axios.patch('/users/avatars', formData, {
       headers: { 'content-type': 'multipart/form-data' },
     });
+    console.log(res.data)
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -119,8 +120,8 @@ export const updateName = createAsyncThunk('users/username', async (userName, th
   }
 });
 
-export const updateAvatarUrl = createAsyncThunk('auth/updateAvatarUrl', async avatarUrl => {
-  localStorage.setItem('userAvatarUrl', avatarUrl);
+// export const updateAvatarUrl = createAsyncThunk('auth/updateAvatarUrl', async avatarUrl => {
+//   localStorage.setItem('userAvatarUrl', avatarUrl);
 
-  return { avatarURL: avatarUrl };
-});
+//   return { avatarURL: avatarUrl };
+// });
