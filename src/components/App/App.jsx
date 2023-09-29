@@ -2,12 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { Loader, SharedLayout } from 'components';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRefreshing } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 import Welcome from 'pages/Welcome/Welcom';
 import NotFound from 'pages/NotFound/NotFound';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RestrictedRoute } from 'components/RestrictedRoute';
+import { selectIsRefreshing } from 'redux/auth/selectors';
 
 const SingUpPage = lazy(() => import('pages/SignUp/SignUp'));
 const SingInPage = lazy(() => import('pages/SignIn/SignIn'));
@@ -32,17 +32,31 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Welcome />} />
-        <Route element={<PrivateRoute redirectTo="/login" />}>
-          <Route path="params" element={<ParamsPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="diary" element={<DiaryPage />} />
-          <Route path="products" element={<ProductsPage />} />
-          <Route path="exercises" element={<ExercisesPage />} />
-        </Route>
-        <Route element={<RestrictedRoute redirectTo="params" restricted />}>
-          <Route path="/login" element={<SingInPage />} />
-          <Route path="/register" element={<SingUpPage />} />
-        </Route>
+        <Route
+          path="register"
+          element={<RestrictedRoute redirectTo="/params" restricted component={SingUpPage} />}
+        />
+        <Route
+          path="login"
+          element={<RestrictedRoute redirectTo="/diary" restricted component={SingInPage} />}
+        />
+        <Route
+          path="params"
+          element={<PrivateRoute redirectTo="/params" component={ParamsPage} />}
+        />
+        <Route
+          path="profile"
+          element={<PrivateRoute redirecttTo="/profile" component={ProfilePage} />}
+        />
+        <Route path="diary" element={<PrivateRoute redirectTo="/diary" component={DiaryPage} />} />
+        <Route
+          path="products"
+          element={<PrivateRoute redirectTo="/products" component={ProductsPage} />}
+        />
+        <Route
+          path="exercises"
+          element={<PrivateRoute redirectTo="/exercises" component={ExercisesPage} />}
+        />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
