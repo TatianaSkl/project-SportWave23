@@ -78,7 +78,7 @@ export const ExercisesTable = ({ exercises, onDis }) => {
         accessor: 'Burned Calories',
         Cell: ({ row }) => (
           <WrapperBc>
-            <div>{row.original.exercise.burnedCalories}</div>
+            <div>{row.original.calories}</div>
           </WrapperBc>
         ),
       },
@@ -87,7 +87,7 @@ export const ExercisesTable = ({ exercises, onDis }) => {
         accessor: 'Time',
         Cell: ({ row }) => (
           <WrapperTm>
-            <div>{row.original.exercise.time}</div>
+            <div>{row.original.time}</div>
           </WrapperTm>
         ),
       },
@@ -165,11 +165,11 @@ export const ExercisesTable = ({ exercises, onDis }) => {
               </div>
               <div>
                 <BoxTitle>Burned Calories</BoxTitle>
-                <BoxText>{exer.exercise.burnedCalories}</BoxText>
+                <BoxText>{exer.calories}</BoxText>
               </div>
               <div>
                 <BoxTitle>Time</BoxTitle>
-                <BoxText>{exer.exercise.time}</BoxText>
+                <BoxText>{exer.time}</BoxText>
               </div>
               <button
                 onClick={() => dispatch(deleteExercise({ id: exer._id, date: exer.date }))}
