@@ -34,11 +34,11 @@ export const App = () => {
         <Route index element={<Welcome />} />
         <Route
           path="register"
-          element={<RestrictedRoute redirectTo="/params" component={SingUpPage} />}
+          element={<RestrictedRoute redirectTo="/params" restricted component={SingUpPage} />}
         />
         <Route
           path="login"
-          element={<RestrictedRoute redirectTo="/diary" component={SingInPage} />}
+          element={<RestrictedRoute redirectTo="/diary" restricted component={SingInPage} />}
         />
         <Route
           path="params"
