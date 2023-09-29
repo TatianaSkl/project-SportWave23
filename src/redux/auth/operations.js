@@ -81,7 +81,7 @@ export const updateAvatar = createAsyncThunk('users/avatars', async (file, thunk
     const res = await axios.patch('/users/avatars', formData, {
       headers: { 'content-type': 'multipart/form-data' },
     });
-    console.log(res.data)
+    
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -120,8 +120,4 @@ export const updateName = createAsyncThunk('users/username', async (userName, th
   }
 });
 
-// export const updateAvatarUrl = createAsyncThunk('auth/updateAvatarUrl', async avatarUrl => {
-//   localStorage.setItem('userAvatarUrl', avatarUrl);
 
-//   return { avatarURL: avatarUrl };
-// });
