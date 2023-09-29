@@ -42,7 +42,7 @@ export const App = () => {
         />
         <Route
           path="params"
-          element={<PrivateRoute redirectTo="/diary" component={ParamsPage} />}
+          element={<PrivateRoute redirectTo="/params" component={ParamsPage} />}
         />
         <Route
           path="profile"
