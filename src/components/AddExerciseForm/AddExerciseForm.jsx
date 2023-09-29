@@ -15,39 +15,33 @@ import { useState } from 'react';
 
 export const ExersiceModalWindow = ({ data, onClick }) => {
   const [currentTime, setCurrentTime] = useState(180);
+
   const dispatch = useDispatch();
 
-  const {
-    bodyPart,
-    equipment,
-    burnedCalories,
-    gifUrl,
-    name,
-    target,
-    time,
-    _id,
-  } = data;
+  const { bodyPart, equipment, burnedCalories, gifUrl, name, target, time, _id } = data;
 
   const calories = Math.floor((currentTime / 60) * (burnedCalories / time));
 
   const handleAddExercise = () => {
     const currentDate = new Date();
-    const date = `${currentDate.getFullYear()}-${String(
-      currentDate.getMonth() + 1
-    ).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
+    const date = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(
+      2,
+      '0'
+    )}-${String(currentDate.getDate()).padStart(2, '0')}`;
 
-    const amount = burnedCalories;
+    const userTime = Math.ceil((180 - currentTime) / 60);
+    const userCal = burnedCalories - calories;
 
     dispatch(
       addExercis({
         date,
         exerciseId: _id,
-        time,
-        calories,
+        time: userTime,
+        calories: userCal,
       })
     )
       .then(() => {
-        onClick(amount);
+        onClick(userCal);
       })
       .catch(error => {
         console.log(error.message);
