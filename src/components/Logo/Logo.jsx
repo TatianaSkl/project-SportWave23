@@ -19,7 +19,6 @@ export const Logo = () => {
     } else {
       navigate('/');
     }
-    console.log(user.userParams);
   };
 
   return (
