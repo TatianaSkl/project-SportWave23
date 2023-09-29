@@ -3,9 +3,10 @@ import styled from '@emotion/styled';
 export const ExercisesWrapper = styled.div`
   padding-left: 20px;
   padding-right: 20px;
+  margin-top: 10px;
 
   @media screen and (min-width: 1440px) {
-    width: 1248px;
+    width: 1440px;
     margin-left: auto;
     margin-right: auto;
   }

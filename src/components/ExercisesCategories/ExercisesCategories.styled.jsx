@@ -4,6 +4,10 @@ const ExercisesNav = styled.ul`
   display: flex;
   gap: 28px;
   margin-bottom: 48px;
+
+  @media screen and (min-width: 1440px) {
+    padding-right: 96px;
+  }
 `;
 
 const ExercisesFilter = styled.li`

@@ -23,7 +23,6 @@ const ExercisesListAll = styled.ul`
 
   @media screen and (min-width: 768px) {
     overflow-y: auto;
-    max-height: calc(100vh - 364px);
     gap: 32px 16px;
     max-width: 100%;
     max-height: 726px;
@@ -32,10 +31,9 @@ const ExercisesListAll = styled.ul`
 
   @media screen and (min-width: 1440px) {
     overflow-y: auto;
-    max-height: calc(100vh - 312px);
+    max-height: 900px;
     padding-right: 16px;
     width: 850px;
-    max-width: 100%;
   }
 `;
 

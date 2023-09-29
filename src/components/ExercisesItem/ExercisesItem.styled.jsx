@@ -21,7 +21,7 @@ const ExerciseItemEl = styled.li`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 405px;
+    width: 370px;
   }
 `;
 
@@ -77,20 +77,14 @@ const Title = styled.h3`
   line-height: 1.333;
   color: #efede8;
 
-  margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding-left: 30px;
-  max-width: 100%;
+  padding-left: 8px;
+  width: 263px;
 
-  &::before {
-    content: url(../../../../src/components/products/img/run.svg);
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    left: 0;
-    top: calc(50% - 12px);
+  @media screen and (min-width: 768px) {
+    width: 285px;
   }
 `;
 
