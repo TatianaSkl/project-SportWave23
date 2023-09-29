@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import icon from 'images/sprite.svg';
 import bg from 'images/bg';
 
@@ -35,7 +36,7 @@ import { FielRadio } from 'components/UserForm/UserForm.styled';
 
 import { useDispatch } from 'react-redux';
 import { updateParams } from 'redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 const {
   bg2Desktop1x,
   bg2Desktop2x,
@@ -54,7 +55,7 @@ const {
 const ParamsForm = ({ currentStep, setCurrentStep }) => {
   const [localCurrentStep, setLocalCurrentStep] = useState(currentStep);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     setLocalCurrentStep(currentStep);
@@ -95,19 +96,25 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
       levelActivity: Yup.number().oneOf([1, 2, 3, 4, 5]).required('This field is required!'),
     }),
     onSubmit: values => {
-      const userData = {
-        height: parseInt(values.height),
-        currentWeight: parseInt(values.currentWeight),
-        desiredWeight: parseInt(values.desiredWeight),
-        birthday: values.birthday,
-        blood: parseInt(values.blood),
-        sex: values.sex,
-        levelActivity: parseInt(values.levelActivity),
-      };
-      const success = dispatch(updateParams(userData));
-      if (success) {
-        navigate('/diary');
+      try {
+        const userData = {
+          height: parseInt(values.height),
+          currentWeight: parseInt(values.currentWeight),
+          desiredWeight: parseInt(values.desiredWeight),
+          birthday: values.birthday,
+          blood: parseInt(values.blood),
+          sex: values.sex,
+          levelActivity: parseInt(values.levelActivity),
+        };
+        dispatch(updateParams(userData));
+      } catch {
+        toast.error('Oops...');
       }
+
+      // const success = dispatch(updateParams(userData));
+      // if (success) {
+      //   navigate('/diary');
+      // }
     },
   });
 
@@ -398,7 +405,7 @@ const ParamsForm = ({ currentStep, setCurrentStep }) => {
               <TextGrey text="Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach." />
 
               <GoBackContainer>
-                <FormBtn type="submit">Go</FormBtn>
+                <FormBtn type="button">Go</FormBtn>
                 <BackButtonT type="button" onClick={handlePrevClick}>
                   <IconArrowL />
                   Back

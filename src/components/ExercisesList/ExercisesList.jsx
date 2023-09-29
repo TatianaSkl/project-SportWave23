@@ -27,10 +27,7 @@ export const ExercisesList = ({ exerciseName }) => {
   const exercises = useSelector(selectExercises);
 
   const filteredExercises = exercises.filter(
-    exercise =>
-      exercise.bodyPart ||
-      exercise.target ||
-      exercise.equipment === exerciseName
+    exercise => exercise.bodyPart || exercise.target || exercise.equipment === exerciseName
   );
   return (
     <>
@@ -42,6 +39,7 @@ export const ExercisesList = ({ exerciseName }) => {
             <AddExerciseSuccess
               closeModal={closeModal}
               data={modalData}
+              cal={modalData}
               onClick={closeModal}
             />
           )}
@@ -50,11 +48,7 @@ export const ExercisesList = ({ exerciseName }) => {
       <ExercisesListAll>
         {filteredExercises.length ? (
           filteredExercises.map(el => (
-            <ExercisesItem
-              key={el._id}
-              data={el}
-              openModalToggle={openModalToggle}
-            />
+            <ExercisesItem key={el._id} data={el} openModalToggle={openModalToggle} />
           ))
         ) : (
           <LoadingText>Please wait. We are loading exercises.</LoadingText>

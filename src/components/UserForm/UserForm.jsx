@@ -102,7 +102,6 @@ export const UserForm = () => {
         }
         dispatch(getBmr());
         setIsFormDirty(false);
-        console.log(userData);
       } catch (validationErrors) {
         validationErrors.inner.forEach(error => {
           toast.error(error.message);
