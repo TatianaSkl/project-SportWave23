@@ -27,8 +27,10 @@ import { getBmr, updateAvatar } from 'redux/auth/operations';
 
 export const UserCard = () => {
   const user = useSelector(selectUser);
+  const avatarURL = user.avatarURL
   const bmr = useSelector(selectBmr);
-  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+  const [selectedImageUrl, setSelectedImageUrl] = useState( avatarURL || null);
+  const baseURL = 'https://power-pulse-project-backend.onrender.com'
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,6 +44,7 @@ export const UserCard = () => {
       const response = await dispatch(updateAvatar(file));
       const newAvatarUrl = response.payload.avatarURL;
       setSelectedImageUrl(newAvatarUrl);
+      
     } catch (error) {
       console.error('Error updating avatar:', error);
     }
@@ -61,9 +64,9 @@ export const UserCard = () => {
       <WrapperFoto {...getRootProps()}>
         <input {...getInputProps()} />
         {selectedImageUrl ? (
-          <ImageUser src={selectedImageUrl} alt="user" loading="lazy" />
+          <ImageUser src={`${baseURL}/${selectedImageUrl}`} alt="user" loading="lazy" />
           ) : (
-          <ImageUser src={user.avatarURL} alt="user" loading="lazy" />
+          <ImageUser src={avatarURL} alt="user" loading="lazy" />
         )}
       </WrapperFoto>
       <ButtonPlus onClick={handleOpenDropzone}>
