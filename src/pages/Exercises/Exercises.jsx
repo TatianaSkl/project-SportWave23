@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import {
-  ExercisesWrapper,
-  ExercisesContainer,
-  ExercisesTitle,
-} from './Exercises.styled';
+import { ExercisesWrapper, ExercisesContainer, ExercisesTitle } from './Exercises.styled';
 import { BodyPartList } from 'components/ExercisesSubcategoriesList/SubcategoryBodyPartList';
 import { MusclesList } from 'components/ExercisesSubcategoriesList/SubcategoryMusclesList';
 import { EquipmentList } from 'components/ExercisesSubcategoriesList/SubcategoryEquipmentList';
@@ -35,10 +31,7 @@ export default function Exercises() {
         ) : (
           <ExercisesTitle>{capitalizeFirstLeter(exerciseName)}</ExercisesTitle>
         )}
-        <ExercisesNavigation
-          activeFilter={activeFilter}
-          handleFilterClick={handleFilterClick}
-        />
+        <ExercisesNavigation activeFilter={activeFilter} handleFilterClick={handleFilterClick} />
       </ExercisesContainer>
       {activeFilter === 'Body parts' && (
         <BodyPartList
@@ -46,7 +39,7 @@ export default function Exercises() {
           handleSetExerciseName={handleSetExerciseName}
         />
       )}
-      {activeFilter === 'Muscules' && (
+      {activeFilter === 'Muscles' && (
         <MusclesList
           handleFilterClick={handleFilterClick}
           handleSetExerciseName={handleSetExerciseName}
@@ -58,9 +51,7 @@ export default function Exercises() {
           handleSetExerciseName={handleSetExerciseName}
         />
       )}
-      {activeFilter === 'Waist' && (
-        <ExercisesList exerciseName={exerciseName} />
-      )}
+      {activeFilter === 'Waist' && <ExercisesList exerciseName={exerciseName} />}
     </ExercisesWrapper>
   );
 }

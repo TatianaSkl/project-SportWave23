@@ -8,11 +8,17 @@ import {
   WrapperFlex,
   WrapperScrol,
 } from './DayProducts.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectProducts } from 'redux/diary/selectors';
+import { getDataProducts } from 'redux/diary/operations';
 
-export const DayProducts = () => {
+export const DayProducts = ({ date }) => {
   const products = useSelector(selectProducts);
+  const dispatch = useDispatch();
+
+  const handleTableClick = () => {
+    dispatch(getDataProducts(date));
+  };
 
   return (
     <WrapperDayProduct>
@@ -25,7 +31,7 @@ export const DayProducts = () => {
       </WrapperFlex>
       <WrapperScrol>
         {products.length > 0 ? (
-          <ProductsTable products={products} />
+          <ProductsTable products={products} onDis={handleTableClick} />
         ) : (
           <Text>Not found products</Text>
         )}

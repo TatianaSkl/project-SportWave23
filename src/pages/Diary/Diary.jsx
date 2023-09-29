@@ -3,7 +3,6 @@ import { SectionDiary, Wrapper, WrapperMobil, WrapperTablet } from './Diary.styl
 import { useDispatch } from 'react-redux';
 import { getDataExercises, getDataProducts } from 'redux/diary/operations';
 import { useEffect, useState } from 'react';
-// import { selectExercises, selectProducts } from 'redux/diary/selectors';
 
 export default function Diary() {
   const currentDate = new Date();
@@ -11,11 +10,8 @@ export default function Diary() {
     2,
     '0'
   )}-${String(currentDate.getDate()).padStart(2, '0')}`;
-  // const products = useSelector(selectProducts);
-  // const exercises = useSelector(selectExercises);
+
   const [date, setDate] = useState(formattedDate);
-  // const [prod, setProd] = useState(products);
-  // const [exer, setExer] = useState(exercises);
   const dispatch = useDispatch();
 
   const formatToYYYYMMDD = date => {
@@ -34,11 +30,6 @@ export default function Diary() {
     dispatch(getDataExercises(date));
   }, [dispatch, date]);
 
-  // useEffect(() => {
-  //   dispatch(getDataProducts(date));
-  //   dispatch(getDataExercises(date));
-  // }, [dispatch, date]);
-
   return (
     <SectionDiary>
       <Wrapper>
@@ -52,8 +43,8 @@ export default function Diary() {
       </WrapperMobil>
       <WrapperTablet>
         <div>
-          <DayProducts />
-          <DayExercises />
+          <DayProducts date={date} />
+          <DayExercises date={date} />
         </div>
         <DayDashboard />
       </WrapperTablet>

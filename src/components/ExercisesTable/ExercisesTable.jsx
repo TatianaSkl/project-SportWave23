@@ -20,7 +20,7 @@ import {
   Btn,
 } from './ExercisesTable.styled';
 
-export const ExercisesTable = ({ exercises }) => {
+export const ExercisesTable = ({ exercises, onDis }) => {
   const dispatch = useDispatch();
 
   const columns = React.useMemo(
@@ -96,9 +96,10 @@ export const ExercisesTable = ({ exercises }) => {
         accessor: 'Delete',
         Cell: ({ row }) => (
           <Btn
-            onClick={() =>
-              dispatch(deleteExercise({ id: row.original._id, date: row.original.date }))
-            }
+            onClick={() => {
+              dispatch(deleteExercise({ id: row.original._id, date: row.original.date }));
+              onDis();
+            }}
           >
             <svg width={'20'} height={'20'}>
               <use href={icon + '#icon-trash'} />
@@ -107,7 +108,7 @@ export const ExercisesTable = ({ exercises }) => {
         ),
       },
     ],
-    [dispatch]
+    [dispatch, onDis]
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
