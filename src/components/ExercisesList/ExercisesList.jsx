@@ -7,6 +7,7 @@ import { selectExercises } from 'redux/exercises/selectors';
 import BasicModalWindow from 'components/BasicModalWindow/BasicModalWindow';
 import { ExersiceModalWindow } from 'components';
 import { AddExerciseSuccess } from 'components';
+import { BackgroundImage } from 'components';
 
 export const ExercisesList = ({ exerciseName }) => {
   const [modalData, setModalData] = useState(null);
@@ -27,7 +28,10 @@ export const ExercisesList = ({ exerciseName }) => {
   const exercises = useSelector(selectExercises);
 
   const filteredExercises = exercises.filter(
-    exercise => exercise.bodyPart || exercise.target || exercise.equipment === exerciseName
+    exercise =>
+      exercise.bodyPart ||
+      exercise.target ||
+      exercise.equipment === exerciseName
   );
   return (
     <>
@@ -48,12 +52,17 @@ export const ExercisesList = ({ exerciseName }) => {
       <ExercisesListAll>
         {filteredExercises.length ? (
           filteredExercises.map(el => (
-            <ExercisesItem key={el._id} data={el} openModalToggle={openModalToggle} />
+            <ExercisesItem
+              key={el._id}
+              data={el}
+              openModalToggle={openModalToggle}
+            />
           ))
         ) : (
           <LoadingText>Please wait. We are loading exercises.</LoadingText>
         )}
       </ExercisesListAll>
+      <BackgroundImage />
     </>
   );
 };
