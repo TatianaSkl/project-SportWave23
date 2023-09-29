@@ -119,6 +119,7 @@ export const FormGroup = styled.div`
 `;
 export const ButtonIcon = styled.button`
   position: absolute;
+  z-index: -1;
   bottom: 35%;
   left: 80%;
   width: 18px;
