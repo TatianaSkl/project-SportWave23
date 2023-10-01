@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   IconArrow,
   LinkExercises,
@@ -10,15 +10,9 @@ import {
 } from './DayExercises.styled';
 import { selectExercises } from 'redux/diary/selectors';
 import { ExercisesTable } from 'components';
-import { getDataExercises } from 'redux/diary/operations';
 
-export const DayExercises = ({ date }) => {
+export const DayExercises = () => {
   const exercises = useSelector(selectExercises);
-  const dispatch = useDispatch();
-
-  const handleTableClick = () => {
-    dispatch(getDataExercises(date));
-  };
 
   return (
     <WrapperDayExercises>
@@ -31,7 +25,7 @@ export const DayExercises = ({ date }) => {
       </WrapperFlex>
       <WrapperScrol>
         {exercises?.length > 0 ? (
-          <ExercisesTable exercises={exercises} onDis={handleTableClick} />
+          <ExercisesTable exercises={exercises} />
         ) : (
           <Text>Not found exercises</Text>
         )}

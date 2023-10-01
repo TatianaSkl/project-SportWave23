@@ -21,7 +21,7 @@ import {
   BoxColorText,
 } from './ProductsTable.styled';
 
-export const ProductsTable = ({ products, onDis }) => {
+export const ProductsTable = ({ products }) => {
   const dispatch = useDispatch();
 
   const columns = React.useMemo(
@@ -82,8 +82,13 @@ export const ProductsTable = ({ products, onDis }) => {
           <button
             style={{ marginLeft: '4px' }}
             onClick={() => {
-              dispatch(deleteProduct({ id: row.original._id, date: row.original.date }));
-              onDis();
+              dispatch(
+                deleteProduct({
+                  id: row.original._id,
+                  date: row.original.date,
+                  calories: row.original.calories,
+                })
+              );
             }}
           >
             <svg width={'20'} height={'20'}>
@@ -93,7 +98,7 @@ export const ProductsTable = ({ products, onDis }) => {
         ),
       },
     ],
-    [dispatch, onDis]
+    [dispatch]
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
@@ -158,7 +163,11 @@ export const ProductsTable = ({ products, onDis }) => {
                 </BoxR>
               </div>
               <button
-                onClick={() => dispatch(deleteProduct({ id: prod._id, date: prod.date }))}
+                onClick={() =>
+                  dispatch(
+                    deleteProduct({ id: prod._id, date: prod.date, calories: prod.calories })
+                  )
+                }
                 style={{ display: 'flex', marginLeft: '8px' }}
               >
                 <svg width={'20'} height={'20'}>

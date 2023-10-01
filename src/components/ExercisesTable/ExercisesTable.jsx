@@ -20,7 +20,7 @@ import {
   Btn,
 } from './ExercisesTable.styled';
 
-export const ExercisesTable = ({ exercises, onDis }) => {
+export const ExercisesTable = ({ exercises }) => {
   const dispatch = useDispatch();
 
   const columns = React.useMemo(
@@ -97,8 +97,14 @@ export const ExercisesTable = ({ exercises, onDis }) => {
         Cell: ({ row }) => (
           <Btn
             onClick={() => {
-              dispatch(deleteExercise({ id: row.original._id, date: row.original.date }));
-              onDis();
+              dispatch(
+                deleteExercise({
+                  id: row.original._id,
+                  date: row.original.date,
+                  calories: row.original.calories,
+                  time: row.original.time,
+                })
+              );
             }}
           >
             <svg width={'20'} height={'20'}>
@@ -108,7 +114,7 @@ export const ExercisesTable = ({ exercises, onDis }) => {
         ),
       },
     ],
-    [dispatch, onDis]
+    [dispatch]
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
@@ -172,7 +178,16 @@ export const ExercisesTable = ({ exercises, onDis }) => {
                 <BoxText>{exer.time}</BoxText>
               </div>
               <button
-                onClick={() => dispatch(deleteExercise({ id: exer._id, date: exer.date }))}
+                onClick={() =>
+                  dispatch(
+                    deleteExercise({
+                      id: exer._id,
+                      date: exer.date,
+                      calories: exer.calories,
+                      time: exer.time,
+                    })
+                  )
+                }
                 style={{ display: 'flex', marginLeft: '8px' }}
               >
                 <svg width={'20'} height={'20'}>
