@@ -251,7 +251,7 @@ export const LabelRadio = styled.label`
 
 export const ButtonIcon = styled.button`
   position: absolute;
-  z-index:-1;
+  z-index: -1;
   bottom: 25%;
   left: 80%;
   width: 18px;
