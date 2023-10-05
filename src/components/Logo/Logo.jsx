@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
 import bg from 'images/bg';
+import { WrapperLogo } from './Logo.styled';
 const { logoDesktop1x, logoDesktop2x, logoMobile1x, logoMobile2x } = bg;
 
 export const Logo = () => {
@@ -22,7 +23,7 @@ export const Logo = () => {
   };
 
   return (
-    <div style={{ cursor: 'pointer' }} onClick={handleClick}>
+    <WrapperLogo onClick={handleClick}>
       <picture>
         <source
           type="image/png"
@@ -36,6 +37,6 @@ export const Logo = () => {
         />
         <img src={`${logoDesktop1x}`} alt="logo" />
       </picture>
-    </div>
+    </WrapperLogo>
   );
 };
